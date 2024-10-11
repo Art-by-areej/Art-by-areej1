@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* أنماط الكوبون */
+        .coupon-popup {
+            display: none; /* مخفي في البداية */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #070707;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgb(255, 0, 0);
+            z-index: 1000; /* يظهر فوق كل شيء */
+            text-align: center;
+        }
+
+        .coupon-popup h2 {
+            margin: 0 0 10px;
+            color: #ff0000; /* لون بني داكن */
+        }
+
+        .coupon-popup p {
+            margin: 0;
+            font-weight: bold;
+        }
+        /* صورة العنوان */
+        .hero-image {
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* تنسيق الجسم */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            color: #fffdfd;
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        /* تأثير اللمعان */
+        @keyframes sparkle {
+            from {
+                box-shadow: 0 0 10px rgb(196, 167, 96);
+            }
+
+            to {
+                box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+            }
+        }
+
+        /* شريط التنقل */
+        .nav {
+            margin-top: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #7d6b5b;
+            margin: 0 5px; /* زيادة المسافة بين العناصر */
+            font-weight: bold;
+            font-size: 15px; /* زيادة حجم الخط */
+            padding: 10px 10px; /* إضافة مساحة حول النص */
+            border-radius: 10px; /* لتنعيم الزوايا */
+            transition: background-color 0.3s, color 0.3s; /* إضافة تأثير انتقال لتغيير الخلفية والنص عند التمرير */
+        }
+
+        .nav a:hover {
+            background-color: #7d6b5b;
+            color: #ffffff;
+        }
+
+        /* رسالة الترحيب */
+        .welcome {
+            background-color: #99673e;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        /* محتوى المنتج */
+        .product-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .circle-image {
+    position: relative; /* لجعل النص فوق الصورة */
+    display: inline-block; /* لجعل العناصر بجانب بعضها */
+}
+
+.image-title {
+    position: absolute;
+    bottom: 160px; /* تحريك النص لأعلى قليلاً */
+    left: 50%; /* توسيط النص */
+    transform: translateX(-50%); /* توسيط النص */
+    color: #99673e; /* لون النص */
+    padding: 5px; /* مساحة حول النص */
+    border-radius: 5px; /* زوايا دائرية */
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+        .circle-images a {
+            display: block;
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        .circle-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-image {
+            width: 150px;
+            height: 150px;
+            border: 5px solid #7d6b5b;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            animation: sparkle 1.5s infinite alternate;
+        }
+
+        .product-image-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .product-name {
+            position: absolute;
+            bottom: 80%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            width: 70%;
+            background-color: rgba(255, 253, 253, 0.5);
+            color: rgb(73, 30, 30);
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        .order-form {
+    background-color: #99673e;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 200px; /* زيادة الحد الأقصى للعرض إلى 400 بكسل */
+    width: 100%; /* عرض 100% من العنصر الأب */
+    height: auto; /* يمكنك تحديد قيمة مثل 300px إذا كنت تريد ارتفاع ثابت */
+    display: none;
+    text-align: center;
+}
+
+
+        .order-form input,
+        .order-form select,
+        .order-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #010101;
+            border-radius: 20px;
+        }
+
+        .order-button-container {
+            display: flex;
+            justify-content: center; /* توسيط المحتوى أفقياً */
+            margin-top: 20px;
+        }
+
+        .show-order-form {
+            background-color: #99673e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .submit-button {
+            background-color: #99673e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #5a3b2e;
+        }
+
+        .show-order-form {
+            margin-top: 10px;
+            background-color: #99673e;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .show-order-form:hover {
+            background-color: #5a3b2e;
+        }
+
+        /* صندوق التنبيه */
+        .highlight-box {
+            background-color: #f4d366;
+            color: #000000;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            max-width: 600px;
+        }
+
+        /* وسائل التواصل الاجتماعي */
+        .social-media {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .social-media a {
+            text-decoration: none;
+            color: #7d6b5b;
+            margin: 0 15px;
+            font-size: 24px;
+        }
+
+        /* سياسة الطلب */
+        .policy {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-top: 2px solid #99673e;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+        }
+
+        .policy h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #99673e;
+        }
+
+        .policy p {
+            color: #99673e;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+      /* شريط تمرير الآراء */
+.review-slider .review {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: #99673e;
+}
+
+
+        .review-slider .review {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+                }
+
+        .review-slider .rating {
+            margin: 10px 0;
+        }
+
+        .review-slider .rating .heart {
+            font-size: 24px;
+            color: gold;
+        }
+        .customer-reviews-title {
+    text-align: center;
+    font-size: 15px; /* حجم الخط أكبر */
+    color: #99673e;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+
+
+.review-slider .review p {
+    font-size: 15px; /* تكبير حجم خط المراجعات */
+    color: #99673e; /* لون بني للمراجعات */
+}
+
+        .slick-slide {
+            display: flex !important;
+            justify-content: center;
+        }
+
+        .slick-dots {
+            bottom: 10px;
+        }
+        /* حركة القلوب */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-30px); /* تتحرك للأعلى */
+        opacity: 0; /* تصبح غير مرئية بالتدريج */
+    }
+}
+
+.heart {
+    display: inline-block;
+    font-size: 24px;
+    color: gold;
+    animation: floatUp 2s ease-in-out infinite;
+    margin-right: 5px; /* مسافة صغيرة بين القلوب */
+}
+
+/* إضافة التأخير لكل قلب لجعل الحركة غير متزامنة */
+.heart:nth-child(1) {
+    animation-delay: 0s;
+}
+.heart:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.heart:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.heart:nth-child(4) {
+    animation-delay: 0.6s;
+}
+.heart:nth-child(5) {
+    animation-delay: 0.8s;
+}
+.section-separator { /*خط يفصل بين المنتج واراء الزبائن*/
+    border: none;
+    height: 2px;
+    background-color: #99673e; /* لون بني مماثل لتنسيق الموقع */
+    width: 80%;
+    margin: 30px auto; /* محاذاة إلى المنتصف وإضافة مسافة */
+}
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+</head>
+
+<body>
+    <div class="hero-image">
+        <img src="albidaya1.jpg" alt="صورة مقدمة">
+    </div>
+
+    <header>
+        <div class="nav">
+            <a href="index.html">الصفحة الرئيسية</a>
+        </div>
+    </header>
+
+    <div class="welcome">
+        مَتْجَري المُتَميِّزُ يُرحِّبُ بِزُوّارِه
+    </div>
+    <script>
+        // وظيفة لإظهار كود الكوبون
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('couponPopup').style.display = 'block';
+            }, 1000); // يظهر بعد 1 ثانية
+
+            setTimeout(function() {
+                document.getElementById('couponPopup').style.display = 'none';
+            }, 10000); // يختفي بعد 5 ثواني
+        }
+    </script>
+ <script>
+    // وظيفة لإظهار كود الكوبون
+    window.onload = function() {
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'block';
+        }, 1000); // يظهر بعد 1 ثانية
+
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'none';
+        }, 5000); // يختفي بعد 5 ثواني
+    }
+</script>
+   <!-- كود كوبون -->
+<div id="couponPopup" class="coupon-popup">
+<h2>استخدم الكود: <span style="color: #ff1900;">WELCOME15</span></h2>
+<p>كهدية ترحيبية، مُقدمة من مَتجر الأريج
+  للحصول على خصم على طلبك الأول في الموقع!  </p>
+</div>
+
+    <div class="product-container">
+        <div class="circle-images">
+            <div class="circle-image">
+                <a href="page2.html" title="عرض الكتالوج 1">
+                    <img src="صوره لكتالوج البراويز.jpg" alt="كتالوج 1">
+                    <span class="image-title">كتالوج 1</span>
+                </a>
+            </div>
+            <div class="circle-image">
+                <a href="page3.html" title="عرض الكتالوج 2">
+                    <img src="اريج2.jpg" alt="كتالوج 2">
+                    <span class="image-title"> كتالوج 2 </span>
+                </a>
+            </div>
+        </div>
+    
+        <div class="product-box">
+            <div class="product-image-container">
+                <img src="صندوق واخيرا تجمعنا.jpg" alt="صندوق وأخيرًا تجمّعنا" class="product-image">
+            </div>
+            <div class="order-button-container">
+                <button class="show-order-form" onclick="toggleOrderForm()">أطلب الآن</button>
+            </div>
+            <div class="order-form" id="orderForm">
+                <p id="productDescription">صندوق وأخيرًا تجمّعنا.</p>
+                
+                <h3>يشمل 8 العاب</h3>
+                <p id="productPrice">السعر: 220</p>
+            
+                <label for="name">الاسم:</label>
+                <input type="text" id="name" required>
+                
+                <label for="phone">رقم الهاتف:</label>
+                <input type="tel" id="phone" required>
+                
+                <label for="additionalNumber">رقم إضافي:</label>
+                <input type="tel" id="additionalNumber">
+                
+                <label for="deliveryOption">اختر طريقة التوصيل:</label>
+                <select id="deliveryOption" onchange="toggleDeliveryDetails()" required>
+                    <option value="" disabled selected>اختر طريقة التوصيل</option>
+                    <option value="delivery">توصيل</option>
+                    <option value="pickup">استلام شخصي</option>
+                </select>
+                
+                <div id="deliveryDetails" style="display: none;">
+                    <label for="deliveryArea">اختر المنطقة:</label>
+                    <select id="deliveryArea">
+                        <option value="north">الشمال - 50₪</option>
+                        <option value="south">الجنوب - 60₪</option>
+                        <option value="triangle">المثلث - 40₪</option>
+                    </select>
+                    <label for="region">اسم المنطقة:</label>
+                    <input type="text" id="region">
+                </div>
+                
+                <button class="submit-button" onclick="sendWhatsApp()">إرسال الطلب</button>
+            </div>
+            
+        </div>
+    </div>
+    <hr class="section-separator">
+    <div class="customer-reviews-section">
+        <h2 class="customer-reviews-title">"آرَاءُ زَبَائِنِي تَعْكِسُ جَوْدَةَ مُنْتَجَاتِي وَتَمَيُّزِي.
+             أَسْعَدُ دَائِمًا بِمُلَاحَظَاتِكُمْ 
+             لِأَنَّهَا تُسَاعِدُنِي عَلَى تَقْدِيمِ الْأَفْضَلِ لَكُمْ!" مَتْجَرُ الأَرِيجِ الْمُتمَيَّزِ.
+            
+            </h2>
+        <div class="review-slider">
+            <div class="review">
+                <p>عنجد كان اختيار موفق واكثر من رائع انو روان دلتني على هيك صبيه لان المعامله اهم من الشغل نفسو ولله❤❤</p>
+                <div class="rating">
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                </div>
+            </div>
+            <div class="review">
+<P>يعطيكي العافيه حبيبتي هسا تا فضيت اكتبلك
+    يسلم ايديكي عنجد بجنن🫶🏻 كثير كثير حلوات اول مره بتعامل معك بس مش اخر مره</P>                <div class="rating">
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                </div>
+                </div>
+
+                <div class="review">
+                    <p>"حبيبتي ، طلبت من عندك قبل المره رسمه لصحبيتي وعنجد كانت ككثير ككثييرر بتسطللل كل مره بطلب بتبهريني بجمال شغلك😍😍"</p>
+                    <div class="rating">
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+
+    <div class="social-media">
+        <a href="https://www.instagram.com/art._.by_areej?igsh=YWd3N3FtcTdiNWYz" target="_blank" title="إنستغرام"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/972535845120" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <div class="policy">
+        <h2>سياسة الطلب وعدم إلغاء الطلبيات بعد تجهيزها </h2>
+        <p>⚠️ **تنبيه هام**: لا يمكن إلغاء الطّلبيّات بعد تأكيدها. نشكركم لتفهّمكم ونتطلّع لخدمتكم بكلّ سرور.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.review-slider').slick({
+                autoplay: true,
+                arrows: false,
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+        });
+
+        function toggleDeliveryDetails() {
+            const deliveryOption = document.getElementById('deliveryOption').value;
+            const deliveryDetails = document.getElementById('deliveryDetails');
+            deliveryDetails.style.display = (deliveryOption === 'delivery') ? 'block' : 'none';
+        }
+
+        function toggleOrderForm() {
+            const orderForm = document.getElementById('orderForm');
+            orderForm.style.display = orderForm.style.display === 'none' || orderForm.style.display === '' ? 'block' : 'none';
+        }
+
+        function sendWhatsApp() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const additionalNumber = document.getElementById('additionalNumber').value;
+            const deliveryOption = document.getElementById('deliveryOption').value;
+            const deliveryArea = document.getElementById('deliveryArea') ? document.getElementById('deliveryArea').value : 'غير محدد';
+            const region = document.getElementById('region').value || 'غير محدد';
+
+            const message = `الاسم: ${name}رقم الهاتف: ${phone}رقم إضافي: ${additionalNumber}%0Aطريقة التوصيل: ${deliveryOption}%0Aمنطقة التوصيل: ${deliveryArea}%0Aاسم المنطقة: ${region}`;
+            const phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+            window.location.href = whatsappUrl;
+        }
+    </script>
+    <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: #99673e;">
+        <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
+        <p>تم تصميم وتطوير الموقع بواسطة</p>
+        <P>Design.2023D</P>
+    </footer>
+    
+</body>
+
+</html>

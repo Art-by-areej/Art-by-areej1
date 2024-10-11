@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كتالوج المنتجات</title>
+    <style>
+         /* أنماط الكوبون */
+         .coupon-popup {
+            display: none; /* مخفي في البداية */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #070707;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgb(255, 0, 0);
+            z-index: 1000; /* يظهر فوق كل شيء */
+            text-align: center;
+        }
+
+        .coupon-popup h2 {
+            margin: 0 0 10px;
+            color: #ff0000; /* لون بني داكن */
+        }
+
+        .coupon-popup p {
+            margin: 0;
+            font-weight: bold;
+        }
+         /* تعيين أنماط الجسم العامة */
+         body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #ffffff;
+    color: #6f431e;
+    margin: 0;
+    padding: 0;
+}
+
+/* أنماط الترويسة (Header) */
+header {
+    background-color: #ffffff; /* لون ترابي فاتح */
+    text-align: center;
+    border-bottom: 2px solid #eccdb1; /* إطار بني داكن أسفل الشعار */
+    padding: 20px 0; /* إضافة مساحة فوق وتحت الشعار */
+}
+
+/* أنماط الشعار (Logo) */
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eccdb1; /* لون بني داكن */
+}
+
+/* أنماط مستطيل الترحيب */
+.welcome-message {
+    background-color: #ffdbbe; /* لون يتماشى مع الصفحة */
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 50%;
+    text-align: center;
+    font-size: 18px;
+    color: #6b4f3b; /* لون بني داكن */
+}
+.welcome{
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    font-size: 18px;
+    color: #6b4f3b; /* لون بني داكن */
+}
+
+/* أنماط شريط التنقل (Navigation) */
+.nav {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.nav a {
+    text-decoration: none;
+    color: #6b4f3b; /* لون بني داكن */
+    margin: 0 15px;
+    font-weight: bold;
+}
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* أنماط الحاوية (Container) */
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* أنماط الكتالوج (Catalog) */
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* أنماط المنتجات (Product) */
+.product {
+    background-color: #ffdbbec0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 40px);
+    text-align: center;
+    border: 1px solid #eccdb1; /* إطار بلون بني داكن */
+}
+.product img {
+    width: 100%;
+    height: auto;
+    border: 5px solid #eccdb1; /* إطار بلون ترابي فاتح */
+    box-shadow: 0 4px 8px rgb(255, 255, 255);
+}
+.product h3 {
+    margin: 10px 0 5px;
+}
+.product p {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #6b4f3b; /* لون بني داكن */
+    font-size: 16px; /* حجم الخط القياسي */
+}
+.product button {
+    padding: 10px 20px;
+    background-color: #6b4f3b; /* لون بني أغمق */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.product button:hover {
+    background-color: #6b4f3b; /* لون بني داكن */
+}
+
+/* أنماط الأسعار (Prices) */
+.old-price {
+    text-decoration: line-through;
+    color: #e74c3c; /* لون أحمر للسعر القديم */
+    margin-right: 10px;
+    font-size: 14px; /* حجم خط أصغر للسعر القديم */
+}
+.new-price {
+    color: #27ae60; /* لون أخضر للسعر الجديد */
+    font-size: 18px; /* حجم خط أكبر للسعر الجديد لجعله بارزاً */
+    font-weight: bold;
+}
+
+/* أنماط السلة (Cart) */
+.cart {
+    padding: 20px;
+    background-color: #eccdb1; /* لون ترابي فاتح */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(198, 122, 122);
+    margin: 20px auto; /* مركز السلة */
+    border: 1px solid #ffffff; /* إطار بلون بني داكن */
+    max-width: 600px; /* عرض أقصى للسلة */
+    text-align: center; /* محاذاة النص في الوسط */
+}
+.cart h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    color: #6b4f3b; /* لون بني داكن */
+    font-size: 24px; /* حجم خط أكبر */
+    font-weight: bold; /* خط عريض */
+}
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; /* محاذاة النصوص إلى اليسار */
+    display: inline-block; /* جعل القائمة تظهر في وسط الصفحة */
+}
+.cart ul li {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.remove-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.remove-button:hover {
+    background-color: #c0392b;
+}
+
+/* أنماط نموذج الاتصال (Contact Form) */
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    display: none;
+    background-color: #ffdbbec0; /* لون ترابي فاتح */
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #6c3200; /* إطار بلون بني داكن */
+}
+.contact-form label {
+    display: block;
+    margin-top: 10px;
+    color: #6c3200; /* لون بني داكن */
+}
+.contact-form input, 
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #7d6b5b; /* لون بني داكن */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.contact-form button:hover {
+    background-color: #6b4f3b; /* لون بني أغمق */
+}
+
+/* أنماط التذييل (Footer) */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color:#fffff6b4f3bf:/* لون ترابي فاتح */
+}
+
+@media (max-width: 768px) {
+    .product {
+        flex: 1 1 calc(50% - 40px); /* Two per row on medium screens */
+        max-width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        flex: 1 1 100%; /* One per row on small screens */
+        max-width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
+        <div class="welcome-message">
+            إ جْعَلوا  جُدْرانَ بيوتِكُمْ وَزَواياهُ تَتَأَلَّقُ بِمَزيجٍ خاصٍّ مِنْ صُوَرِكُمْ وَلَمَساتِ الأريجِ المُتَمَيِّزَةِ        </div>
+       
+        <div class="nav">
+            <a href="index.html">الصفحة الرئيسية</a>
+            <a href="page2.html">كتالوج البراويز</a>
+            <a href="page3.html">كتالوج المنتجات الاخرى</a>
+                </div>
+    </header>
+    <div class="welcome">
+        "مُلاحَظّة:الْبِرْوَازُ هَدِيَّةٌ عَلَى الرَّسْمَةِ/التَّصْمِيمِ"
+
+</div>
+<script>
+    // وظيفة لإظهار كود الكوبون
+    window.onload = function() {
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'block';
+        }, 1000); // يظهر بعد 1 ثانية
+
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'none';
+        }, 5000); // يختفي بعد 5 ثواني
+    }
+</script>
+   <!-- كود كوبون -->
+<div id="couponPopup" class="coupon-popup">
+<h2>استخدم الكود: <span style="color: #ff1900;">WELCOME15</span></h2>
+<p>كهدية ترحيبية، مُقدمة من مَتجر الأريج
+  للحصول على خصم على طلبك الأول في الموقع!  </p>
+</div>
+<!-- كتالوج المنتجات -->
+<div class="container">
+    <div class="catalog">
+        <div class="product">
+            <img src=" حملة الاريج.jpg" alt="بوكس رسم ديچتال - رصاصي">
+            <h3> بوكس رسم ديچتال - رصاصي  </h3>
+            <p>
+                <span class="old-price">230₪</span> <span class="new-price">180₪</span>
+            </p>
+            <button onclick="addToCart('بوكس رسم ديچتال - رصاصي')">أضف إلى السلة</button>
+        </div>
+        
+        <div class="product">
+            <img src=" حملة الاريج رسم ملون.jpg" alt=" بوكس رسم ديچتال - ملوّن">
+            <h3>بوكس رسم ديچتال - ملوّن </h3>
+                <span class="old-price">230₪</span> <span class="new-price">180₪</span>
+            </p>
+            <button onclick="addToCart('  بوكس رسم ديچتال - ملوّن ')">أضف إلى السلة</button>
+        </div> 
+
+
+        <div class="product">
+            <img src=" برواز ومجين.jpg " alt="برواز ديجتال رصاصي A4 ">
+            <h3>رسمة ديجتال رصاصي + كفر/مجين تلفون</h3>
+            <P>A4 حجم</P>
+                <span class="old-price">180₪</span> <span class="new-price">150₪</span>
+            </p>
+            <button onclick="addToCart(' برواز + كڤر تلفون رسمة ديجتال -  رصاصي حجم A4')">أضف إلى السلة</button>
+        </div> 
+
+        <div class="product">
+            <img src=" رسم ديجتال مع كفر a3.jpg " alt=" برواز + كڤر تلفون رسمة ديجتال - رصاصي حجم A3">
+            <h3>رسمة ديجتال رصاصي + كفر/مجين تلفون</h3>
+           <P>A3 حجم</P>
+            <span class="old-price">200₪</span> <span class="new-price">170₪</span>
+            </p>
+            <button onclick="addToCart('برواز + كڤر تلفون رسمة ديجتال -  رصاصي حجم A3  ')">أضف إلى السلة</button>
+        </div>
+
+        <div class="product">
+            <img src="ديجتال رصاصي.jpg" alt="رسمة ديچتال - رصاصي حجم A4 ">
+            <h3>رسمة ديچتال - رصاصي </h3>
+            <p> حجم A4 : 80₪</p>
+            <button onclick="addToCart('برواز ديجتال رصاصي حجم A4')">أضف إلى السلة</button>
+        </div>
+
+        <div class="product">
+            <img src="رسم رضاصي2.jpg" alt="رسم ديجتال - رصاصي حجم A3 ">
+            <h3>رسم ديجتال - رصاصي  </h3>
+            <p> حجم A3 : 100₪</p>
+            <button onclick="addToCart('رسم ديجتال - رصاصي حجم A3')">أضف إلى السلة</button>
+        </div>
+
+
+        <div class="product">
+            <img src="ديجتال ملون.jpg" alt=" رسم ديجتال - ملوّن حجم A4">
+            <h3>رسم ديجتال - ملوّن </h3>
+            <p> حجم A4 : 80₪</p>
+            <button onclick="addToCart('رسم ديجتال - ملوّن حجم A4')">أضف إلى السلة</button>
+        </div>
+
+            <div class="product">
+                <img src="رسم ملون2.jpg" alt="رسم ديجتال - ملوّن حجم A3 ">
+                <h3> رسم ديجتال - ملوّن </h3>
+                <p> حجم A3 : 100₪</p>
+                <button onclick="addToCart('رسم ديجتال - ملوّن حجم A3')">أضف إلى السلة</button>
+            </div>
+        <div class="product">
+            <img src="دمج صور ديجتال ملون.jpg" alt=" دمج صور برسمة ديچتال - ملون حجم A4">
+            <h3> دمج صور برسمة ديچتال - ملون  </h3>
+            <p> حجم A3 : 120₪</p>
+            <p> حجم A4 : 100₪</p>
+            <button onclick="addToCart(' دمج صور برسمة ديچتال - ملون حجم A4 ')">أضف إلى السلة</button>
+        </div>
+        <div class="product">
+            <img src="دمج صور ديجتال رصاصي.jpg" alt="برواز ديجتال رصاصي A3 ">
+            <h3>  دمج صور برسمة ديچتال - رصاصي </h3>
+            <p> حجم A3 : 120₪</p>
+            <p> حجم A4 : 100₪</p>
+            <button onclick="addToCart('دمج صور ديجتال رصاصي')">أضف إلى السلة</button>
+        </div>
+        <div class="product">
+            <img src="تصميم صوره باركودa3.jpg" alt="تصميم صورة بباركود اغنية ">
+            <h3>تصميم صورة بباركود اغنية   </h3>
+            <p>  حجم A3  </p>
+            <P>60₪</P>
+             <button onclick="addToCart('تصميم صورة بباركود اغنية')">أضف إلى السلة</button>
+            </div>
+            <div class="product">
+                <img src="تصميم صوره باركودa4.jpg" alt=" تصميم المولود - حجم A4">
+                <h3>تصميم صورة بباركود اغنية </h3>
+                <p> حجم A4 </p>
+                <P>50₪ </P>
+                 <button onclick="addToCart('  تصميم صورة بباركود اغنيه')">أضف إلى السلة</button>
+                </div>
+        <div class="product">
+            <img src="تصميم للبيبي.jpg" alt=" تصميم المولود - حجم A4">
+            <h3>تصميم المولود  </h3>
+            <p> حجم A4 : 80₪ </p>
+             <button onclick="addToCart(' تصميم المولود - حجم A4')">أضف إلى السلة</button>
+            </div>
+
+            <div class="product">
+                <img src="تصميم للبيبي2.jpg" alt="تصميم المولد - حجم A3">
+                <h3>تصميم المولد  </h3>
+                <p> حجم A3 : 100₪</p>
+                 <button onclick="addToCart('تصميم المولد - حجم A3 ')">أضف إلى السلة</button>
+                </div>
+
+                <div class="product">
+                    <img src=" تصميم صور 2.jpg" alt="  تصميم الرَقم/العُمر- حجم A3  ">
+                    <h3>تصميم الرَقم/العُمر  </h3>
+                    <p> حجم A3 : 120₪</p>
+                    <button onclick="addToCart('   تصميم الرَقم/العُمر- حجم A3')">أضف إلى السلة</button>
+                </div>
+
+                <div class="product">
+                    <img src="تصميم الرقم 2.jpg" alt="تصميم الرَقم/العُمر- حجم A4 ">
+                    <h3>تصميم الرَقم/العُمر </h3>
+                    <p> حجم A4 : 100₪</p>
+                    <button onclick="addToCart('  تصميم الرَقم/العُمر- حجم A4')">أضف إلى السلة</button>
+                </div>
+
+
+        <div class="product">
+            <img src="تصميم صور.jpg " alt="برواز ديجتال رصاصي A3 ">
+            <h3> تصميم فكرة الأريج باضافة رسمة ديجتال </h3>
+            <p> حجم A3 : 140₪</p>
+            <p> حجم A4 : 120₪</p>
+            <button onclick="addToCart('   تصميم فكرة الأريج باضافة رسمة ديجتال ')">أضف إلى السلة</button>
+        </div>
+        
+        <div class="product">
+            <img src="تصميم صور 3.jpg" alt="برواز ديجتال رصاصي  ">
+            <h3>تصميم فكرة الأريج 1 </h3>
+            <p> حجم A3 : 120₪</p>
+            <p> حجم A4 : 100₪</p>
+            <button onclick="addToCart( 'تصميم فكرة الأريج - حجم ' )">أضف إلى السلة</button>
+        </div>
+        <div class="product">
+            <img src="تصمم صور4.jpg" alt="برواز ديجتال رصاصي A3 ">
+            <h3>تصميم  فكرة الأريج 2</h3>
+            <p> حجم A3 : 120₪</p>
+            <p> حجم A4 : 100₪</p>
+            <button onclick="addToCart('تصميم فكرة الأريج 2')">أضف إلى السلة</button>
+        </div>
+        <div class="product">
+            <img src="تصميم صور5.jpg" alt="برواز ديجتال رصاصي A3 ">
+            <h3>تصميم فكرة الأريج 3</h3>
+            <p>
+                <span class="old-price">230₪</span> <span class="new-price">180₪</span>
+            </p>
+            <label for="size-select-1">اختر الحجم:</label>
+            <select id="size-select-1">
+                <option value="A4">A4</option>
+                <option value="A3">A3</option>
+            </select>
+            <button onclick="addToCart('بوكس رسم ديچتال - رصاصي', document.getElementById('size-select-1').value)">أضف إلى السلة</button>
+        </div>
+        
+        
+        </div>     
+       </div>
+       <div class="cart">
+        <h2>سلة الطلبيات</h2>
+        <ul id="cartItems">
+            <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
+        </ul>
+        <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
+<p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
+    </div>
+    
+<!-- نموذج الطلب -->
+<div id="orderForm" class="contact-form">
+    
+    <h1>أرسل طلبك عبر الواتس آب</h1>
+    <form id="form">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">رقم الهاتف:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        
+        <label for="additionalNumber">رقم إضافي:</label>
+        <input type="tel" id="additionalNumber" name="additionalNumber">
+        
+        <label for="deliveryOption">اختر طريقة التوصيل:</label>
+        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
+            <option value="" disabled selected>اختر طريقة التوصيل</option>
+            <option value="توصيل">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
+            <option value="استلام شخصي">استلام شخصي(لأستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
+        </select>
+
+    <input type="date" id="specificDate" name="specificDate">
+        <div id="deliveryDetails" style="display: none;">
+            <label for="deliveryArea">اختر المنطقة:</label>
+            <select id="deliveryArea" name="deliveryArea">
+                <option value="شمال">الشمال - 50</option>
+                <option value="جنوب">الجنوب - 60</option>
+                <option value="مثلث">المثلث - 40</option>
+            </select>
+            
+            <label for="region">اسم المنطقة:</label>
+            <input type="text" id="region" name="region">
+        </div>
+
+        <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
+            <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
+            
+
+        <label for="size">حجم البرواز:</label>
+        <select id="size" name="size" required>
+            <option value="" disabled selected>اختر حجم البرواز</option>
+            <option value="A4">حجم A4</option>
+            <option value="A3">حجم A3</option>
+        </select>
+
+        <label for="phoneType">نوع الهاتف:</label>
+        <select id="phoneType" name="phoneType" required>
+            <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
+            <option value="لا يوجد">لا يوجد</option>
+             <option value="iPhone">iphone 11</option>
+            <option value="iPhone">iphone 11 pro</option>
+            <option value="iPhone">iphone 11 promax</option>
+            <option value="iPhone">iphone 12</option>
+            <option value="iPhone">iphone 12 pro</option>
+            <option value="iPhone">iphone 12 promax</option>
+            <option value="iPhone">iphone 13</option>
+            <option value="iPhone">iphone 13 pro</option>
+            <option value="iPhone">iphone 13 promax</option>
+            <option value="iPhone">iphone 14</option>
+            <option value="iPhone">iphone 14 pro</option>
+            <option value="iPhone">iphone 14 promax</option>
+            <option value="iPhone">iphone 14 blus </option>
+            <option value="iPhone">iphone 15</option>
+            <option value="iPhone">iphone 15 pro</option>
+            <option value="iPhone">iphone 15 promax</option>
+
+
+            <option value="Samsung">21 ultra</option>
+            <option value="Samsung">22 ultra</option>
+            <option value="Samsung">23 ultra</option>
+
+            <option value="Samsung">A52</option>
+            <option value="Samsung">A53</option>
+            <option value="Samsung">A71</option>
+            <option value="Samsung">A73</option>
+
+
+        </select>
+
+        <label for="cartDetails">المنتجات في السلة:</label>
+        <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
+        
+
+        <button type="submit">إرسال الطلب</button>
+    </form>
+</div>
+
+
+<footer style="background-color: #fffefd; padding: 20px; text-align: center; color: rgb(0, 0, 0);">
+    <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
+    <p>تم تصميم وتطوير الموقع بواسطة</p>
+    <P>Design.2023D</P>
+</footer>
+
+    <script>
+        let cart = [];
+function addToCart(productName, size) {
+    cart.push({ name: productName, size: size });
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = ""; // Clear current items
+
+    cart.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - حجم: ${item.size}`;
+        cartItems.appendChild(li);
+    });
+}
+
+        // إضافة منتج إلى السلة
+        function addToCart(productName) {
+            // إضافة المنتج إلى السلة
+            cart.push(productName);
+            updateCartDisplay();
+            alert(`${productName} تم إضافته إلى السلة.`);
+        }
+    
+        // تحديث عرض السلة
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = item;
+    
+                // إنشاء زر إزالة
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'إزالة';
+                removeButton.className = 'remove-button';
+                removeButton.onclick = function() {
+                    removeFromCart(index);
+                };
+    
+                // إضافة العناصر إلى القائمة
+                li.appendChild(removeButton);
+                cartItems.appendChild(li);
+            });
+        }
+    
+        // إزالة منتج من السلة
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+    
+        // عرض نموذج الطلب
+        function showOrderForm() {
+            document.getElementById('orderForm').style.display = 'block';
+            document.getElementById('cartDetails').value = cart.join('\n');
+        }
+    
+        // إظهار/إخفاء تفاصيل التوصيل
+        function toggleDeliveryDetails() {
+            const deliveryOption = document.getElementById('deliveryOption').value;
+            const deliveryDetails = document.getElementById('deliveryDetails');
+            deliveryDetails.style.display = (deliveryOption === 'delivery') ? 'block' : 'none';
+        }
+     // إرسال الطلب عبر الواتس آب
+document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var phoneType = document.getElementById('phoneType').value || 'غير محدد';
+    var additionalNumber = document.getElementById('additionalNumber').value;
+    var deliveryOption = document.getElementById('deliveryOption').value;
+    var deliveryArea = document.getElementById('deliveryArea').value || 'غير محدد';
+    var region = document.getElementById('region').value || 'غير محدد';
+    var cartItems = cart.join(', ');
+    
+    // الحقول الجديدة
+    var messageOrSong = document.getElementById('messageOrSong').value || 'لا يوجد';
+    var specificDate = document.getElementById('specificDate').value || 'غير محدد';
+
+    var message = `الاسم: ${name}  رقم الهاتف: ${phone}  نوع الهاتف ${phoneType}   رقم إضافي: ${additionalNumber}  طريقة التوصيل: ${deliveryOption}  منطقة التوصيل: ${deliveryArea}اسم المنطقة: ${region}  المنتجات: ${cartItems}  العبارة أو الأغنية: ${messageOrSong}  التاريخ المطلوب: ${specificDate}`;
+    var phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
+    var whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+    window.location.href = whatsappUrl;
+});
+
+    </script>
+</body>
+</html>  

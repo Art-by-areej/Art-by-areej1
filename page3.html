@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كتالوج المنتجات</title>
+    <style>
+        /* أنماط الكوبون */
+        .coupon-popup {
+            display: none; /* مخفي في البداية */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #070707;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgb(255, 0, 0);
+            z-index: 1000; /* يظهر فوق كل شيء */
+            text-align: center;
+        }
+
+        .coupon-popup h2 {
+            margin: 0 0 10px;
+            color: #ff0000; /* لون بني داكن */
+        }
+
+        .coupon-popup p {
+            margin: 0;
+            font-weight: bold;
+        }
+      /* تعيين أنماط الجسم العامة */
+      body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #ffffff;
+    color: #ff0000;
+    margin: 0;
+    padding: 0;
+}
+
+/* أنماط الترويسة (Header) */
+header {
+    background-color: #ffffff; /* لون ترابي فاتح */
+    text-align: center;
+    border-bottom: 2px solid #eccdb1; /* إطار بني داكن أسفل الشعار */
+    padding: 20px 0; /* إضافة مساحة فوق وتحت الشعار */
+}
+
+/* أنماط الشعار (Logo) */
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eccdb1; /* لون بني داكن */
+}
+
+/* أنماط مستطيل الترحيب */
+.welcome-message {
+    background-color: #ffdbbe; /* لون يتماشى مع الصفحة */
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    font-size: 18px;
+    color: #6b4f3b; /* لون بني داكن */
+}
+.welcome{
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    font-size: 18px;
+    color: #6b4f3b; /* لون بني داكن */
+}
+
+/* أنماط شريط التنقل (Navigation) */
+.nav {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+.nav a {
+    text-decoration: none;
+    color: #6b4f3b; /* لون بني داكن */
+    margin: 0 15px;
+    font-weight: bold;
+}
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* أنماط الحاوية (Container) */
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* أنماط الكتالوج (Catalog) */
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* أنماط المنتجات (Product) */
+.product {
+    background-color: #ffdbbec0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 40px);
+    text-align: center;
+    border: 1px solid #eccdb1; /* إطار بلون بني داكن */
+}
+.product img {
+    width: 100%;
+    height: auto;
+    border: 5px solid #eccdb1; /* إطار بلون ترابي فاتح */
+    box-shadow: 0 4px 8px rgb(255, 255, 255);
+}
+.product h3 {
+    margin: 10px 0 5px;
+}
+.product p {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #6b4f3b; /* لون بني داكن */
+    font-size: 16px; /* حجم الخط القياسي */
+}
+.product button {
+    padding: 10px 20px;
+    background-color: #6b4f3b; /* لون بني أغمق */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.product button:hover {
+    background-color: #6b4f3b; /* لون بني داكن */
+}
+
+/* أنماط الأسعار (Prices) */
+.old-price {
+    text-decoration: line-through;
+    color: #e74c3c; /* لون أحمر للسعر القديم */
+    margin-right: 10px;
+    font-size: 14px; /* حجم خط أصغر للسعر القديم */
+}
+.new-price {
+    color: #27ae60; /* لون أخضر للسعر الجديد */
+    font-size: 18px; /* حجم خط أكبر للسعر الجديد لجعله بارزاً */
+    font-weight: bold;
+}
+
+/* أنماط السلة (Cart) */
+.cart {
+    padding: 20px;
+    background-color: #eccdb1; /* لون ترابي فاتح */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(198, 122, 122);
+    margin: 20px auto; /* مركز السلة */
+    border: 1px solid #ffffff; /* إطار بلون بني داكن */
+    max-width: 600px; /* عرض أقصى للسلة */
+    text-align: center; /* محاذاة النص في الوسط */
+}
+.cart h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    color: #6b4f3b; /* لون بني داكن */
+    font-size: 24px; /* حجم خط أكبر */
+    font-weight: bold; /* خط عريض */
+}
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; /* محاذاة النصوص إلى اليسار */
+    display: inline-block; /* جعل القائمة تظهر في وسط الصفحة */
+}
+.cart ul li {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.remove-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.remove-button:hover {
+    background-color: #c0392b;
+}
+
+/* أنماط نموذج الاتصال (Contact Form) */
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    display: none;
+    background-color: #ffdbbec0; /* لون ترابي فاتح */
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #6c3200; /* إطار بلون بني داكن */
+}
+.contact-form label {
+    display: block;
+    margin-top: 10px;
+    color: #6c3200; /* لون بني داكن */
+}
+.contact-form input, 
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #7d6b5b; /* لون بني داكن */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.contact-form button:hover {
+    background-color: #6b4f3b; /* لون بني أغمق */
+}
+
+/* أنماط التذييل (Footer) */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #fffff6b4f3bf; /* لون ترابي فاتح */
+}
+
+@media (max-width: 768px) {
+    .product {
+        flex: 1 1 calc(50% - 40px); /* Two per row on medium screens */
+        max-width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        flex: 1 1 100%; /* One per row on small screens */
+        max-width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
+        <div class="welcome-message">
+            الذّكرَياتُ الجَميلَةُ، هِيَ شَيْءٌ فَوْقَ القَلْبِ وَفَوْقَ المَشاعِرِ، لِذلِكَ دَعْها تُرافِقُكَ بِهَيْئَةِ صورَةٍ في كُلِّ مَكانٍ وَزَمانٍ    </div>
+            <script>
+                // وظيفة لإظهار كود الكوبون
+                window.onload = function() {
+                    setTimeout(function() {
+                        document.getElementById('couponPopup').style.display = 'block';
+                    }, 1000); // يظهر بعد 1 ثانية
+        
+                    setTimeout(function() {
+                        document.getElementById('couponPopup').style.display = 'none';
+                    }, 5000); // يختفي بعد 5 ثواني
+                }
+            </script>
+               <!-- كود كوبون -->
+    <div id="couponPopup" class="coupon-popup">
+        <h2>استخدم الكود: <span style="color: #ff1900;">WELCOME15</span></h2>
+        <p>كهدية ترحيبية، مُقدمة من مَتجر الأريج
+              للحصول على خصم على طلبك الأول في الموقع!  </p>
+    </div>
+
+        <div class="nav">
+            <a href="index.html">الصفحة الرئيسية</a>
+            <a href="page2.html">كتالوج البراويز</a>
+            <a href="page3.html">كتالوج المنتجات الاخرى</a>
+                </div>
+    </header>
+  
+
+<!-- كتالوج المنتجات -->
+<div class="container">
+    <div class="catalog">
+        <div class="product">
+            <img src="كاسة رسمة ديجتال رصاصي.jpg" alt="كاسةرسمة ديچتال - رصاصي ">
+            <h3> كاسة رسمة ديچتال - رصاصي  </h3>
+            <p>  60₪</p>
+            <button onclick="addToCart('60₪كاسة رسمة ديچتال - رصاصي ')">أضف إلى السلة</button>
+        </div>
+        
+        <div class="product">
+            <img src=" كاسة صوره عاديه.jpg" alt=" كاسة صورة عادية ٣٠₪ ">
+            <h3>كاسة صورة عادية </h3>
+            <p> 30₪</p>
+            </p>
+            <button onclick="addToCart(' كاسة صورة عادية 30₪')">أضف إلى السلة</button>
+        </div> 
+
+
+        <div class="product">
+            <img src=" بازل صوره عاديه.jpg " alt="بازل - puzzle -صورة عادية ٦٠₪">
+            <h3>صورة عادية- puzzle - بازل</h3>
+            <P>60₪</P>
+            </p>
+            <button onclick="addToCart('60₪بازل - puzzle -صورة عادية ')">أضف إلى السلة</button>
+        </div> 
+
+        <div class="product">
+            <img src=" بازل رسمة ديجتال.jpg " alt="رسمة ديجتال - puzzle - بازل ">
+            <h3>رسمة ديجتال - puzzle - بازل</h3>
+           <P> ١٢٠ قطعة </P>
+           <P>80₪</P>     
+           </p>
+            <button onclick="addToCart('رسمة ديجتال - puzzle - بازل')">أضف إلى السلة</button>
+        </div>
+
+        <div class="product">
+            <img src="كفر صوره عاديه.jpg" alt="كڤر/مچين تلفون - صورة عادية ٧٠₪">
+            <h3>كڤر/مچين تلفون - صورة عادية </h3>
+            <p>70₪ </p>
+            <button onclick="addToCart('كڤر /مچين تلفون - صوره عاديه ')">أضف إلى السلة</button>
+        </div>
+
+        <div class="product">
+            <img src="كفر رسم  ديجتال.jpg" alt="كڤر /مچين تلفون - رسم ديچتال ١٠٠₪">
+            <h3>كڤر /مچين تلفون - رسم ديچتال </h3>
+            <p> 100₪</p>
+            <button onclick="addToCart('كڤر /مچين تلفون - رسم ديچتال 100₪')">أضف إلى السلة</button>
+        </div>
+
+
+        <div class="product">
+            <img src="قداحه صوره .jpg" alt=" قداحة صورة/كتابة 80">
+            <h3>قداحة صورة/كتابة </h3>
+            <p>  80₪</p>
+            <button onclick="addToCart('قداحة صورة/كتابة 80₪')">أضف إلى السلة</button>
+        </div>
+
+            <div class="product">
+                <img src="مسبحه صوره عاديه.jpg" alt="مسبحة صورة عادية 50₪">
+                <h3>مسبحة صورة عادية  </h3>
+                <p> 50₪</p>
+                <button onclick="addToCart('مسبحة صورة عادية 50₪')">أضف إلى السلة</button>
+            </div>
+        
+            <div class="product">
+                <img src="محزيك نمرة سياره .jpg" alt="محزيك نمرة سيارة، عالجهتين 50₪">
+                <h3>محزيك نمرة سيارة، عالجهتين  </h3>
+                <p> 50₪</p>
+                <button onclick="addToCart('محزيك نمرة سيارة، عالجهتين 50₪')">أضف إلى السلة</button>
+            </div>
+
+            <div class="product">
+                <img src="محزيك عادي.jpg" alt="محزيك ، عالجهتين 30₪">
+                <h3>محزيك ، عالجهتين </h3>
+                <p> 30₪</p>
+                <button onclick="addToCart('محزيك ، عالجهتين 30₪')">أضف إلى السلة</button>
+            </div>
+
+        </div>     
+       </div>
+       <div class="cart">
+        <h2>سلة الطلبيات</h2>
+        <ul id="cartItems">
+            <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
+        </ul>
+        <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
+<p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
+    </div>
+    
+<!-- نموذج الطلب -->
+<div id="orderForm" class="contact-form">
+    
+    <h1>أرسل طلبك عبر الواتس آب</h1>
+    <form id="form">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">رقم الهاتف:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        
+        <label for="additionalNumber">رقم إضافي:</label>
+        <input type="tel" id="additionalNumber" name="additionalNumber">
+        
+        <label for="deliveryOption">اختر طريقة التوصيل:</label>
+        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
+            <option value="" disabled selected>اختر طريقة التوصيل</option>
+            <option value="توصيل">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
+            <option value="استلام شخصي">استلام شخصي(لأستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
+        </select>
+
+    <input type="date" id="specificDate" name="specificDate">
+        <div id="deliveryDetails" style="display: none;">
+            <label for="deliveryArea">اختر المنطقة:</label>
+            <select id="deliveryArea" name="deliveryArea">
+                <option value="شمال">الشمال - 50</option>
+                <option value="جنوب">الجنوب - 60</option>
+                <option value="مثلث">المثلث - 40</option>
+            </select>
+            
+            <label for="region">اسم المنطقة:</label>
+            <input type="text" id="region" name="region">
+        </div>
+
+        <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
+            <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
+            
+
+        <label for="size">حجم البرواز:</label>
+        <select id="size" name="size" required>
+            <option value="" disabled selected>اختر حجم البرواز</option>
+            <option value="A4">حجم A4</option>
+            <option value="A3">حجم A3</option>
+        </select>
+
+        <label for="phoneType">نوع الهاتف:</label>
+        <select id="phoneType" name="phoneType" required>
+            <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
+            <option value="لا يوجد">لا يوجد</option>
+             <option value="iPhone">iphone 11</option>
+            <option value="iPhone">iphone 11 pro</option>
+            <option value="iPhone">iphone 11 promax</option>
+            <option value="iPhone">iphone 12</option>
+            <option value="iPhone">iphone 12 pro</option>
+            <option value="iPhone">iphone 12 promax</option>
+            <option value="iPhone">iphone 13</option>
+            <option value="iPhone">iphone 13 pro</option>
+            <option value="iPhone">iphone 13 promax</option>
+            <option value="iPhone">iphone 14</option>
+            <option value="iPhone">iphone 14 pro</option>
+            <option value="iPhone">iphone 14 promax</option>
+            <option value="iPhone">iphone 14 blus </option>
+            <option value="iPhone">iphone 15</option>
+            <option value="iPhone">iphone 15 pro</option>
+            <option value="iPhone">iphone 15 promax</option>
+
+
+            <option value="Samsung">21 ultra</option>
+            <option value="Samsung">22 ultra</option>
+            <option value="Samsung">23 ultra</option>
+
+            <option value="Samsung">A52</option>
+            <option value="Samsung">A53</option>
+            <option value="Samsung">A71</option>
+            <option value="Samsung">A73</option>
+
+
+        </select>
+
+        <label for="cartDetails">المنتجات في السلة:</label>
+        <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
+        
+
+        <button type="submit">إرسال الطلب</button>
+    </form>
+</div>
+
+<footer style="background-color: #fffefd; padding: 20px; text-align: center; color: rgb(0, 0, 0);">
+    <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
+    <p>تم تصميم وتطوير الموقع بواسطة</p>
+    <P>Design.2023D</P>
+</footer>
+
+    <script>
+        let cart = [];
+    
+        // إضافة منتج إلى السلة
+        function addToCart(productName) {
+            // إضافة المنتج إلى السلة
+            cart.push(productName);
+            updateCartDisplay();
+            alert(`${productName} تم إضافته إلى السلة.`);
+        }
+    
+        // تحديث عرض السلة
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = item;
+    
+                // إنشاء زر إزالة
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'إزالة';
+                removeButton.className = 'remove-button';
+                removeButton.onclick = function() {
+                    removeFromCart(index);
+                };
+    
+                // إضافة العناصر إلى القائمة
+                li.appendChild(removeButton);
+                cartItems.appendChild(li);
+            });
+        }
+    
+        // إزالة منتج من السلة
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+    
+        // عرض نموذج الطلب
+        function showOrderForm() {
+            document.getElementById('orderForm').style.display = 'block';
+            document.getElementById('cartDetails').value = cart.join('\n');
+        }
+    
+        // إظهار/إخفاء تفاصيل التوصيل
+        function toggleDeliveryDetails() {
+            const deliveryOption = document.getElementById('deliveryOption').value;
+            const deliveryDetails = document.getElementById('deliveryDetails');
+            deliveryDetails.style.display = (deliveryOption === 'delivery') ? 'block' : 'none';
+        }
+ // إرسال الطلب عبر الواتس آب
+document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var phoneType = document.getElementById('phoneType').value || 'غير محدد';
+    var additionalNumber = document.getElementById('additionalNumber').value;
+    var deliveryOption = document.getElementById('deliveryOption').value;
+    var deliveryArea = document.getElementById('deliveryArea').value || 'غير محدد';
+    var region = document.getElementById('region').value || 'غير محدد';
+    var cartItems = cart.join(', ');
+    
+    // الحقول الجديدة
+    var messageOrSong = document.getElementById('messageOrSong').value || 'لا يوجد';
+    var specificDate = document.getElementById('specificDate').value || 'غير محدد';
+
+    var message = `الاسم: ${name}%0Aرقم الهاتف: ${phone}%0Aنوع الهاتف: ${phoneType}%0Aرقم إضافي: ${additionalNumber}%0Aطريقة التوصيل: ${deliveryOption}%0Aمنطقة التوصيل: ${deliveryArea}%0Aاسم المنطقة: ${region}%0Aالمنتجات: ${cartItems}%0Aالعبارة أو الأغنية: ${messageOrSong}%0Aالتاريخ المطلوب: ${specificDate}`;
+    var phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
+    var whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+    window.location.href = whatsappUrl;
+});
+
+
+
+    </script>
+</body>
+</html> 

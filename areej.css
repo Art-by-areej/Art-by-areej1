@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حول</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        header {
+            background-color: #d1bfa7;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header img {
+            width: 150px;
+        }
+        .content {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #d1bfa7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="لوجو الموقع">
+    </header>
+    <div class="container">
+        <div class="content">
+            <h1>حول الموقع</h1>
+            <p>نحن متخصصون في توفير أفضل البراويز والمنتجات الأخرى ذات الجودة العالية.</p>
+            <p>فريقنا يهدف إلى تقديم أفضل خدمة لعملائنا وتلبية احتياجاتهم بأعلى مستوى من الاحترافية.</p>
+        </div>
+    </div>
+    <footer>
+        © 2024 موقعنا - جميع الحقوق محفوظة
+    </footer>
+</body>
+</html>
