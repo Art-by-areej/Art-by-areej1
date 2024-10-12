@@ -5,35 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتالوج المنتجات</title>
     <style>
-        /* أنماط الكوبون */
-        .coupon-popup {
-            display: none; /* مخفي في البداية */
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #070707;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgb(255, 0, 0);
-            z-index: 1000; /* يظهر فوق كل شيء */
-            text-align: center;
-        }
-
-        .coupon-popup h2 {
-            margin: 0 0 10px;
-            color: #ff0000; /* لون بني داكن */
-        }
-
-        .coupon-popup p {
-            margin: 0;
-            font-weight: bold;
-        }
+      
       /* تعيين أنماط الجسم العامة */
       body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #ffffff;
-    color: #ff0000;
+    color: #6f431e;
     margin: 0;
     padding: 0;
 }
@@ -264,32 +241,112 @@ footer {
         <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
         <div class="welcome-message">
             الذّكرَياتُ الجَميلَةُ، هِيَ شَيْءٌ فَوْقَ القَلْبِ وَفَوْقَ المَشاعِرِ، لِذلِكَ دَعْها تُرافِقُكَ بِهَيْئَةِ صورَةٍ في كُلِّ مَكانٍ وَزَمانٍ    </div>
-            <script>
-                // وظيفة لإظهار كود الكوبون
-                window.onload = function() {
-                    setTimeout(function() {
-                        document.getElementById('couponPopup').style.display = 'block';
-                    }, 1000); // يظهر بعد 1 ثانية
         
-                    setTimeout(function() {
-                        document.getElementById('couponPopup').style.display = 'none';
-                    }, 5000); // يختفي بعد 5 ثواني
-                }
-            </script>
-               <!-- كود كوبون -->
-    <div id="couponPopup" class="coupon-popup">
-        <h2>استخدم الكود: <span style="color: #ff1900;">WELCOME15</span></h2>
-        <p>كهدية ترحيبية، مُقدمة من مَتجر الأريج
-              للحصول على خصم على طلبك الأول في الموقع!  </p>
-    </div>
-
         <div class="nav">
             <a href="index.html">الصفحة الرئيسية</a>
             <a href="page2.html">كتالوج البراويز</a>
             <a href="page3.html">كتالوج المنتجات الاخرى</a>
                 </div>
     </header>
-  
+    <div class="cart">
+        <h2>سلة الطلبيات</h2>
+        <ul id="cartItems">
+            <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
+        </ul>
+        <p style="color: #6b4f3b; font-weight: bold; margin-top: 10px;">
+            ملاحظة: لديك كوبون مقدم من المتجر بقيمة 15%!
+        </p>
+        <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
+    <p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
+    </div>
+    
+    <!-- نموذج الطلب -->
+    <div id="orderForm" class="contact-form">
+    
+    <h1>أرسل طلبك عبر الواتس آب</h1>
+    <form id="form">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">رقم الهاتف:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        
+        <label for="additionalNumber">رقم إضافي:</label>
+        <input type="tel" id="additionalNumber" name="additionalNumber">
+    
+        <label for="deliveryOption">اختر طريقة التوصيل:</label>
+        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
+            <option value="" disabled selected>اختر طريقة التوصيل</option>
+            <option value="توصيل">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
+            <option value="استلام شخصي">استلام شخصي(لأستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
+        </select>
+    
+    <input type="date" id="specificDate" name="specificDate">
+        <div id="deliveryDetails" style="display: none;">
+            <label for="deliveryArea">اختر المنطقة:</label>
+            <select id="deliveryArea" name="deliveryArea">
+                <option value="شمال">الشمال - 50</option>
+                <option value="جنوب">الجنوب - 60</option>
+                <option value="مثلث">المثلث - 40</option>
+            </select>
+            
+            <label for="region">اسم المنطقة:</label>
+            <input type="text" id="region" name="region">
+        </div>
+    
+        <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
+            <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
+            
+    
+        <label for="size">حجم البرواز:</label>
+        <select id="size" name="size" required>
+            <option value="" disabled selected>اختر حجم البرواز</option>
+            <option value="A4">حجم A4</option>
+            <option value="A3">حجم A3</option>
+        </select>
+    
+        <label for="phoneType">نوع الهاتف:</label>
+        <select id="phoneType" name="phoneType" required>
+            <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
+            <option value="لا يوجد">لا يوجد</option>
+             <option value="iPhone">iphone 11</option>
+            <option value="iPhone">iphone 11 pro</option>
+            <option value="iPhone">iphone 11 promax</option>
+            <option value="iPhone">iphone 12</option>
+            <option value="iPhone">iphone 12 pro</option>
+            <option value="iPhone">iphone 12 promax</option>
+            <option value="iPhone">iphone 13</option>
+            <option value="iPhone">iphone 13 pro</option>
+            <option value="iPhone">iphone 13 promax</option>
+            <option value="iPhone">iphone 14</option>
+            <option value="iPhone">iphone 14 pro</option>
+            <option value="iPhone">iphone 14 promax</option>
+            <option value="iPhone">iphone 14 blus </option>
+            <option value="iPhone">iphone 15</option>
+            <option value="iPhone">iphone 15 pro</option>
+            <option value="iPhone">iphone 15 promax</option>
+    
+    
+            <option value="Samsung">21 ultra</option>
+            <option value="Samsung">22 ultra</option>
+            <option value="Samsung">23 ultra</option>
+    
+            <option value="Samsung">A52</option>
+            <option value="Samsung">A53</option>
+            <option value="Samsung">A71</option>
+            <option value="Samsung">A73</option>
+    
+    
+        </select>
+    
+        <label for="cartDetails">المنتجات في السلة:</label>
+        <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
+        
+    
+        <button type="submit">إرسال الطلب</button>
+    </form>
+    </div>
 
 <!-- كتالوج المنتجات -->
 <div class="container">
@@ -372,102 +429,8 @@ footer {
 
         </div>     
        </div>
-       <div class="cart">
-        <h2>سلة الطلبيات</h2>
-        <ul id="cartItems">
-            <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
-        </ul>
-        <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
-<p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
-    </div>
-    
-<!-- نموذج الطلب -->
-<div id="orderForm" class="contact-form">
-    
-    <h1>أرسل طلبك عبر الواتس آب</h1>
-    <form id="form">
-        <label for="name">الاسم:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="phone">رقم الهاتف:</label>
-        <input type="tel" id="phone" name="phone" required>
-        
-        
-        <label for="additionalNumber">رقم إضافي:</label>
-        <input type="tel" id="additionalNumber" name="additionalNumber">
-        
-        <label for="deliveryOption">اختر طريقة التوصيل:</label>
-        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
-            <option value="" disabled selected>اختر طريقة التوصيل</option>
-            <option value="توصيل">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
-            <option value="استلام شخصي">استلام شخصي(لأستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
-        </select>
-
-    <input type="date" id="specificDate" name="specificDate">
-        <div id="deliveryDetails" style="display: none;">
-            <label for="deliveryArea">اختر المنطقة:</label>
-            <select id="deliveryArea" name="deliveryArea">
-                <option value="شمال">الشمال - 50</option>
-                <option value="جنوب">الجنوب - 60</option>
-                <option value="مثلث">المثلث - 40</option>
-            </select>
-            
-            <label for="region">اسم المنطقة:</label>
-            <input type="text" id="region" name="region">
-        </div>
-
-        <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
-            <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
-            
-
-        <label for="size">حجم البرواز:</label>
-        <select id="size" name="size" required>
-            <option value="" disabled selected>اختر حجم البرواز</option>
-            <option value="A4">حجم A4</option>
-            <option value="A3">حجم A3</option>
-        </select>
-
-        <label for="phoneType">نوع الهاتف:</label>
-        <select id="phoneType" name="phoneType" required>
-            <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
-            <option value="لا يوجد">لا يوجد</option>
-             <option value="iPhone">iphone 11</option>
-            <option value="iPhone">iphone 11 pro</option>
-            <option value="iPhone">iphone 11 promax</option>
-            <option value="iPhone">iphone 12</option>
-            <option value="iPhone">iphone 12 pro</option>
-            <option value="iPhone">iphone 12 promax</option>
-            <option value="iPhone">iphone 13</option>
-            <option value="iPhone">iphone 13 pro</option>
-            <option value="iPhone">iphone 13 promax</option>
-            <option value="iPhone">iphone 14</option>
-            <option value="iPhone">iphone 14 pro</option>
-            <option value="iPhone">iphone 14 promax</option>
-            <option value="iPhone">iphone 14 blus </option>
-            <option value="iPhone">iphone 15</option>
-            <option value="iPhone">iphone 15 pro</option>
-            <option value="iPhone">iphone 15 promax</option>
-
-
-            <option value="Samsung">21 ultra</option>
-            <option value="Samsung">22 ultra</option>
-            <option value="Samsung">23 ultra</option>
-
-            <option value="Samsung">A52</option>
-            <option value="Samsung">A53</option>
-            <option value="Samsung">A71</option>
-            <option value="Samsung">A73</option>
-
-
-        </select>
-
-        <label for="cartDetails">المنتجات في السلة:</label>
-        <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
-        
-
-        <button type="submit">إرسال الطلب</button>
-    </form>
-</div>
+       
+  
 
 <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: rgb(0, 0, 0);">
     <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
