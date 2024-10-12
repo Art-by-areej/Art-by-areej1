@@ -408,18 +408,7 @@
     <div class="welcome">
         مَتْجَري المُتَميِّزُ يُرحِّبُ بِزُوّارِه
     </div>
-    <script>
-        // وظيفة لإظهار كود الكوبون
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById('couponPopup').style.display = 'block';
-            }, 1000); // يظهر بعد 1 ثانية
-
-            setTimeout(function() {
-                document.getElementById('couponPopup').style.display = 'none';
-            }, 10000); // يختفي بعد 5 ثواني
-        }
-    </script>
+    
  <script>
     // وظيفة لإظهار كود الكوبون
     window.onload = function() {
@@ -429,7 +418,7 @@
 
         setTimeout(function() {
             document.getElementById('couponPopup').style.display = 'none';
-        }, 5000); // يختفي بعد 5 ثواني
+        }, 10000); // يختفي بعد 5 ثواني
     }
 </script>
    <!-- كود كوبون -->
@@ -480,16 +469,16 @@
                 <label for="deliveryOption">اختر طريقة التوصيل:</label>
                 <select id="deliveryOption" onchange="toggleDeliveryDetails()" required>
                     <option value="" disabled selected>اختر طريقة التوصيل</option>
-                    <option value="delivery">توصيل</option>
-                    <option value="pickup">استلام شخصي</option>
+                    <option value="توصيل">توصيل</option>
+                    <option value="استلام شخصي">استلام شخصي</option>
                 </select>
                 
                 <div id="deliveryDetails" style="display: none;">
                     <label for="deliveryArea">اختر المنطقة:</label>
                     <select id="deliveryArea">
-                        <option value="north">الشمال - 50₪</option>
-                        <option value="south">الجنوب - 60₪</option>
-                        <option value="triangle">المثلث - 40₪</option>
+                        <option value="شمال">الشمال - 50₪</option>
+                        <option value="جنوب">الجنوب - 60₪</option>
+                        <option value="مثلث">المثلث - 40₪</option>
                     </select>
                     <label for="region">اسم المنطقة:</label>
                     <input type="text" id="region">
@@ -587,7 +576,7 @@
             const deliveryArea = document.getElementById('deliveryArea') ? document.getElementById('deliveryArea').value : 'غير محدد';
             const region = document.getElementById('region').value || 'غير محدد';
 
-            const message = `الاسم: ${name}رقم الهاتف: ${phone}رقم إضافي: ${additionalNumber}%0Aطريقة التوصيل: ${deliveryOption}%0Aمنطقة التوصيل: ${deliveryArea}%0Aاسم المنطقة: ${region}`;
+            const message = `الاسم: ${name}رقم الهاتف: ${phone}رقم إضافي: ${additionalNumber}  طريقة التوصيل: ${deliveryOption}  منطقة التوصيل: ${deliveryArea} اسم المنطقة: ${region}`;
             const phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
