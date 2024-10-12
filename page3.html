@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتالوج المنتجات</title>
     <style>
-         /* تعيين أنماط الجسم العامة */
-         body {
+      /* تعيين أنماط الجسم العامة */
+      body {
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: #ffffff;
     color: #6f431e;
@@ -37,7 +37,7 @@ header {
     padding: 15px;
     border-radius: 5px;
     margin: 20px auto;
-    width: 50%;
+    width: 80%;
     text-align: center;
     font-size: 18px;
     color: #6b4f3b; /* لون بني داكن */
@@ -232,13 +232,14 @@ footer {
         max-width: 100%;
     }
 }
+
     </style>
 </head>
 <body>
     <header>
         <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
         <div class="welcome-message">
-            إ جْعَلوا  جُدْرانَ بيوتِكُمْ وَزَواياهُ تَتَأَلَّقُ بِمَزيجٍ خاصٍّ مِنْ صُوَرِكُمْ وَلَمَساتِ الأريجِ المُتَمَيِّزَةِ        </div>
+            الذّكرَياتُ الجَميلَةُ، هِيَ شَيْءٌ فَوْقَ القَلْبِ وَفَوْقَ المَشاعِرِ، لِذلِكَ دَعْها تُرافِقُكَ بِهَيْئَةِ صورَةٍ في كُلِّ مَكانٍ وَزَمانٍ    </div>
        
         <div class="nav">
             <a href="index.html">الصفحة الرئيسية</a>
@@ -246,264 +247,181 @@ footer {
             <a href="page3.html">كتالوج المنتجات الاخرى</a>
                 </div>
     </header>
-    <div class="welcome">
-        "مُلاحَظّة:الْبِرْوَازُ هَدِيَّةٌ عَلَى الرَّسْمَةِ/التَّصْمِيمِ"
-
-</div>
-<div class="cart">
-    <h2>سلة الطلبيات</h2>
-    <ul id="cartItems">
-        <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
-    </ul>
-    <p style="color: #6b4f3b; font-weight: bold; margin-top: 10px;">
-        ملاحظة: لديك كوبون مقدم من المتجر بقيمة 15%!
-    </p>
-    <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
-<p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
-</div>
-
-<!-- نموذج الطلب -->
-<div id="orderForm" class="contact-form">
-<h1>أرسل طلبك عبر الواتس آب</h1>
-<form id="form">
-    <label for="name">الاسم:</label>
-    <input type="text" id="name" name="name" required>
-    
-    <label for="phone">رقم الهاتف:</label>
-    <input type="tel" id="phone" name="phone" required>
-    
-    
-    <label for="additionalNumber">رقم إضافي:</label>
-    <input type="tel" id="additionalNumber" name="additionalNumber">
-    
-    <label for="deliveryOption">اختر طريقة التوصيل:</label>
-    <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
-        <option value="" disabled selected>اختر طريقة التوصيل</option>
-        <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
-        <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
-    </select>
-
-   <div id="deliveryDetails" style="display: none;">
-        <label for="deliveryArea">اختر المنطقة:</label>
-        <select id="deliveryArea" name="deliveryArea">
-            <option value="north">الشمال - 50</option>
-            <option value="south">الجنوب - 60</option>
-            <option value="triangle">المثلث - 40</option>
-        </select>
-        
-        <label for="region">اسم المنطقة:</label>
-        <input type="text" id="region" name="region">
+    <div class="cart">
+        <h2>سلة الطلبيات</h2>
+        <ul id="cartItems">
+            <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
+        </ul>
+        <p style="color: #6b4f3b; font-weight: bold; margin-top: 10px;">
+            ملاحظة: لديك كوبون مقدم من المتجر بقيمة 15%!
+        </p>
+        <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
+    <p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
     </div>
     
-<label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
-<input type="date" id="specificDate" name="specificDate">
-  
-    
-           <!-- الحقول الجديدة -->
-           <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
-            <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
+    <!-- نموذج الطلب -->
+    <div id="orderForm" class="contact-form">
+        <h1>أرسل طلبك عبر الواتس آب</h1>
+        <form id="form">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" required>
             
-    <label for="phoneType">نوع الهاتف:</label>
-    <select id="phoneType" name="phoneType" required>
-        <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
-        <option value="لا يوجد">لا يوجد</option>
-         <option value="iPhone11">iphone 11</option>
-        <option value="iPhone11 pro">iphone 11 pro</option>
-        <option value="iPhone 11 promax">iphone 11 promax</option>
-        <option value="iPhone 12">iphone 12</option>
-        <option value="iPhone 12 pro">iphone 12 pro</option>
-        <option value="iPhone 12 promax">iphone 12 promax</option>
-        <option value="iPhone 13">iphone 13</option>
-        <option value="iPhone 13 pro">iphone 13 pro</option>
-        <option value="iPhone 13 promax">iphone 13 promax</option>
-        <option value="iPhone 14">iphone 14</option>
-        <option value="iPhone 14 pro">iphone 14 pro</option>
-        <option value="iPhone 14 promax">iphone 14 promax</option>
-        <option value="iPhone 14 plus">iphone 14 blus </option>
-        <option value="iPhone 15">iphone 15</option>
-        <option value="iPhone 15 pro">iphone 15 pro</option>
-        <option value="iPhone 15 promax">iphone 15 promax</option>
-
-
-        <option value="Samsung 21 ultra">21 ultra</option>
-        <option value="Samsung 22 ultra">22 ultra</option>
-        <option value="Samsung 23 ultra">23 ultra</option>
-
-        <option value="Samsung A52">A52</option>
-        <option value="Samsung A53">A53</option>
-        <option value="Samsung A71">A71</option>
-        <option value="Samsung A73">A73</option>
-
-
-    </select>
-
-    <label for="cartDetails">المنتجات في السلة:</label>
-    <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
+            <label for="phone">رقم الهاتف:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            
+            <label for="additionalNumber">رقم إضافي:</label>
+            <input type="tel" id="additionalNumber" name="additionalNumber">
+            
+            <label for="deliveryOption">اختر طريقة التوصيل:</label>
+            <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
+                <option value="" disabled selected>اختر طريقة التوصيل</option>
+                <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
+                <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
+            </select>
+        
+           <div id="deliveryDetails" style="display: none;">
+                <label for="deliveryArea">اختر المنطقة:</label>
+                <select id="deliveryArea" name="deliveryArea">
+                    <option value="north">الشمال - 50</option>
+                    <option value="south">الجنوب - 60</option>
+                    <option value="triangle">المثلث - 40</option>
+                </select>
+                
+                <label for="region">اسم المنطقة:</label>
+                <input type="text" id="region" name="region">
+            </div>
+            
+        <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
+        <input type="date" id="specificDate" name="specificDate">
+       
+            </select>
+                   <!-- الحقول الجديدة -->
+                   <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
+                    <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
+                    
+            <label for="phoneType">نوع الهاتف:</label>
+            <select id="phoneType" name="phoneType" required>
+                <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
+                <option value="لا يوجد">لا يوجد</option>
+             <option value="iPhone11">iphone 11</option>
+            <option value="iPhone11 pro">iphone 11 pro</option>
+            <option value="iPhone 11 promax">iphone 11 promax</option>
+            <option value="iPhone 12">iphone 12</option>
+            <option value="iPhone 12 pro">iphone 12 pro</option>
+            <option value="iPhone 12 promax">iphone 12 promax</option>
+            <option value="iPhone 13">iphone 13</option>
+            <option value="iPhone 13 pro">iphone 13 pro</option>
+            <option value="iPhone 13 promax">iphone 13 promax</option>
+            <option value="iPhone 14">iphone 14</option>
+            <option value="iPhone 14 pro">iphone 14 pro</option>
+            <option value="iPhone 14 promax">iphone 14 promax</option>
+            <option value="iPhone 14 plus">iphone 14 blus </option>
+            <option value="iPhone 15">iphone 15</option>
+            <option value="iPhone 15 pro">iphone 15 pro</option>
+            <option value="iPhone 15 promax">iphone 15 promax</option>
     
-
-    <button type="submit">إرسال الطلب</button>
-</form>
-</div>
+    
+            <option value="Samsung 21 ultra">21 ultra</option>
+            <option value="Samsung 22 ultra">22 ultra</option>
+            <option value="Samsung 23 ultra">23 ultra</option>
+    
+            <option value="Samsung A52">A52</option>
+            <option value="Samsung A53">A53</option>
+            <option value="Samsung A71">A71</option>
+            <option value="Samsung A73">A73</option>
+    
+            </select>
+        <label for="cartDetails">المنتجات في السلة:</label>
+        <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
+        
+    
+        <button type="submit">إرسال الطلب</button>
+    </form>
+    </div>
 
 <!-- كتالوج المنتجات -->
 <div class="container">
     <div class="catalog">
         <div class="product">
-            <img src=" حملة الاريج.jpg" alt="بوكس رسم ديچتال - رصاصي">
-            <h3> بوكس رسم ديچتال - رصاصي  </h3>
-            <p>
-                <span class="old-price">230₪</span> <span class="new-price">180₪</span>
-            </p>
-            <button onclick="addToCart('بوكس رسم ديچتال - رصاصي')">أضف إلى السلة</button>
+            <img src="كاسة رسمة ديجتال رصاصي.jpg" alt="كاسةرسمة ديچتال - رصاصي ">
+            <h3> كاسة رسمة ديچتال - رصاصي  </h3>
+            <p>  60₪</p>
+            <button onclick="addToCart('60₪كاسة رسمة ديچتال - رصاصي ')">أضف إلى السلة</button>
         </div>
         
         <div class="product">
-            <img src=" حملة الاريج رسم ملون.jpg" alt=" بوكس رسم ديچتال - ملوّن">
-            <h3>بوكس رسم ديچتال - ملوّن </h3>
-                <span class="old-price">230₪</span> <span class="new-price">180₪</span>
+            <img src=" كاسة صوره عاديه.jpg" alt=" كاسة صورة عادية ٣٠₪ ">
+            <h3>كاسة صورة عادية </h3>
+            <p> 30₪</p>
             </p>
-            <button onclick="addToCart('  بوكس رسم ديچتال - ملوّن ')">أضف إلى السلة</button>
+            <button onclick="addToCart(' كاسة صورة عادية 30₪')">أضف إلى السلة</button>
         </div> 
 
 
         <div class="product">
-            <img src=" برواز ومجين.jpg " alt="برواز ديجتال رصاصي A4 ">
-            <h3>رسمة ديجتال رصاصي + كفر/مجين تلفون</h3>
-            <P>A4 حجم</P>
-                <span class="old-price">180₪</span> <span class="new-price">150₪</span>
-            </p>
-            <button onclick="addToCart(' برواز + كڤر تلفون رسمة ديجتال -  رصاصي حجم A4')">أضف إلى السلة</button>
-        </div> 
-
-        <div class="product">
-            <img src=" رسم ديجتال مع كفر a3.jpg " alt=" برواز + كڤر تلفون رسمة ديجتال - رصاصي حجم A3">
-            <h3>رسمة ديجتال رصاصي + كفر/مجين تلفون</h3>
-           <P>A3 حجم</P>
-            <span class="old-price">200₪</span> <span class="new-price">170₪</span>
-            </p>
-            <button onclick="addToCart('برواز + كڤر تلفون رسمة ديجتال -  رصاصي حجم A3  ')">أضف إلى السلة</button>
-        </div>
-
-        <div class="product">
-            <img src="ديجتال رصاصي.jpg" alt="رسمة ديچتال - رصاصي حجم A4 ">
-            <h3>رسمة ديچتال - رصاصي </h3>
-            <p> حجم A4 : 80₪</p>
-            <button onclick="addToCart('برواز ديجتال رصاصي حجم A4')">أضف إلى السلة</button>
-        </div>
-
-        <div class="product">
-            <img src="رسم رضاصي2.jpg" alt="رسم ديجتال - رصاصي حجم A3 ">
-            <h3>رسم ديجتال - رصاصي  </h3>
-            <p> حجم A3 : 100₪</p>
-            <button onclick="addToCart('رسم ديجتال - رصاصي حجم A3')">أضف إلى السلة</button>
-        </div>
-
-
-        <div class="product">
-            <img src="ديجتال ملون.jpg" alt=" رسم ديجتال - ملوّن حجم A4">
-            <h3>رسم ديجتال - ملوّن </h3>
-            <p> حجم A4 : 80₪</p>
-            <button onclick="addToCart('رسم ديجتال - ملوّن حجم A4')">أضف إلى السلة</button>
-        </div>
-
-            <div class="product">
-                <img src="رسم ملون2.jpg" alt="رسم ديجتال - ملوّن حجم A3 ">
-                <h3> رسم ديجتال - ملوّن </h3>
-                <p> حجم A3 : 100₪</p>
-                <button onclick="addToCart('رسم ديجتال - ملوّن حجم A3')">أضف إلى السلة</button>
-            </div>
-        <div class="product">
-            <img src="دمج صور ديجتال ملون.jpg" alt=" دمج صور برسمة ديچتال - ملون حجم A4">
-            <h3> دمج صور برسمة ديچتال - ملون  </h3>
-            <p> حجم A3 : 120₪</p>
-            <p> حجم A4 : 100₪</p>
-            <button onclick="addToCart(' دمج صور برسمة ديچتال - ملون حجم A4 ')">أضف إلى السلة</button>
-        </div>
-        <div class="product">
-            <img src="دمج صور ديجتال رصاصي.jpg" alt="برواز ديجتال رصاصي A3 ">
-            <h3>  دمج صور برسمة ديچتال - رصاصي </h3>
-            <p> حجم A3 : 120₪</p>
-            <p> حجم A4 : 100₪</p>
-            <button onclick="addToCart('دمج صور ديجتال رصاصي')">أضف إلى السلة</button>
-        </div>
-        <div class="product">
-            <img src="تصميم صوره باركودa3.jpg" alt="تصميم صورة بباركود اغنية ">
-            <h3>تصميم صورة بباركود اغنية   </h3>
-            <p>  حجم A3  </p>
+            <img src=" بازل صوره عاديه.jpg " alt="بازل - puzzle -صورة عادية ٦٠₪">
+            <h3>صورة عادية- puzzle - بازل</h3>
             <P>60₪</P>
-             <button onclick="addToCart('تصميم صورة بباركود اغنية')">أضف إلى السلة</button>
-            </div>
+            </p>
+            <button onclick="addToCart('60₪بازل - puzzle -صورة عادية ')">أضف إلى السلة</button>
+        </div> 
+
+        <div class="product">
+            <img src=" بازل رسمة ديجتال.jpg " alt="رسمة ديجتال - puzzle - بازل ">
+            <h3>رسمة ديجتال - puzzle - بازل</h3>
+           <P> ١٢٠ قطعة </P>
+           <P>80₪</P>     
+           </p>
+            <button onclick="addToCart('رسمة ديجتال - puzzle - بازل')">أضف إلى السلة</button>
+        </div>
+
+        <div class="product">
+            <img src="كفر صوره عاديه.jpg" alt="كڤر/مچين تلفون - صورة عادية ٧٠₪">
+            <h3>كڤر/مچين تلفون - صورة عادية </h3>
+            <p>70₪ </p>
+            <button onclick="addToCart('كڤر /مچين تلفون - صوره عاديه ')">أضف إلى السلة</button>
+        </div>
+
+        <div class="product">
+            <img src="كفر رسم  ديجتال.jpg" alt="كڤر /مچين تلفون - رسم ديچتال ١٠٠₪">
+            <h3>كڤر /مچين تلفون - رسم ديچتال </h3>
+            <p> 100₪</p>
+            <button onclick="addToCart('كڤر /مچين تلفون - رسم ديچتال 100₪')">أضف إلى السلة</button>
+        </div>
+
+
+        <div class="product">
+            <img src="قداحه صوره .jpg" alt=" قداحة صورة/كتابة 80">
+            <h3>قداحة صورة/كتابة </h3>
+            <p>  80₪</p>
+            <button onclick="addToCart('قداحة صورة/كتابة 80₪')">أضف إلى السلة</button>
+        </div>
+
             <div class="product">
-                <img src="تصميم صوره باركودa4.jpg" alt=" تصميم المولود - حجم A4">
-                <h3>تصميم صورة بباركود اغنية </h3>
-                <p> حجم A4 </p>
-                <P>50₪ </P>
-                 <button onclick="addToCart('  تصميم صورة بباركود اغنيه')">أضف إلى السلة</button>
-                </div>
-        <div class="product">
-            <img src="تصميم للبيبي.jpg" alt=" تصميم المولود - حجم A4">
-            <h3>تصميم المولود  </h3>
-            <p> حجم A4 : 80₪ </p>
-             <button onclick="addToCart(' تصميم المولود - حجم A4')">أضف إلى السلة</button>
+                <img src="مسبحه صوره عاديه.jpg" alt="مسبحة صورة عادية 50₪">
+                <h3>مسبحة صورة عادية  </h3>
+                <p> 50₪</p>
+                <button onclick="addToCart('مسبحة صورة عادية 50₪')">أضف إلى السلة</button>
+            </div>
+        
+            <div class="product">
+                <img src="محزيك نمرة سياره .jpg" alt="محزيك نمرة سيارة، عالجهتين 50₪">
+                <h3>محزيك نمرة سيارة، عالجهتين  </h3>
+                <p> 50₪</p>
+                <button onclick="addToCart('محزيك نمرة سيارة، عالجهتين 50₪')">أضف إلى السلة</button>
             </div>
 
             <div class="product">
-                <img src="تصميم للبيبي2.jpg" alt="تصميم المولد - حجم A3">
-                <h3>تصميم المولد  </h3>
-                <p> حجم A3 : 100₪</p>
-                 <button onclick="addToCart('تصميم المولد - حجم A3 ')">أضف إلى السلة</button>
-                </div>
+                <img src="محزيك عادي.jpg" alt="محزيك ، عالجهتين 30₪">
+                <h3>محزيك ، عالجهتين </h3>
+                <p> 30₪</p>
+                <button onclick="addToCart('محزيك ، عالجهتين 30₪')">أضف إلى السلة</button>
+            </div>
 
-                <div class="product">
-                    <img src=" تصميم صور 2.jpg" alt="  تصميم الرَقم/العُمر- حجم A3  ">
-                    <h3>تصميم الرَقم/العُمر  </h3>
-                    <p> حجم A3 : 120₪</p>
-                    <button onclick="addToCart('   تصميم الرَقم/العُمر- حجم A3')">أضف إلى السلة</button>
-                </div>
-
-                <div class="product">
-                    <img src="تصميم الرقم 2.jpg" alt="تصميم الرَقم/العُمر- حجم A4 ">
-                    <h3>تصميم الرَقم/العُمر </h3>
-                    <p> حجم A4 : 100₪</p>
-                    <button onclick="addToCart('  تصميم الرَقم/العُمر- حجم A4')">أضف إلى السلة</button>
-                </div>
-
-
-        <div class="product">
-            <img src="تصميم صور.jpg " alt="برواز ديجتال رصاصي A3 ">
-            <h3> تصميم فكرة الأريج باضافة رسمة ديجتال </h3>
-            <p> حجم A3 : 140₪</p>
-            <p> حجم A4 : 120₪</p>
-            <button onclick="addToCart('   تصميم فكرة الأريج باضافة رسمة ديجتال ')">أضف إلى السلة</button>
-        </div>
-        
-        <div class="product">
-            <img src="تصميم صور 3.jpg" alt="برواز ديجتال رصاصي  ">
-            <h3>تصميم فكرة الأريج 1 </h3>
-            <p> حجم A3 : 120₪</p>
-            <p> حجم A4 : 100₪</p>
-            <button onclick="addToCart( 'تصميم فكرة الأريج - حجم ' )">أضف إلى السلة</button>
-        </div>
-        <div class="product">
-            <img src="تصمم صور4.jpg" alt="برواز ديجتال رصاصي A3 ">
-            <h3>تصميم  فكرة الأريج 2</h3>
-            <p> حجم A3 : 120₪</p>
-            <p> حجم A4 : 100₪</p>
-            <button onclick="addToCart('تصميم فكرة الأريج 2')">أضف إلى السلة</button>
-        </div>
-        <div class="product">
-            <img src="تصميم صور5.jpg" alt="برواز ديجتال رصاصي A3 ">
-            <h3>تصميم فكرة الأريج 3</h3>
-            <p> حجم A3 : 120₪</p>
-            <p> حجم A4 : 100₪</p>
-            <button onclick="addToCart('   تصميم فكرة الأريج3 ')">أضف إلى السلة</button>
-        </div>
-        
-        
         </div>     
        </div>
- 
-
+  
 <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: rgb(0, 0, 0);">
     <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
     <p>تم تصميم وتطوير الموقع بواسطة</p>
@@ -511,7 +429,7 @@ footer {
 </footer>
 
     <script>
-       let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // إضافة منتج إلى السلة
 function addToCart(productName) {
@@ -568,6 +486,9 @@ function toggleDeliveryDetails() {
 window.onload = function() {
     updateCartDisplay();
 };
+
+
+
 
     </script>
 </body>
