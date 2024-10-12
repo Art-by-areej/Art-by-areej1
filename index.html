@@ -421,9 +421,10 @@
         }, 10000); // يختفي بعد 5 ثواني
     }
 </script>
+
    <!-- كود كوبون -->
 <div id="couponPopup" class="coupon-popup">
-<h2>استخدم الكود: <span style="color: #ff1900;">WELCOME15</span></h2>
+<h2>كود كوبون <span style="color: #ff1900;"></span></h2>
 <p>كهدية ترحيبية، مُقدمة من مَتجر الأريج
   للحصول على خصم على طلبك الأول في الموقع!  </p>
 </div>
@@ -457,32 +458,39 @@
                 <h3>يشمل 8 العاب</h3>
                 <p id="productPrice">السعر: 220</p>
             
-                <label for="name">الاسم:</label>
-                <input type="text" id="name" required>
-                
-                <label for="phone">رقم الهاتف:</label>
-                <input type="tel" id="phone" required>
-                
-                <label for="additionalNumber">رقم إضافي:</label>
-                <input type="tel" id="additionalNumber">
-                
-                <label for="deliveryOption">اختر طريقة التوصيل:</label>
-                <select id="deliveryOption" onchange="toggleDeliveryDetails()" required>
-                    <option value="" disabled selected>اختر طريقة التوصيل</option>
-                    <option value="توصيل">توصيل</option>
-                    <option value="استلام شخصي">استلام شخصي</option>
-                </select>
-                
-                <div id="deliveryDetails" style="display: none;">
-                    <label for="deliveryArea">اختر المنطقة:</label>
-                    <select id="deliveryArea">
-                        <option value="شمال">الشمال - 50₪</option>
-                        <option value="جنوب">الجنوب - 60₪</option>
-                        <option value="مثلث">المثلث - 40₪</option>
-                    </select>
-                    <label for="region">اسم المنطقة:</label>
-                    <input type="text" id="region">
-                </div>
+               <!-- نموذج الطلب -->
+<div id="orderForm" class="contact-form">
+    <h1>أرسل طلبك عبر الواتس آب</h1>
+    <form id="form">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">رقم الهاتف:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        
+        <label for="additionalNumber">رقم إضافي:</label>
+        <input type="tel" id="additionalNumber" name="additionalNumber">
+        
+        <label for="deliveryOption">اختر طريقة التوصيل:</label>
+        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
+            <option value="" disabled selected>اختر طريقة التوصيل</option>
+            <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
+            <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
+        </select>
+    
+       <div id="deliveryDetails" style="display: none;">
+            <label for="deliveryArea">اختر المنطقة:</label>
+            <select id="deliveryArea" name="deliveryArea">
+                <option value="north">الشمال - 50</option>
+                <option value="south">الجنوب - 60</option>
+                <option value="triangle">المثلث - 40</option>
+            </select>
+            
+            <label for="region">اسم المنطقة:</label>
+            <input type="text" id="region" name="region">
+        </div>
+        
                 
                 <button class="submit-button" onclick="sendWhatsApp()">إرسال الطلب</button>
             </div>
