@@ -136,13 +136,13 @@ header {
 
 /* أنماط السلة (Cart) */
 .cart {
-    padding: 8px;
+    padding: 20px;
     background-color: #eccdb1; /* لون ترابي فاتح */
     border-radius: 8px;
     box-shadow: 0 0 10px rgb(198, 122, 122);
-    margin: 5px auto; /* مركز السلة */
+    margin: 20px auto; /* مركز السلة */
     border: 1px solid #ffffff; /* إطار بلون بني داكن */
-    max-width: 400px; /* عرض أقصى للسلة */
+    max-width: 600px; /* عرض أقصى للسلة */
     text-align: center; /* محاذاة النص في الوسط */
 }
 .cart h2 {
@@ -608,7 +608,7 @@ document.getElementById('form').addEventListener('submit', function(event) {
     var messageOrSong = document.getElementById('messageOrSong').value || 'لا يوجد';
     var specificDate = document.getElementById('specificDate').value || 'غير محدد';
 
-    var message = `الاسم: ${name}  رقم الهاتف: ${phone}  نوع الهاتف ${phoneType}   رقم إضافي: ${additionalNumber}  طريقة التوصيل: ${deliveryOption}  منطقة التوصيل: ${deliveryArea}اسم المنطقة: ${region}  المنتجات: ${cartItems}  العبارة أو الأغنية: ${messageOrSong}  التاريخ المطلوب: ${specificDate}`;
+    var message = `الاسم: ${name}\nرقم الهاتف: ${phone}\nنوع الهاتف: ${phoneType}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption}\nمنطقة التوصيل: ${deliveryArea}\nاسم المنطقة: ${region}\nالمنتجات: ${cartItems}\nالعبارة أو الأغنية: ${messageOrSong}\nالتاريخ المطلوب: ${specificDate}`;
     var phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
     var whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
