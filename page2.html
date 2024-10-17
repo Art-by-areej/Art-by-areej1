@@ -591,28 +591,44 @@ function updateCartDisplay() {
             const deliveryDetails = document.getElementById('deliveryDetails');
             deliveryDetails.style.display = (deliveryOption === 'delivery') ? 'block' : 'none';
         }
-     // إرسال الطلب عبر الواتس آب
-document.getElementById('form').addEventListener('submit', function(event) {
-    event.preventDefault();
+        function prepareWhatsAppMessage() {
+    // جمع تفاصيل الطلب
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const additionalNumber = document.getElementById("additionalNumber").value || "لا يوجد";
+    const deliveryOption = document.getElementById("deliveryOption").value;
+    const deliveryArea = document.getElementById("deliveryArea").value || "لا يوجد";
+    const region = document.getElementById("region").value || "لا يوجد";
+    const specificDate = document.getElementById("specificDate").value || "غير محدد";
+    const size = document.getElementById("size").value;
+    const messageOrSong = document.getElementById("messageOrSong").value || "لا يوجد";
+    const phoneType = document.getElementById("phoneType").value;
+    const cartDetails = document.getElementById("cartDetails").value || "لا يوجد";
 
-    var name = document.getElementById('name').value;
-    var phone = document.getElementById('phone').value;
-    var phoneType = document.getElementById('phoneType').value || 'غير محدد';
-    var additionalNumber = document.getElementById('additionalNumber').value;
-    var deliveryOption = document.getElementById('deliveryOption').value;
-    var deliveryArea = document.getElementById('deliveryArea').value || 'غير محدد';
-    var region = document.getElementById('region').value || 'غير محدد';
-    var cartItems = cart.join(', ');
-    
-    // الحقول الجديدة
-    var messageOrSong = document.getElementById('messageOrSong').value || 'لا يوجد';
-    var specificDate = document.getElementById('specificDate').value || 'غير محدد';
+    // إنشاء نص الرسالة
+    const message = `تفاصيل الطلب:
+الاسم: ${name}
+رقم الهاتف: ${phone}
+رقم إضافي: ${additionalNumber}
+طريقة التوصيل: ${deliveryOption}
+المنطقة: ${deliveryArea}
+اسم المنطقة: ${region}
+تاريخ/يوم استلام الطلبية: ${specificDate}
+حجم البرواز: ${size}
+إذا كنت ترغب بإضافة أغنية أو عبارة: ${messageOrSong}
+نوع الهاتف: ${phoneType}
+المنتجات في السلة:
+${cartDetails}`;
 
-    var message = `الاسم: ${name}\nرقم الهاتف: ${phone}\nنوع الهاتف: ${phoneType}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption}\nمنطقة التوصيل: ${deliveryArea}\nاسم المنطقة: ${region}\nالمنتجات: ${cartItems}\nالعبارة أو الأغنية: ${messageOrSong}\nالتاريخ المطلوب: ${specificDate}`;
-    var phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
-    var whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    // تحويل النص إلى رابط URL وإرسال الرسالة عبر واتساب
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
+    window.open(whatsappURL, "_blank");
+}
 
-    window.location.href = whatsappUrl;
+document.getElementById("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // لمنع إعادة تحميل الصفحة
+    prepareWhatsAppMessage();
 });
 
     </script>
