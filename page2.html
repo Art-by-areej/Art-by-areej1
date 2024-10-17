@@ -622,10 +622,11 @@ ${cartDetails}`;
 
     // تحويل النص إلى رابط URL وإرسال الرسالة عبر واتساب
     const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
-    window.open(whatsappURL, "_blank");
-}
+    const phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
+            window.location.href = whatsappUrl;
+        }
 document.getElementById("form").addEventListener("submit", function(event) {
     event.preventDefault(); // لمنع إعادة تحميل الصفحة
     prepareWhatsAppMessage();
