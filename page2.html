@@ -138,7 +138,6 @@ header {
 .cart {
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgb(198, 122, 122);
     margin: 20px auto; /* مركز السلة */
     border: 1px solid #ffffff; /* إطار بلون بني داكن */
     max-width: 200px; /* عرض أقصى للسلة */
@@ -233,7 +232,6 @@ footer {
     }
 }
 
-
     </style>
 </head>
 <body>
@@ -256,8 +254,11 @@ footer {
 
 
 <div class="cart">
-    <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <a href="#" class="cart-icon">
+    
+    <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك<i class="fas fa-shopping-cart"></i></button>
+</a>
     <ul id="cartItems">
         <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
     </ul>
