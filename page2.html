@@ -142,7 +142,7 @@ header {
     box-shadow: 0 0 10px rgb(198, 122, 122);
     margin: 20px auto; /* مركز السلة */
     border: 1px solid #ffffff; /* إطار بلون بني داكن */
-    max-width: 600px; /* عرض أقصى للسلة */
+    max-width: 200px; /* عرض أقصى للسلة */
     text-align: center; /* محاذاة النص في الوسط */
 }
 .cart h2 {
@@ -257,19 +257,18 @@ footer {
 
 
 <div class="cart">
-    <h2>سلة الطلبيات</h2>
+    <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
+
     <ul id="cartItems">
         <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
     </ul>
-    <p style="color: #6b4f3b; font-weight: bold; margin-top: 10px;">
-        ملاحظة: لديك كوبون مقدم من المتجر بقيمة 15%!
-    </p>
-    <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
-<p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
+  
 </div>
 
 <!-- نموذج الطلب -->
 <div id="orderForm" class="contact-form">
+    
+<p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
     <h1>أرسل طلبك عبر الواتس آب</h1>
     <form id="form">
         <label for="name">الاسم:</label>
@@ -352,7 +351,9 @@ footer {
     <label for="cartDetails">المنتجات في السلة:</label>
     <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
     
-
+    <p style="color: #6b4f3b; font-weight: bold; margin-top: 10px;">
+        ملاحظة: لديك كوبون مقدم من المتجر بقيمة 15%!
+    </p>
     <button type="submit">إرسال الطلب</button>
 </form>
 </div>
