@@ -40,7 +40,7 @@ header {
     margin: 20px auto;
     width: 50%;
     text-align: center;
-    font-size: 10px;
+    font-size: 15px;
     color: #6b4f3b; /* لون بني داكن */
 }
 .welcome{
@@ -71,7 +71,7 @@ header {
 
 /* أنماط الحاوية (Container) */
 .container {
-    width: 40%;
+    width: 80%;
     margin: auto;
 }
 
@@ -220,17 +220,18 @@ footer {
 
 @media (max-width: 768px) {
     .product {
-        flex: 1 1 calc(50% - 40px); /* Two per row on medium screens */
+        flex: 1 1 calc(50% - 40px); /* عرض المنتج بنسبة 50% من العرض المتاح مع مراعاة الفاصل */
         max-width: calc(50% - 40px);
     }
 }
 
 @media (max-width: 480px) {
     .product {
-        flex: 1 1 100%; /* One per row on small screens */
-        max-width: 100%;
+        flex: 1 1 calc(50% - 20px); /* عرض المنتج بنسبة 50% على الشاشات الصغيرة جدًا */
+        max-width: calc(50% - 20px);
     }
 }
+
 
     </style>
 </head>
