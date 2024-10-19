@@ -38,9 +38,9 @@ header {
     padding: 15px;
     border-radius: 5px;
     margin: 20px auto;
-    width: 50%;
+    width: 100%;
     text-align: center;
-    font-size: 15px;
+    font-size: 10px;
     color: #6b4f3b; /* لون بني داكن */
 }
 .welcome{
@@ -49,7 +49,7 @@ header {
     margin: 20px auto;
     width: 80%;
     text-align: center;
-    font-size: 18px;
+    font-size: 10px;
     color: #6b4f3b; /* لون بني داكن */
 }
 
@@ -88,13 +88,13 @@ header {
     background-color: #ffdbbec0;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 20px;
     flex: 1 1 calc(33.333% - 40px);
     text-align: center;
     border: 1px solid #eccdb1; /* إطار بلون بني داكن */
 }
 .product img {
-    width: 80%;
+    width: 100%;
     height: auto;
     border: 5px solid #eccdb1; /* إطار بلون ترابي فاتح */
     box-shadow: 0 4px 8px rgb(255, 255, 255);
@@ -220,15 +220,15 @@ footer {
 
 @media (max-width: 768px) {
     .product {
-        flex: 1 1 calc(50% - 40px); /* عرض المنتج بنسبة 50% من العرض المتاح مع مراعاة الفاصل */
+        flex: 1 1 calc(50% - 40px); /* Two per row on medium screens */
         max-width: calc(50% - 40px);
     }
 }
 
 @media (max-width: 480px) {
     .product {
-        flex: 1 1 calc(50% - 20px); /* عرض المنتج بنسبة 50% على الشاشات الصغيرة جدًا */
-        max-width: calc(50% - 20px);
+        flex: 1 1 100%; /* One per row on small screens */
+        max-width: 100%;
     }
 }
 
@@ -255,11 +255,8 @@ footer {
 
 
 <div class="cart">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <a href="#" class="cart-icon">
-    
-    <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك<i class="fas fa-shopping-cart"></i></button>
-</a>
+    <button onclick="showOrderForm()">انتقل إلى تأكيد طلبك</button>
+
     <ul id="cartItems">
         <!-- سيتم تحديث هذه القائمة بواسطة JavaScript -->
     </ul>
@@ -352,7 +349,7 @@ footer {
     <label for="cartDetails">المنتجات في السلة:</label>
     <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
     
-    <p style="color: #6b4f3b; font-weight: bold; margin-top: 10px;">
+<p style="color: #6b4f3b; font-weight: bold; margin-top: 10px;">
         ملاحظة: لديك كوبون مقدم من المتجر بقيمة 15%!
     </p>
     <button type="submit">إرسال الطلب</button>
