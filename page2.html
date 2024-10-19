@@ -71,7 +71,7 @@ header {
 
 /* أنماط الحاوية (Container) */
 .container {
-    width: 60%;
+    width: 40%;
     margin: auto;
 }
 
@@ -89,26 +89,10 @@ header {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
-    flex: 1 1 calc(40% - 30px); /* لكل منتجين في صف واحد */
+    flex: 1 1 calc(33.333% - 40px);
     text-align: center;
-    border: 1px solid #eccdb1;
-    max-width: calc(40% - 30px); /* تأكد من أن العرض لا يتجاوز النسبة المحددة */
+    border: 1px solid #eccdb1; /* إطار بلون بني داكن */
 }
-
-@media (max-width: 768px) {
-    .product {
-        flex: 1 1 calc(50% - 20px); /* منتجين في كل صف */
-        max-width: calc(50% - 20px);
-    }
-}
-
-@media (max-width: 480px) {
-    .product {
-        flex: 1 1 calc(100% - 20px); /* منتج واحد في الصف */
-        max-width: calc(100% - 20px);
-    }
-}
-
 .product img {
     width: 80%;
     height: auto;
