@@ -248,7 +248,7 @@ footer {
             <a href="page3.html">كتالوج المنتجات الاخرى</a>
                 </div>
     </header>
-
+   
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -427,11 +427,15 @@ footer {
             </div>
         <div class="product">
             <img src="دمج صور ديجتال ملون.jpg" alt=" دمج صور برسمة ديچتال - ملون حجم A4">
-            <h3> دمج صور برسمة ديچتال - ملون  </h3>
-            <p> حجم A3 : 140₪</p>
-            <p> حجم A4 : 120₪</p>
-            <button onclick="addToCart(' دمج صور برسمة ديچتال - ملون حجم A4 ')">أضف إلى السلة</button>
-        </div>
+              <h3>دمج صور برسمة ديچتال - ملون</h3>
+    <p>اختر الحجم:</p>
+    <select class="sizeSelect">
+        <option value="A4">A4 - 120₪</option>
+        <option value="A3">A3 - 140₪</option>
+    </select>
+    <button onclick="addToCart('دمج صور برسمة ديچتال - ملون', this)">أضف إلى السلة</button>
+</div>
+
         <div class="product">
             <img src="دمج صور ديجتال رصاصي.jpg" alt="برواز ديجتال رصاصي A3 ">
             <h3>  دمج صور برسمة ديچتال - رصاصي </h3>
@@ -510,10 +514,27 @@ footer {
             <p> حجم A3 : 120₪</p>
             <p> حجم A4 : 100₪</p>
           
-            <button onclick="addToCart('بوكس رسم ديچتال - رصاصي', document.getElementById('size-select-1').value)">أضف إلى السلة</button>
+            <button onclick="addToCart('بوكس رسم ديچتال - رصاصي')">أضف إلى السلة</button>
         </div>
         
-        
+        <div class="product">
+            <img src="خريطة النجوم.jpg" alt="Sky map-خريطة النجوم">
+            <h3>Sky map-خريطة النجوم</h3>
+            <p> حجم A3 : 150₪</p>
+            <p> حجم A4 : 120₪</p>
+          
+            <button onclick="addToCart(' Sky map-خريطة النجوم')">أضف إلى السلة</button>
+        </div>
+
+        <div class="product">
+            <img src="طباعة صور.jpg" alt=" طِباعة صور بجودة عالية">
+            <h3>  طِباعة صور بجودة عالية</h3>
+            <p> حجم A3 : 60₪</p>
+            <p> حجم A4 : 50₪</p>
+          
+            <button onclick="addToCart(' طِباعة صور بجودة عالية ')">أضف إلى السلة</button>
+        </div>
+
         </div>     
        </div>
    
@@ -526,21 +547,29 @@ footer {
 
     <script>
         let cart = [];
-function addToCart(productName, size) {
-    cart.push({ name: productName, size: size });
-    updateCartDisplay();
+        function addToCart(productName, sizeSelectId) {
+    // الحصول على الحجم المختار
+    const sizeSelect = document.getElementById(sizeSelectId);
+    const selectedSize = sizeSelect.value;
+    
+    // إضافة المنتج مع الحجم إلى السلة
+    const cartItem = `${productName} - حجم: ${selectedSize}`;
+    const cartList = document.getElementById("cartItems");
+    const listItem = document.createElement("li");
+    listItem.textContent = cartItem;
+
+    // زر لإزالة المنتج
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "إزالة";
+    removeButton.classList.add("remove-button");
+    removeButton.onclick = () => {
+        cartList.removeChild(listItem);
+    };
+
+    listItem.appendChild(removeButton);
+    cartList.appendChild(listItem);
 }
 
-function updateCartDisplay() {
-    const cartItems = document.getElementById("cartItems");
-    cartItems.innerHTML = ""; // Clear current items
-
-    cart.forEach((item) => {
-        const li = document.createElement("li");
-        li.textContent = `${item.name} - حجم: ${item.size}`;
-        cartItems.appendChild(li);
-    });
-}
 
         // إضافة منتج إلى السلة
         function addToCart(productName) {
