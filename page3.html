@@ -297,9 +297,7 @@ footer {
     <input type="date" id="specificDate" name="specificDate">
   
         </select>
-               <!-- الحقول الجديدة -->
-               <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
-                <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
+           
                 
         <label for="phoneType">نوع الهاتف:</label>
         <select id="phoneType" name="phoneType" required>
@@ -507,8 +505,6 @@ cart.forEach((item) => {
     const deliveryArea = document.getElementById("deliveryArea").value || "لا يوجد";
     const region = document.getElementById("region").value || "لا يوجد";
     const specificDate = document.getElementById("specificDate").value || "غير محدد";
-    const size = document.getElementById("size").value;
-    const messageOrSong = document.getElementById("messageOrSong").value || "لا يوجد";
     const phoneType = document.getElementById("phoneType").value;
     const cartDetails = document.getElementById("cartDetails").value || "لا يوجد";
 
@@ -521,7 +517,6 @@ cart.forEach((item) => {
 المنطقة: ${deliveryArea}
 اسم المنطقة: ${region}
 تاريخ/يوم استلام الطلبية: ${specificDate}
-إذا كنت ترغب بإضافة أغنية أو عبارة: ${messageOrSong}
 نوع الهاتف: ${phoneType}
 المنتجات في السلة:
 ${cartDetails}`;
