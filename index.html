@@ -388,11 +388,22 @@
     width: 80%;
     margin: 30px auto; /* محاذاة إلى المنتصف وإضافة مسافة */
 }
-.image-title {
-       
+.circle-images {
+        display: flex;
+        gap: 20px;
+    }
+
+   
+
+    .image-title {
+        position: absolute;
+        top: 5; /* وضع النص في أعلى الصورة */
+        left: 5;
+        width: 150%;
         text-align: center;
-        color: rgb(0, 0, 0); /* لون النص */
+        color: rgb(3, 0, 0); /* لون النص */
         font-size: 10px; /* حجم الخط */
+        padding: 7px 0; /* مسافة داخلية للنص */
     }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
