@@ -231,6 +231,15 @@ footer {
         max-width: 100%;
     }
 }
+.cart button {
+        font-size: 20px; /* زيادة حجم الخط */
+        padding: 20px 20px; /* زيادة التباعد لجعل الزر أكبر */
+        background-color: #787676; /* اختياري: إضافة لون خلفية */
+
+    }
+    .cart button i {
+        margin-left: 10px; /* إضافة مسافة بين النص والأيقونة */
+    }
 
     </style>
 </head>
@@ -258,89 +267,92 @@ footer {
         </ul>
       
     </div>
+    
     <!-- نموذج الطلب -->
-<div id="orderForm" class="contact-form">
-    
-<p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
-    <h1>أرسل طلبك عبر الواتس آب</h1>
-    <form id="form">
-        <label for="name">الاسم:</label>
-        <input type="text" id="name" name="name" required>
+    <div id="orderForm" class="contact-form">
         
-        <label for="phone">رقم الهاتف:</label>
-        <input type="tel" id="phone" name="phone" required>
-        
-        
-        <label for="additionalNumber">رقم إضافي:</label>
-        <input type="tel" id="additionalNumber" name="additionalNumber">
-        
-        <label for="deliveryOption">اختر طريقة التوصيل:</label>
-        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
-            <option value="" disabled selected>اختر طريقة التوصيل</option>
-            <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
-            <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
-        </select>
-    
-       <div id="deliveryDetails" style="display: none;">
-            <label for="deliveryArea">اختر المنطقة:</label>
-            <select id="deliveryArea" name="deliveryArea">
-                <option value="north">الشمال - 50</option>
-                <option value="south">الجنوب - 60</option>
-                <option value="triangle">المثلث - 40</option>
-            </select>
+    <p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
+        <h1>أرسل طلبك عبر الواتس آب</h1>
+        <form id="form">
+            <label for="name">الاسم:</label>
+            <input type="text" id="name" name="name" required>
             
-            <label for="region">اسم المنطقة:</label>
-            <input type="text" id="region" name="region">
-        </div>
+            <label for="phone">رقم الهاتف:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            
+            <label for="additionalNumber">رقم إضافي:</label>
+            <input type="tel" id="additionalNumber" name="additionalNumber">
+            
+            <label for="deliveryOption">اختر طريقة التوصيل:</label>
+            <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
+                <option value="" disabled selected>اختر طريقة التوصيل</option>
+                <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
+                <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
+            </select>
         
-    <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
-    <input type="date" id="specificDate" name="specificDate">
-  
-        </select>
-           
+           <div id="deliveryDetails" style="display: none;">
+                <label for="deliveryArea">اختر المنطقة:</label>
+                <select id="deliveryArea" name="deliveryArea">
+                    <option value="north">الشمال - 50</option>
+                    <option value="south">الجنوب - 60</option>
+                    <option value="triangle">المثلث - 40</option>
+                </select>
                 
-        <label for="phoneType">نوع الهاتف:</label>
-        <select id="phoneType" name="phoneType" required>
-            <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
-            <option value="لا يوجد">لا يوجد</option>
-         <option value="iPhone11">iphone 11</option>
-        <option value="iPhone11 pro">iphone 11 pro</option>
-        <option value="iPhone 11 promax">iphone 11 promax</option>
-        <option value="iPhone 12">iphone 12</option>
-        <option value="iPhone 12 pro">iphone 12 pro</option>
-        <option value="iPhone 12 promax">iphone 12 promax</option>
-        <option value="iPhone 13">iphone 13</option>
-        <option value="iPhone 13 pro">iphone 13 pro</option>
-        <option value="iPhone 13 promax">iphone 13 promax</option>
-        <option value="iPhone 14">iphone 14</option>
-        <option value="iPhone 14 pro">iphone 14 pro</option>
-        <option value="iPhone 14 promax">iphone 14 promax</option>
-        <option value="iPhone 14 plus">iphone 14 blus </option>
-        <option value="iPhone 15">iphone 15</option>
-        <option value="iPhone 15 pro">iphone 15 pro</option>
-        <option value="iPhone 15 promax">iphone 15 promax</option>
-
-
-        <option value="Samsung 21 ultra">21 ultra</option>
-        <option value="Samsung 22 ultra">22 ultra</option>
-        <option value="Samsung 23 ultra">23 ultra</option>
-
-        <option value="Samsung A52">A52</option>
-        <option value="Samsung A53">A53</option>
-        <option value="Samsung A71">A71</option>
-        <option value="Samsung A73">A73</option>
-
-        </select>
-    <label for="cartDetails">المنتجات في السلة:</label>
-    <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
+                <label for="region">اسم المنطقة:</label>
+                <input type="text" id="region" name="region">
+            </div>
+            
+        <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
+        <input type="date" id="specificDate" name="specificDate">
+       
+            </select>
+                   <!-- الحقول الجديدة -->
+                   <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
+                    <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
+                    
+            <label for="phoneType">نوع الهاتف:</label>
+            <select id="phoneType" name="phoneType" required>
+                <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
+                <option value="لا يوجد">لا يوجد</option>
+             <option value="iPhone11">iphone 11</option>
+            <option value="iPhone11 pro">iphone 11 pro</option>
+            <option value="iPhone 11 promax">iphone 11 promax</option>
+            <option value="iPhone 12">iphone 12</option>
+            <option value="iPhone 12 pro">iphone 12 pro</option>
+            <option value="iPhone 12 promax">iphone 12 promax</option>
+            <option value="iPhone 13">iphone 13</option>
+            <option value="iPhone 13 pro">iphone 13 pro</option>
+            <option value="iPhone 13 promax">iphone 13 promax</option>
+            <option value="iPhone 14">iphone 14</option>
+            <option value="iPhone 14 pro">iphone 14 pro</option>
+            <option value="iPhone 14 promax">iphone 14 promax</option>
+            <option value="iPhone 14 plus">iphone 14 blus </option>
+            <option value="iPhone 15">iphone 15</option>
+            <option value="iPhone 15 pro">iphone 15 pro</option>
+            <option value="iPhone 15 promax">iphone 15 promax</option>
     
+    
+            <option value="Samsung 21 ultra">21 ultra</option>
+            <option value="Samsung 22 ultra">22 ultra</option>
+            <option value="Samsung 23 ultra">23 ultra</option>
+    
+            <option value="Samsung A52">A52</option>
+            <option value="Samsung A53">A53</option>
+            <option value="Samsung A71">A71</option>
+            <option value="Samsung A73">A73</option>
+    
+            </select>
+        <label for="cartDetails">المنتجات في السلة:</label>
+        <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
+        
+        
 <p style="color: #6b4f3b; font-weight: bold; margin-top: 10px;">
-        ملاحظة: لديك كوبون مقدم من المتجر بقيمة 15%!
-    </p>
-    <button type="submit">إرسال الطلب</button>
-</form>
-</div>
-
+    ملاحظة: لديك كوبون مقدم من المتجر بقيمة 15%!
+</p>
+        <button type="submit">إرسال الطلب</button>
+    </form>
+    </div>
 
 <!-- كتالوج المنتجات -->
 <div class="container">
@@ -505,6 +517,8 @@ cart.forEach((item) => {
     const deliveryArea = document.getElementById("deliveryArea").value || "لا يوجد";
     const region = document.getElementById("region").value || "لا يوجد";
     const specificDate = document.getElementById("specificDate").value || "غير محدد";
+    const size = document.getElementById("size").value;
+    const messageOrSong = document.getElementById("messageOrSong").value || "لا يوجد";
     const phoneType = document.getElementById("phoneType").value;
     const cartDetails = document.getElementById("cartDetails").value || "لا يوجد";
 
@@ -517,6 +531,8 @@ cart.forEach((item) => {
 المنطقة: ${deliveryArea}
 اسم المنطقة: ${region}
 تاريخ/يوم استلام الطلبية: ${specificDate}
+حجم البرواز: ${size}
+إذا كنت ترغب بإضافة أغنية أو عبارة: ${messageOrSong}
 نوع الهاتف: ${phoneType}
 المنتجات في السلة:
 ${cartDetails}`;
