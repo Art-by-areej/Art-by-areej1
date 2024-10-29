@@ -231,14 +231,16 @@ footer {
         max-width: 100%;
     }
 }
-  .cart button {
-        font-size: 18px; /* زيادة حجم الخط */
+    .cart button {
+        font-size: 24px; /* زيادة حجم الخط */
         padding: 20px 20px; /* زيادة التباعد لجعل الزر أكبر */
-
+        background-color: #ffffff; /* اختياري: إضافة لون خلفية */
+    
     }
     .cart button i {
         margin-left: 10px; /* إضافة مسافة بين النص والأيقونة */
     }
+
 
     </style>
 </head>
@@ -439,6 +441,11 @@ footer {
         <div class="product">
             <img src="دمج صور ديجتال ملون.jpg" alt=" دمج صور برسمة ديچتال - ملون حجم A4">
               <h3>دمج صور برسمة ديچتال - ملون</h3>
+    <p>اختر الحجم:</p>
+    <select class="sizeSelect">
+        <option value="A4">A4 - 120₪</option>
+        <option value="A3">A3 - 140₪</option>
+    </select>
     <button onclick="addToCart('دمج صور برسمة ديچتال - ملون', this)">أضف إلى السلة</button>
 </div>
 
@@ -509,7 +516,7 @@ footer {
             <h3>تصميم فكرة الأريج 1 </h3>
             <p> حجم A3 : 120₪</p>
             <p> حجم A4 : 100₪</p>
-            <button onclick="addToCart( 'تصميم فكرة الأريج - حجم ' )">أضف إلى السلة</button>
+            <button onclick="addToCart( 'تصميم فكرة الأريج - 1 ' )">أضف إلى السلة</button>
         </div>
         <div class="product">
             <img src="تصمم صور4.jpg" alt="برواز ديجتال رصاصي A3 ">
@@ -524,7 +531,7 @@ footer {
             <p> حجم A3 : 120₪</p>
             <p> حجم A4 : 100₪</p>
           
-            <button onclick="addToCart('بوكس رسم ديچتال - رصاصي')">أضف إلى السلة</button>
+            <button onclick="addToCart('تصميم فكرة الأريج 3')">أضف إلى السلة</button>
         </div>
         
         <div class="product">
