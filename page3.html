@@ -441,16 +441,7 @@ footer {
 
    <script>
         let cart = [];
-        function addToCart(productName, sizeSelectId) {
-    // الحصول على الحجم المختار
-    const sizeSelect = document.getElementById(sizeSelectId);
-    const selectedSize = sizeSelect.value;
-    
-    // إضافة المنتج مع الحجم إلى السلة
-    const cartItem = `${productName} - حجم: ${selectedSize}`;
-    const cartList = document.getElementById("cartItems");
-    const listItem = document.createElement("li");
-    listItem.textContent = cartItem;
+
 
     // زر لإزالة المنتج
     const removeButton = document.createElement("button");
