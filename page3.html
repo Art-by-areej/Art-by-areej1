@@ -440,73 +440,81 @@ footer {
     <P>Design.2023D</P>
 </footer>
 
-<script>
-    let cart = [];
-function addToCart(productName, size) {
-cart.push({ name: productName, size: size });
-updateCartDisplay();
+   <script>
+        let cart = [];
+        function addToCart(productName, sizeSelectId) {
+    // الحصول على الحجم المختار
+    const sizeSelect = document.getElementById(sizeSelectId);
+    const selectedSize = sizeSelect.value;
+    
+    // إضافة المنتج مع الحجم إلى السلة
+    const cartItem = `${productName} - حجم: ${selectedSize}`;
+    const cartList = document.getElementById("cartItems");
+    const listItem = document.createElement("li");
+    listItem.textContent = cartItem;
+
+    // زر لإزالة المنتج
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "إزالة";
+    removeButton.classList.add("remove-button");
+    removeButton.onclick = () => {
+        cartList.removeChild(listItem);
+    };
+
+    listItem.appendChild(removeButton);
+    cartList.appendChild(listItem);
 }
 
-function updateCartDisplay() {
-const cartItems = document.getElementById("cartItems");
-cartItems.innerHTML = ""; // Clear current items
 
-cart.forEach((item) => {
-    const li = document.createElement("li");
-    li.textContent = `${item.name} - حجم: ${item.size}`;
-    cartItems.appendChild(li);
-});
-}
-
-    // إضافة منتج إلى السلة
-    function addToCart(productName) {
-        // إضافة المنتج إلى السلة
-        cart.push(productName);
-        updateCartDisplay();
-        alert(`${productName} تم إضافته إلى السلة.`);
-    }
-
-    // تحديث عرض السلة
-    function updateCartDisplay() {
-        const cartItems = document.getElementById('cartItems');
-        cartItems.innerHTML = '';
-        cart.forEach((item, index) => {
-            const li = document.createElement('li');
-            li.textContent = item;
-
-            // إنشاء زر إزالة
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'إزالة';
-            removeButton.className = 'remove-button';
-            removeButton.onclick = function() {
-                removeFromCart(index);
-            };
-
-            // إضافة العناصر إلى القائمة
-            li.appendChild(removeButton);
-            cartItems.appendChild(li);
-        });
-    }
-
-    // إزالة منتج من السلة
-    function removeFromCart(index) {
-        cart.splice(index, 1);
-        updateCartDisplay();
-    }
-
-    // عرض نموذج الطلب
-    function showOrderForm() {
-        document.getElementById('orderForm').style.display = 'block';
-        document.getElementById('cartDetails').value = cart.join('\n');
-    }
-
-    // إظهار/إخفاء تفاصيل التوصيل
-    function toggleDeliveryDetails() {
-        const deliveryOption = document.getElementById('deliveryOption').value;
-        const deliveryDetails = document.getElementById('deliveryDetails');
-        deliveryDetails.style.display = (deliveryOption === 'delivery') ? 'block' : 'none';
-    }
-    function prepareWhatsAppMessage() {
+        // إضافة منتج إلى السلة
+        function addToCart(productName) {
+            // إضافة المنتج إلى السلة
+            cart.push(productName);
+            updateCartDisplay();
+            alert(`${productName} تم إضافته إلى السلة.`);
+        }
+    
+        // تحديث عرض السلة
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = item;
+    
+                // إنشاء زر إزالة
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'إزالة';
+                removeButton.className = 'remove-button';
+                removeButton.onclick = function() {
+                    removeFromCart(index);
+                };
+    
+                // إضافة العناصر إلى القائمة
+                li.appendChild(removeButton);
+                cartItems.appendChild(li);
+            });
+        }
+    
+        // إزالة منتج من السلة
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+    
+        // عرض نموذج الطلب
+        function showOrderForm() {
+            document.getElementById('orderForm').style.display = 'block';
+            document.getElementById('cartDetails').value = cart.join('\n');
+        }
+    
+        // إظهار/إخفاء تفاصيل التوصيل
+        function toggleDeliveryDetails() {
+            const deliveryOption = document.getElementById('deliveryOption').value;
+            const deliveryDetails = document.getElementById('deliveryDetails');
+            deliveryDetails.style.display = (deliveryOption === 'delivery') ? 'block' : 'none';
+        }
+        function prepareWhatsAppMessage() {
     // جمع تفاصيل الطلب
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
@@ -529,14 +537,12 @@ cart.forEach((item) => {
 المنطقة: ${deliveryArea}
 اسم المنطقة: ${region}
 تاريخ/يوم استلام الطلبية: ${specificDate}
-حجم البرواز: ${size}
-إذا كنت ترغب بإضافة أغنية أو عبارة: ${messageOrSong}
 نوع الهاتف: ${phoneType}
 المنتجات في السلة:
 ${cartDetails}`;
 
-   // تحويل النص إلى رابط URL وإرسال الرسالة عبر واتساب
-   const encodedMessage = encodeURIComponent(message);
+    // تحويل النص إلى رابط URL وإرسال الرسالة عبر واتساب
+    const encodedMessage = encodeURIComponent(message);
     const phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -549,4 +555,4 @@ document.getElementById("form").addEventListener("submit", function(event) {
 
     </script>
 </body>
-</html> 
+</html>  
