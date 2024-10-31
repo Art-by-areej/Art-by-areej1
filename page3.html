@@ -267,90 +267,95 @@ footer {
         </ul>
       
     </div>
-   
-    <!-- نموذج الطلب -->
-    <div id="orderForm" class="contact-form">
-        
-    <p>"بَعْدَ إِتْمَامِ الطَّلَبِ وَإِرْسَالِهِ، يُرْجَى بَعْثُ الصُّورِ الْمَطْلُوبَةِ لِلْتَّصْمِيمِ عَبْرَ الْوَاتْسَابِ."</p>
-        <h1>أرسل طلبك عبر الواتس آب</h1>
-        <form id="form">
-            <label for="name">الاسم:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="phone">رقم الهاتف:</label>
-            <input type="tel" id="phone" name="phone" required>
-            
-            
-            <label for="additionalNumber">رقم إضافي:</label>
-            <input type="tel" id="additionalNumber" name="additionalNumber">
-            
-            <label for="deliveryOption">اختر طريقة التوصيل:</label>
-            <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
-                <option value="" disabled selected>اختر طريقة التوصيل</option>
-                <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
-                <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
-            </select>
-        
-           <div id="deliveryDetails" style="display: none;">
-                <label for="deliveryArea">اختر المنطقة:</label>
-                <select id="deliveryArea" name="deliveryArea">
-                    <option value="north">الشمال - 50</option>
-                    <option value="south">الجنوب - 60</option>
-                    <option value="triangle">المثلث - 40</option>
-                </select>
-                
-                <label for="region">اسم المنطقة:</label>
-                <input type="text" id="region" name="region">
-            </div>
-            
-        <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
-        <input type="date" id="specificDate" name="specificDate">
-       
-            </select>
-                   <!-- الحقول الجديدة -->
-                   <label for="messageOrSong">اذا كنت ترغب باضافة اغنيه او عباره: <label>
-                    <textarea id="messageOrSong" name="messageOrSong" rows="3" placeholder="اكتب العبارة أو الأغنية هنا"></textarea>
-                    
-            <label for="phoneType">نوع الهاتف:</label>
-            <select id="phoneType" name="phoneType" required>
-                <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
-                <option value="لا يوجد">لا يوجد</option>
-             <option value="iPhone11">iphone 11</option>
-            <option value="iPhone11 pro">iphone 11 pro</option>
-            <option value="iPhone 11 promax">iphone 11 promax</option>
-            <option value="iPhone 12">iphone 12</option>
-            <option value="iPhone 12 pro">iphone 12 pro</option>
-            <option value="iPhone 12 promax">iphone 12 promax</option>
-            <option value="iPhone 13">iphone 13</option>
-            <option value="iPhone 13 pro">iphone 13 pro</option>
-            <option value="iPhone 13 promax">iphone 13 promax</option>
-            <option value="iPhone 14">iphone 14</option>
-            <option value="iPhone 14 pro">iphone 14 pro</option>
-            <option value="iPhone 14 promax">iphone 14 promax</option>
-            <option value="iPhone 14 plus">iphone 14 blus </option>
-            <option value="iPhone 15">iphone 15</option>
-            <option value="iPhone 15 pro">iphone 15 pro</option>
-            <option value="iPhone 15 promax">iphone 15 promax</option>
+   <!-- نموذج الطلب -->
+<div id="orderForm" class="contact-form">
     
-    
-            <option value="Samsung 21 ultra">21 ultra</option>
-            <option value="Samsung 22 ultra">22 ultra</option>
-            <option value="Samsung 23 ultra">23 ultra</option>
-    
-            <option value="Samsung A52">A52</option>
-            <option value="Samsung A53">A53</option>
-            <option value="Samsung A71">A71</option>
-            <option value="Samsung A73">A73</option>
-    
-            </select>
-        <label for="cartDetails">المنتجات في السلة:</label>
-        <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
-        
-        
+    <h1>مُلاحظة مُهمة</h1>
+   <h1> بعد تعبئة كامِل التفاصيل، اضغط على ارسل الطلب
+     وسوف تُرسل الطلبية عبر الواتس اب ومن ثُم بَعث الصور المطلوبه</h1>
 
-        <button type="submit">إرسال الطلب</button>
-    </form>
-    </div>
+    <form id="form">
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="phone">رقم الهاتف:</label>
+        <input type="tel" id="phone" name="phone" required>
+        
+        
+        <label for="additionalNumber">رقم إضافي:</label>
+        <input type="tel" id="additionalNumber" name="additionalNumber">
+        
+        <label for="deliveryOption">اختر طريقة التوصيل:</label>
+        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
+            <option value="" disabled selected>اختر طريقة التوصيل</option>
+            <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
+            <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
+        </select>
+    
+       <div id="deliveryDetails" style="display: none;">
+            <label for="deliveryArea">اختر المنطقة:</label>
+            <select id="deliveryArea" name="deliveryArea">
+                <option value="north">الشمال - 50</option>
+                <option value="south">الجنوب - 60</option>
+                <option value="triangle">المثلث - 40</option>
+            </select>
+            
+            <label for="region">اسم المنطقة:</label>
+            <input type="text" id="region" name="region">
+        </div>
+        
+    <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
+    <input type="date" id="specificDate" name="specificDate">
+        <label for="size">حجم البرواز:</label>
+        <select id="size" name="size" required>
+            <option value="" disabled selected>اختر حجم البرواز</option>
+            <option value="A4">حجم A4</option>
+            <option value="A3">حجم A3</option>
+            <option value="A4">يرجى ملاحظة أن حجم البرواز لبوكس الديجيتال الملون هو حجم واحد ولا يوجد خيارات أخرى متاحة.</option>
+            <option value="A4">يرجى ملاحظة أن حجم البرواز لبوكس الديجتال الرصاصي  هو حجم واحد ولا يوجد خيارات أخرى متاحة.</option>
+
+
+
+                
+        <label for="phoneType">نوع الهاتف:</label>
+        <select id="phoneType" name="phoneType" required>
+            <option value="" disabled selected>اختر نوع الهاتف (اذا كان لديك طلب لكفر هاتف)</option>     
+            <option value="لا يوجد">لا يوجد</option>
+         <option value="iPhone11">iphone 11</option>
+        <option value="iPhone11 pro">iphone 11 pro</option>
+        <option value="iPhone 11 promax">iphone 11 promax</option>
+        <option value="iPhone 12">iphone 12</option>
+        <option value="iPhone 12 pro">iphone 12 pro</option>
+        <option value="iPhone 12 promax">iphone 12 promax</option>
+        <option value="iPhone 13">iphone 13</option>
+        <option value="iPhone 13 pro">iphone 13 pro</option>
+        <option value="iPhone 13 promax">iphone 13 promax</option>
+        <option value="iPhone 14">iphone 14</option>
+        <option value="iPhone 14 pro">iphone 14 pro</option>
+        <option value="iPhone 14 promax">iphone 14 promax</option>
+        <option value="iPhone 14 plus">iphone 14 blus </option>
+        <option value="iPhone 15">iphone 15</option>
+        <option value="iPhone 15 pro">iphone 15 pro</option>
+        <option value="iPhone 15 promax">iphone 15 promax</option>
+
+
+        <option value="Samsung 21 ultra">21 ultra</option>
+        <option value="Samsung 22 ultra">22 ultra</option>
+        <option value="Samsung 23 ultra">23 ultra</option>
+
+        <option value="Samsung A52">A52</option>
+        <option value="Samsung A53">A53</option>
+        <option value="Samsung A71">A71</option>
+        <option value="Samsung A73">A73</option>
+
+        </select>
+    <label for="cartDetails">المنتجات في السلة:</label>
+    <textarea id="cartDetails" name="cartDetails" rows="6" readonly></textarea>
+    
+
+    <button type="submit">إرسال الطلب</button>
+</form>
+</div>
 
 <!-- كتالوج المنتجات -->
 <div class="container">
