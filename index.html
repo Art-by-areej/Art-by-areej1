@@ -381,7 +381,7 @@
 .heart:nth-child(5) {
     animation-delay: 0.8s;
 }
-.section-separator { /خط يفصل بين المنتج واراء الزبائن/
+.section-separator { /*خط يفصل بين المنتج واراء الزبائن*/
     border: none;
     height: 2px;
     background-color: #99673e; /* لون بني مماثل لتنسيق الموقع */
@@ -425,25 +425,73 @@
         مَتْجَري المُتَميِّزُ يُرحِّبُ بِزُوّارِه
     </div>
     
- 
+ <script>
+    // وظيفة لإظهار كود الكوبون
+    window.onload = function() {
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'block';
+        }, 1000); // يظهر بعد 1 ثانية
+
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'none';
+        }, 10000); // يختفي بعد 5 ثواني
+    }
+</script>
+<style>
+    /* تنسيق حاوية الصور */
+    .four-images-container {
+        display: flex; /* استخدام flexbox لعرض الصور بجانب بعضها */
+        justify-content: space-between; /* توزيع المسافة بين الصور بالتساوي */
+        gap: 10px; /* المسافة بين الصور */
+        flex-wrap: wrap; /* يسمح بلف العناصر إلى السطر التالي إذا كانت الشاشة صغيرة */
+        margin-top: 20px; /* إضافة مسافة من الأعلى */
+    }
+
+    .image-item {
+        flex: 1 1 24%; /* تحديد أن كل صورة تأخذ 24% من عرض الحاوية مع هامش بسيط */
+        max-width: 24%; /* عرض الصورة لا يتجاوز 24% من الحاوية */
+        box-sizing: border-box; /* تجنب التداخل بسبب البادينج أو الهوامش */
+    }
+
+    .image-item img {
+        width: 100%; /* عرض الصورة بالكامل داخل العنصر */
+        height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+        border-radius: 10px; /* إضافة حواف دائرية للصورة */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
+    }
+
+    /* تقليل حجم الصور على الشاشات الصغيرة (الهاتف) */
+    @media (max-width: 768px) {
+        .image-item {
+            max-width: 48%; /* عرض الصورة بنسبة 48% من الحاوية على الأجهزة الصغيرة */
+        }
+    }
+
+    /* تقليل حجم الصور على الشاشات الصغيرة جدًا (الهواتف ذات الشاشات الصغيرة) */
+    @media (max-width: 480px) {
+        .image-item {
+            max-width: 100%; /* الصورة تأخذ كامل عرض الشاشة على الشاشات الصغيرة جداً */
+        }
+    }
+</style>
+
+<div class="four-images-container">
+    <div class="image-item">
+        <img src="صندوق واخيرا تجمعنا.jpg" alt="Image 1">
+    </div>
+    <div class="image-item">
+        <img src="صندوق واخيرا تجمعنا.jpg" alt="Image 2">
+    </div>
+    <div class="image-item">
+        <img src="صندوق واخيرا تجمعنا.jpg" alt="Image 3">
+    </div>
+    <div class="image-item">
+        <img src="صندوق واخيرا تجمعنا.jpg" alt="Image 4">
+    </div>
+</div>
 
 
-    <div class="product-container">
-        <div class="circle-images">
-            <div class="circle-image">
-                <a href="page2.html" title="عرض الكتالوج 1">
-                    <img src="صوره لكتالوج البراويز.jpg" alt="كتالوج 1">
-                    <span class="image-title">كتالوج البراويز</span>
-                </a>
-            </div>
-            <div class="circle-image">
-                <a href="page3.html" title="عرض الكتالوج 2">
-                    <img src="اريج2.jpg" alt="كتالوج 2">
-                    <span class="image-title"> كتالوج المنتجات الاخرى </span>
-                </a>
-            </div>
-        </div>
-    
+   
         <div class="product-box">
             <div class="product-image-container">
                 <img src="صندوق واخيرا تجمعنا.jpg" alt="صندوق وأخيرًا تجمّعنا" class="product-image">
@@ -507,32 +555,32 @@
             <div class="review">
                 <p>عنجد كان اختيار موفق واكثر من رائع انو روان دلتني على هيك صبيه لان المعامله اهم من الشغل نفسو ولله❤❤</p>
                 <div class="rating">
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
                 </div>
             </div>
             <div class="review">
 <P>يعطيكي العافيه حبيبتي هسا تا فضيت اكتبلك
     يسلم ايديكي عنجد بجنن🫶🏻 كثير كثير حلوات اول مره بتعامل معك بس مش اخر مره</P>                <div class="rating">
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
                 </div>
                 </div>
 
                 <div class="review">
                     <p>"حبيبتي ، طلبت من عندك قبل المره رسمه لصحبيتي وعنجد كانت ككثير ككثييرر بتسطللل كل مره بطلب بتبهريني بجمال شغلك😍😍"</p>
                     <div class="rating">
-                        <span class="heart">❤</span>
-                        <span class="heart">❤</span>
-                        <span class="heart">❤</span>
-                        <span class="heart">❤</span>
-                        <span class="heart">❤</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
                     </div>
                 </div>
         </div>
@@ -546,7 +594,7 @@
 
     <div class="policy">
         <h2>سياسة الطلب وعدم إلغاء الطلبيات بعد تجهيزها </h2>
-        <p>⚠ *تنبيه هام*: لا يمكن إلغاء الطّلبيّات بعد تأكيدها. نشكركم لتفهّمكم ونتطلّع لخدمتكم بكلّ سرور.</p>
+        <p>⚠️ **تنبيه هام**: لا يمكن إلغاء الطّلبيّات بعد تأكيدها. نشكركم لتفهّمكم ونتطلّع لخدمتكم بكلّ سرور.</p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -583,9 +631,9 @@
             const deliveryArea = document.getElementById('deliveryArea') ? document.getElementById('deliveryArea').value : 'غير محدد';
             const region = document.getElementById('region').value || 'غير محدد';
 
-            const message = الاسم: ${name}رقم الهاتف: ${phone}رقم إضافي: ${additionalNumber}  طريقة التوصيل: ${deliveryOption}  منطقة التوصيل: ${deliveryArea} اسم المنطقة: ${region};
+            const message = `الاسم: ${name}رقم الهاتف: ${phone}رقم إضافي: ${additionalNumber}  طريقة التوصيل: ${deliveryOption}  منطقة التوصيل: ${deliveryArea} اسم المنطقة: ${region}`;
             const phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
-            const whatsappUrl = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
             window.location.href = whatsappUrl;
         }
@@ -598,4 +646,4 @@
     
 </body>
 
-</html>**
+</html>
