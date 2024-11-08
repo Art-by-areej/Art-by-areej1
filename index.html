@@ -381,7 +381,7 @@
 .heart:nth-child(5) {
     animation-delay: 0.8s;
 }
-.section-separator { /خط يفصل بين المنتج واراء الزبائن/
+.section-separator { /*خط يفصل بين المنتج واراء الزبائن*/
     border: none;
     height: 2px;
     background-color: #99673e; /* لون بني مماثل لتنسيق الموقع */
@@ -425,25 +425,161 @@
         مَتْجَري المُتَميِّزُ يُرحِّبُ بِزُوّارِه
     </div>
     
- 
+ <script>
+    // وظيفة لإظهار كود الكوبون
+    window.onload = function() {
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'block';
+        }, 1000); // يظهر بعد 1 ثانية
 
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'none';
+        }, 10000); // يختفي بعد 5 ثواني
+    }
+</script>
+<style>
+/* تنسيق حاوية الصور الأربعة */
+.four-images-container {
+    display: flex; /* عرض الصور بجانب بعضها باستخدام Flexbox */
+    justify-content: space-between; /* توزيع المسافة بين الصور */
+    gap: 10px; /* المسافة بين الصور */
+    flex-wrap: wrap; /* لف العناصر إذا كانت الشاشة صغيرة */
+    margin-bottom: 30px; /* مسافة بين الصور والمنتج */
+}
 
-    <div class="product-container">
-        <div class="circle-images">
-            <div class="circle-image">
-                <a href="page2.html" title="عرض الكتالوج 1">
-                    <img src="صوره لكتالوج البراويز.jpg" alt="كتالوج 1">
-                    <span class="image-title">كتالوج البراويز</span>
-                </a>
-            </div>
-            <div class="circle-image">
-                <a href="page3.html" title="عرض الكتالوج 2">
-                    <img src="اريج2.jpg" alt="كتالوج 2">
-                    <span class="image-title"> كتالوج المنتجات الاخرى </span>
-                </a>
-            </div>
-        </div>
-    
+.image-item {
+    flex: 1; /* توزيع المساحة بالتساوي بين الصور */
+    max-width: 24%; /* الحد الأقصى للعرض لكل صورة */
+    box-sizing: border-box; /* منع التداخل بسبب البادينج أو الهوامش */
+}
+
+.image-item img {
+    width: 100%; /* ملء العرض المتاح للصورة */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    border-radius: 10px; /* إضافة حواف دائرية */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
+}
+
+/* تقليل حجم الصور على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .image-item {
+        max-width: 48%; /* عرض الصورة بنسبة 48% على الأجهزة الصغيرة */
+    }
+}
+
+/* تقليل حجم الصور على الشاشات الصغيرة جداً */
+@media (max-width: 480px) {
+    .image-item {
+        max-width: 100%; /* عرض الصورة بالكامل على الشاشات الصغيرة جداً */
+    }
+}
+
+/* تنسيق منتج */
+.product-box {
+    text-align: center; /* محاذاة المنتج في المنتصف */
+    margin-top: 30px;
+}
+
+/* حاوية صورة المنتج */
+.product-image-container {
+    width: 60%; /* تحديد عرض الحاوية التي تحتوي على صورة المنتج */
+    margin: 0 auto; /* محاذاة الصورة في الوسط */
+    max-width: 400px; /* الحد الأقصى للعرض عند الشاشات الكبيرة */
+}
+
+.product-image {
+    width: 50%; /* الصورة تأخذ 100% من عرض الحاوية */
+    height: auto; /* الحفاظ على النسب الأصلية للصورة */
+    border-radius: 10px; /* إضافة حواف دائرية */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* إضافة ظل للصورة */
+}
+
+/* تنسيق الزر */
+.order-button-container {
+    margin-top: 20px;
+}
+
+.show-order-form {
+    background-color: #99673e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.show-order-form:hover {
+    background-color: #5a3b2e;
+}
+
+/* على الشاشات الصغيرة */
+@media (max-width: 480px) {
+    .product-image-container {
+        width: 80%; /* زيادة عرض الحاوية إلى 80% على الشاشات الصغيرة */
+        max-width: 300px; /* الحد الأقصى على الشاشات الصغيرة */
+    }
+}
+
+</style>
+<p style="text-align: center; font-size: 16px; color: #99673e;">اضغط لرؤية كاتلوج البراويز 
+</p>
+
+<div class="four-images-container">
+    <div class="image-item">
+        <a href="page2.html">
+            <img src="دمج صور ديجتال رصاصي3 A4.jpg" alt="Image 1">
+        </a>
+    </div>
+
+        <div class="image-item">
+            <a href="page2.html">
+        <img src="دمج صور ديجتال رصاصي2.jpg" alt="Image 2">
+    </a>
+    </div>
+
+    <div class="image-item">
+        <a href="page2.html">
+        <img src="فكرة الاريج 2 A3.jpg" alt="Image 3">
+        </a>
+    </div>
+
+    <div class="image-item">
+        <a href="page2.html">
+        <img src="تصميم العمر الرقم 2 A4.jpg" alt="Image 4">
+        </a>
+    </div>
+</div>
+
+<p style="text-align: center; font-size: 16px; color: #99673e;">اضغط لرؤية كاتلوج المُنتجات الأخرى</p>
+
+<div class="four-images-container">
+    <div class="image-item">
+    <a href="page3.html">
+        <img src="كفر صوره عاديه.jpg" alt="Image 1">
+    </a>
+    </div>
+
+    <div class="image-item">
+        <a href="page3.html">
+    <img src="كفر رسم  ديجتال.jpg" alt="Image 2">
+    </a>
+    </div>
+
+    <div class="image-item">
+        <a href="page3.html">
+        <img src="قداحه كهربا.jpg" alt="Image 3">
+        </a>
+    </div>
+
+    <div class="image-item">
+        <a href="page3.html">
+        <img src="محزيك نمرة سياره .jpg" alt="Image 4">
+        </a>
+    </div>
+
+</div>
+
+   
         <div class="product-box">
             <div class="product-image-container">
                 <img src="صندوق واخيرا تجمعنا.jpg" alt="صندوق وأخيرًا تجمّعنا" class="product-image">
@@ -507,32 +643,32 @@
             <div class="review">
                 <p>عنجد كان اختيار موفق واكثر من رائع انو روان دلتني على هيك صبيه لان المعامله اهم من الشغل نفسو ولله❤❤</p>
                 <div class="rating">
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
                 </div>
             </div>
             <div class="review">
 <P>يعطيكي العافيه حبيبتي هسا تا فضيت اكتبلك
     يسلم ايديكي عنجد بجنن🫶🏻 كثير كثير حلوات اول مره بتعامل معك بس مش اخر مره</P>                <div class="rating">
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
-                    <span class="heart">❤</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
                 </div>
                 </div>
 
                 <div class="review">
                     <p>"حبيبتي ، طلبت من عندك قبل المره رسمه لصحبيتي وعنجد كانت ككثير ككثييرر بتسطللل كل مره بطلب بتبهريني بجمال شغلك😍😍"</p>
                     <div class="rating">
-                        <span class="heart">❤</span>
-                        <span class="heart">❤</span>
-                        <span class="heart">❤</span>
-                        <span class="heart">❤</span>
-                        <span class="heart">❤</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
+                        <span class="heart">❤️</span>
                     </div>
                 </div>
         </div>
@@ -546,7 +682,7 @@
 
     <div class="policy">
         <h2>سياسة الطلب وعدم إلغاء الطلبيات بعد تجهيزها </h2>
-        <p>⚠ *تنبيه هام*: لا يمكن إلغاء الطّلبيّات بعد تأكيدها. نشكركم لتفهّمكم ونتطلّع لخدمتكم بكلّ سرور.</p>
+        <p>⚠️ **تنبيه هام**: لا يمكن إلغاء الطّلبيّات بعد تأكيدها. نشكركم لتفهّمكم ونتطلّع لخدمتكم بكلّ سرور.</p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -583,9 +719,9 @@
             const deliveryArea = document.getElementById('deliveryArea') ? document.getElementById('deliveryArea').value : 'غير محدد';
             const region = document.getElementById('region').value || 'غير محدد';
 
-            const message = الاسم: ${name}رقم الهاتف: ${phone}رقم إضافي: ${additionalNumber}  طريقة التوصيل: ${deliveryOption}  منطقة التوصيل: ${deliveryArea} اسم المنطقة: ${region};
+            const message = `الاسم: ${name}رقم الهاتف: ${phone}رقم إضافي: ${additionalNumber}  طريقة التوصيل: ${deliveryOption}  منطقة التوصيل: ${deliveryArea} اسم المنطقة: ${region}`;
             const phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
-            const whatsappUrl = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
             window.location.href = whatsappUrl;
         }
@@ -598,4 +734,4 @@
     
 </body>
 
-</html>**
+</html>
