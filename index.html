@@ -425,25 +425,70 @@
         مَتْجَري المُتَميِّزُ يُرحِّبُ بِزُوّارِه
     </div>
     
- 
+ <script>
+    // وظيفة لإظهار كود الكوبون
+    window.onload = function() {
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'block';
+        }, 1000); // يظهر بعد 1 ثانية
 
+        setTimeout(function() {
+            document.getElementById('couponPopup').style.display = 'none';
+        }, 10000); // يختفي بعد 5 ثواني
+    }
+</script>
+<div class="four-images-container">
+    <div class="image-item">
+        <img src="صندوق واخيرا تجمعنا.jpg" alt="Image 1">
+    </div>
+    <div class="image-item">
+        <img src="صندوق واخيرا تجمعنا.jpg" alt="Image 2">
+    </div>
+    <div class="image-item">
+        <img src="صندوق واخيرا تجمعنا.jpg" alt="Image 3">
+    </div>
+    <div class="image-item">
+        <img src="صندوق واخيرا تجمعنا.jpg" alt="Image 4">
+    </div>
+</div>
+<style>.four-images-container {
+    display: flex; /* استخدام flexbox لعرض الصور بجانب بعضها */
+    justify-content: space-between; /* توزيع المسافة بين الصور بالتساوي */
+    gap: 10px; /* المسافة بين الصور */
+    flex-wrap: wrap; /* يسمح بلف العناصر إلى السطر التالي إذا كانت الشاشة صغيرة */
+}
 
-    <div class="product-container">
-        <div class="circle-images">
-            <div class="circle-image">
-                <a href="page2.html" title="عرض الكتالوج 1">
-                    <img src="صوره لكتالوج البراويز.jpg" alt="كتالوج 1">
-                    <span class="image-title">كتالوج البراويز</span>
-                </a>
-            </div>
-            <div class="circle-image">
-                <a href="page3.html" title="عرض الكتالوج 2">
-                    <img src="اريج2.jpg" alt="كتالوج 2">
-                    <span class="image-title"> كتالوج المنتجات الاخرى </span>
-                </a>
-            </div>
-        </div>
-    
+.image-item {
+    flex: 1; /* كل صورة تأخذ نفس الحجم */
+    max-width: 24%; /* عرض الصورة لا يتجاوز 24% من الحاوية */
+    box-sizing: border-box; /* تجنب التداخل بسبب البادينج أو الهوامش */
+}
+
+.image-item img {
+    width: 150px;
+    height: 150px;
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    border-radius: 10px; /* إضافة حواف دائرية للصورة */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
+}
+
+/* تقليل حجم الصور على الشاشات الصغيرة (الهاتف) */
+@media (max-width: 768px) {
+    .image-item {
+        max-width: 48%; /* عرض الصورة بنسبة 48% من الحاوية على الأجهزة الصغيرة */
+    }
+}
+
+/* تقليل حجم الصور على الشاشات الصغيرة جدًا (الهواتف ذات الشاشات الصغيرة) */
+@media (max-width: 480px) {
+    .image-item {
+        max-width: 100%; /* الصورة تأخذ كامل عرض الشاشة على الشاشات الصغيرة جداً */
+    }
+}
+
+</style>
+
+   
         <div class="product-box">
             <div class="product-image-container">
                 <img src="صندوق واخيرا تجمعنا.jpg" alt="صندوق وأخيرًا تجمّعنا" class="product-image">
