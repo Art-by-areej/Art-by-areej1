@@ -4,269 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتالوج المنتجات</title>
-    <style>
-        /* تعيين أنماط الجسم العامة */
-        body {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            background-color: #ffffff;
-            color: #6f431e;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* أنماط الترويسة (Header) */
-        header {
-            background-color: #ffffff;
-            text-align: center;
-            border-bottom: 2px solid #eccdb1;
-            padding: 20px 0;
-        }
-
-        /* أنماط الشعار (Logo) */
-        .logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #eccdb1;
-        }
-
-        /* أنماط مستطيل الترحيب */
-        .welcome-message {
-            background-color: #ffdbbe;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px auto;
-            width: 100%;
-            text-align: center;
-            font-size: 10px;
-            color: #6b4f3b;
-        }
-
-        /* أنماط شريط التنقل (Navigation) */
-        .nav {
-            display: flex;
-            justify-content: center;
-            margin: 10px 0;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #6b4f3b;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* أنماط الحاوية (Container) */
-        .container {
-            width: 80%;
-            margin: auto;
-            display: flex; /* استخدام flexbox لتوزيع المنتجات والسلة */
-        }
-
-        /* أنماط الكتالوج (Catalog) */
-        .catalog {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            flex: 1; /* السماح للكتالوج بأخذ المساحة المتبقية */
-        }
-
-           /* أنماط السلة (Cart) */
-        .cart {
-    position: fixed;
-    top: 5%;
-    right: 0;
-    width: 400px;
-    height: 80%;
-    background-color: #fffffd;
-    border-left: 2px solid #ffffff9e;
-    padding: 20px;
-    display: none;
-    overflow-y: auto;
-    direction: rtl; /* توجيه النص في السلة بالكامل */
+   <style>
+        
+         /* تعيين أنماط الجسم العامة */
+         body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #ffffff;
+    color: #6f431e;
+    margin: 0;
+    padding: 0;
 }
 
-        .product img {
-            width: 100%;
-            height: auto;
-            border: 5px solid #eccdb1;
-            box-shadow: 0 4px 8px rgb(255, 255, 255);
-        }
-
-        .product h3 {
-            margin: 10px 0 5px;
-        }
-
-        .product p {
-            margin: 5px 0;
-            font-weight: bold;
-            color: #6b4f3b;
-            font-size: 16px;
-        }
-
-        .product button {
-            padding: 10px 20px;
-            background-color: #6b4f3b;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .product button:hover {
-            background-color: #5a472a; /* لون مختلف عند التمرير */
-        }
-
-        /* أنماط السلة (Cart) */
-        .cart {
-    position: fixed;
-    top: 5%;
-    right: 0;
-    width: 400px;
-    height: 80%;
-     color: #ffffff;
-    border-left: 2px solid #ccc;
-    padding: 20px;
-    display: none;
-    overflow-y: auto;
-    direction: rtl; /* توجيه النص في السلة بالكامل */
+/* أنماط الترويسة (Header) */
+header {
+    background-color: #ffffff; /* لون ترابي فاتح */
+    text-align: center;
+    border-bottom: 2px solid #eccdb1; /* إطار بني داكن أسفل الشعار */
+    padding: 20px 0; /* إضافة مساحة فوق وتحت الشعار */
 }
 
+/* أنماط الشعار (Logo) */
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eccdb1; /* لون بني داكن */
+}
 
-        .cart h2 {
-            color: #6b4f3b; 
-            font-size: 10px; 
-            font-weight: bold; 
-        }
+/* أنماط مستطيل الترحيب */
+.welcome-message {
+    background-color: #ffdbbe; /* لون يتماشى مع الصفحة */
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    color: #6b4f3b; /* لون بني داكن */
+}
+.welcome{
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    font-size: 10px;
+    color: #6b4f3b; /* لون بني داكن */
+}
 
-        .cart ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: right; 
-        }
-
-        .cart ul li {
-    padding: 5px 0;
+/* أنماط شريط التنقل (Navigation) */
+.nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px; /* حجم الخط */
-    text-align: right; /* محاذاة النص إلى اليمين */
-    direction: rtl; /* لتحديد اتجاه الكتابة من اليمين إلى اليسار */
+    justify-content: center;
+    margin: 10px 0;
+}
+.nav a {
+    text-decoration: none;
+    color: #6b4f3b; /* لون بني داكن */
+    margin: 0 15px;
+    font-weight: bold;
+}
+.nav a:hover {
+    text-decoration: underline;
 }
 
-
-        .remove-button {
-            background-color: #ffffff;
-            color: #ff0000;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        .remove-button:hover {
-            background-color: #c0392b;
-        }
-
-        /* أيقونة السلة */
-        .cart-icon {
-            position: fixed;
-            bottom: 10px; /* وضع الأيقونة في الأسفل */
-            right: 10px;
-            cursor: pointer;
-            font-size: 30px;
-            color: #6b4f3b;
-            z-index: 1000;
-        }
-
-        /* أنماط نموذج الطلب (Order Form) */
-        .contact-form {
-            max-width: 300px;
-            margin: auto;
-            display: none; 
-            border-radius: 8px;
-            padding: 50px;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-top: 10px;
-            color: #6c3200; 
-        }
-
-        .contact-form input, 
-        .contact-form select,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .contact-form button {
-            padding: 10px 20px;
-            background-color: #7d6b5b; 
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .contact-form button:hover {
-            background-color: #6b4f3b; 
-        }
-
-        /* أنماط التذييل (Footer) */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #fffff6b4f3bf;
-        }
-
-        @media (max-width: 768px) {
-            .product {
-                flex: 1 1 calc(50% - 40px); 
-                max-width: calc(50% - 40px);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .product {
-                flex: 1 1 100%; 
-                max-width: 100%;
-            }
-        }
-        .cart-message {
-    background-color: #ffefc6; /* خلفية فاتحة للتمييز */
-    padding: 20px; /* إضافة مسافة داخلية */
-    border-radius: 8px; /* حواف دائرية */
-    margin: 15px 0; /* مسافة من الأعلى والأسفل */
-    text-align: center; /* محاذاة النص في المنتصف */
-    font-family: 'Arial', sans-serif; /* الخط */
-    color: #6b4f3b; /* لون النص */
+/* أنماط الحاوية (Container) */
+.container {
+    width: 80%;
+    margin: auto;
 }
 
-.cart-message h1 {
-    font-size: 18px; /* حجم الخط */
-    font-weight: bold; /* سمك الخط */
-    color: #6b4f3b; /* نفس لون النص */
-    margin-bottom: 15px; /* مسافة بين العناوين */
+/* أنماط الكتالوج (Catalog) */
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
 }
 
-.cart-message h1:first-of-type {
-    font-size: 20px; /* حجم أكبر للعناوين الأولى */
-    color: #d9534f; /* لون مميز للعنوان الأول */
+/* أنماط المنتجات (Product) */
+.product {
+    background-color: #ffdbbec0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 40px);
+    text-align: center;
+    border: 1px solid #eccdb1; /* إطار بلون بني داكن */
 }
+.product img {
+    width: 100%;
+    height: auto;
+    border: 5px solid #eccdb1; /* إطار بلون ترابي فاتح */
+    box-shadow: 0 4px 8px rgb(255, 255, 255);
+}
+.product h3 {
+    margin: 10px 0 5px;
+}
+.product p {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #6b4f3b; /* لون بني داكن */
+    font-size: 16px; /* حجم الخط القياسي */
+}
+.product button {
+    padding: 10px 20px;
+    background-color: #6b4f3b; /* لون بني أغمق */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.product button:hover {
+    background-color: #6b4f3b; /* لون بني داكن */
+}
+
 /* أنماط الأسعار (Prices) */
 .old-price {
     text-decoration: line-through;
@@ -279,6 +133,114 @@
     font-size: 18px; /* حجم خط أكبر للسعر الجديد لجعله بارزاً */
     font-weight: bold;
 }
+
+/* أنماط السلة (Cart) */
+.cart {
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto; /* مركز السلة */
+    border: 1px solid #ffffff; /* إطار بلون بني داكن */
+    max-width: 200px; /* عرض أقصى للسلة */
+    text-align: center; /* محاذاة النص في الوسط */
+}
+.cart h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    color: #6b4f3b; /* لون بني داكن */
+    font-size: 24px; /* حجم خط أكبر */
+    font-weight: bold; /* خط عريض */
+}
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center; /* محاذاة النصوص إلى اليسار */
+    display: inline-block; /* جعل القائمة تظهر في وسط الصفحة */
+}
+.cart ul li {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.remove-button {
+    background-color: #ff1900;
+    color: #ff0000;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.remove-button:hover {
+    background-color: #c0392b;
+}
+
+/* أنماط نموذج الاتصال (Contact Form) */
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    display: none;
+    background-color: #ffdbbec0; /* لون ترابي فاتح */
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #6c3200; /* إطار بلون بني داكن */
+}
+.contact-form label {
+    display: block;
+    margin-top: 10px;
+    color: #6c3200; /* لون بني داكن */
+}
+.contact-form input, 
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #7d6b5b; /* لون بني داكن */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.contact-form button:hover {
+    background-color: #6b4f3b; /* لون بني أغمق */
+}
+
+/* أنماط التذييل (Footer) */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color:#fffff6b4f3bf:/* لون ترابي فاتح */
+}
+
+@media (max-width: 768px) {
+    .product {
+        flex: 1 1 calc(50% - 40px); /* Two per row on medium screens */
+        max-width: calc(50% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        flex: 1 1 100%; /* One per row on small screens */
+        max-width: 100%;
+    }
+}
+    .cart button {
+        font-size: 24px; /* زيادة حجم الخط */
+        padding: 20px 20px; /* زيادة التباعد لجعل الزر أكبر */
+        background-color: #ffffff; /* اختياري: إضافة لون خلفية */
+    
+    }
+    .cart button i {
+        margin-left: 10px; /* إضافة مسافة بين النص والأيقونة */
+    }
+
 
     </style>
 </head>
