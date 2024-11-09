@@ -77,12 +77,25 @@
             flex: 1; /* السماح للكتالوج بأخذ المساحة المتبقية */
         }
 
+        /* أنماط الأسعار (Prices) */
+.old-price {
+    text-decoration: line-through;
+    color: #e74c3c; /* لون أحمر للسعر القديم */
+    margin-right: 10px;
+    font-size: 14px; /* حجم خط أصغر للسعر القديم */
+}
+.new-price {
+    color: #27ae60; /* لون أخضر للسعر الجديد */
+    font-size: 18px; /* حجم خط أكبر للسعر الجديد لجعله بارزاً */
+    font-weight: bold;
+} 
+
         /* أنماط المنتجات (Product) */
         .product {
             background-color: #ffdbbec0;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 10px;
+            padding: 20px;
             flex: 1 1 calc(33.333% - 40px);
             text-align: center;
             border: 1px solid #eccdb1;
@@ -127,7 +140,7 @@
     right: 0;
     width: 400px;
     height: 80%;
-    color: #ffffff;
+    background-color: #f9f9f9;
     border-left: 2px solid #ccc;
     padding: 20px;
     display: none;
@@ -180,7 +193,7 @@
             right: 10px;
             cursor: pointer;
             font-size: 30px;
-            color: #6b4f3b;
+            color: #ffffff;
             z-index: 1000;
         }
 
