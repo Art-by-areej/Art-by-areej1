@@ -77,7 +77,7 @@
             flex: 1; /* السماح للكتالوج بأخذ المساحة المتبقية */
         }
 
-         /* أنماط المنتجات (Product) */
+        /* أنماط المنتجات (Product) */
         .product {
             background-color: #ffdbbec0;
             border-radius: 8px;
@@ -120,14 +120,14 @@
             background-color: #5a472a; /* لون مختلف عند التمرير */
         }
 
-   /* أنماط السلة (Cart) */
+        /* أنماط السلة (Cart) */
         .cart {
     position: fixed;
     top: 5%;
     right: 0;
     width: 400px;
     height: 80%;
-    background-color: #9f750074;
+    color: #ffffff;
     border-left: 2px solid #ccc;
     padding: 20px;
     display: none;
@@ -273,9 +273,9 @@
             الذّكرَياتُ الجَميلَةُ، هِيَ شَيْءٌ فَوْقَ القَلْبِ وَفَوْقَ المَشاعِرِ، لِذلِكَ دَعْها تُرافِقُكَ بِهَيْئَةِ صورَةٍ في كُلِّ مَكانٍ وَزَمانٍ    
         </div>
         <div class="nav">
+            <a href="index.html">الصفحة الرئيسية</a>
             <a href="page2.html">كتالوج البراويز</a>
             <a href="page3.html">كتالوج المنتجات الاخرى</a>
-            <a href="index.html">الصفحة الرئيسية</a>
         </div>
     </header>
    
@@ -336,6 +336,90 @@
 
     
 <!-- كتالوج المنتجات -->
+<div class="container">
+    <div class="catalog">
+        <div class="product">
+            <img src="2 مجين صوره عاديه.jpg" alt="2 مچين - صورة عادية">
+            <h3> مچين/كاسة/مَحزيك </h3>
+            <p>
+                <span class="old-price">130₪</span> <span class="new-price">100₪</span>
+            </p>
+            <label for="phoneType">نوع الهاتف:</label>
+            <select id="phoneType" name="phoneType" required>
+             <option value="iPhone11">iphone 11</option>
+            <option value="iPhone11 pro">iphone 11 pro</option>
+            <option value="iPhone 11 promax">iphone 11 promax</option>
+            <option value="iPhone 12">iphone 12</option>
+            <option value="iPhone 12 pro">iphone 12 pro</option>
+            <option value="iPhone 12 promax">iphone 12 promax</option>
+            <option value="iPhone 13">iphone 13</option>
+            <option value="iPhone 13 pro">iphone 13 pro</option>
+            <option value="iPhone 13 promax">iphone 13 promax</option>
+            <option value="iPhone 14">iphone 14</option>
+            <option value="iPhone 14 pro">iphone 14 pro</option>
+            <option value="iPhone 14 promax">iphone 14 promax</option>
+            <option value="iPhone 14 plus">iphone 14 blus </option>
+            <option value="iPhone 15">iphone 15</option>
+            <option value="iPhone 15 pro">iphone 15 pro</option>
+            <option value="iPhone 15 promax">iphone 15 promax</option>
+    
+    
+            <option value="Samsung 21 ultra">21 ultra</option>
+            <option value="Samsung 22 ultra">22 ultra</option>
+            <option value="Samsung 23 ultra">23 ultra</option>
+    
+            <option value="Samsung A52">A52</option>
+            <option value="Samsung A53">A53</option>
+            <option value="Samsung A71">A71</option>
+            <option value="Samsung A73">A73</option>
+    
+            </select>
+    
+            <button onclick="addToCart('   مچين/كاسة/مَحزيك - ', 100)">أضف إلى السلة</button>
+        </div>
+
+        <div class="container">
+            <div class="catalog">
+                <div class="product">
+                    <img src="مجين كاسة محزيك.jpg" alt="مچين/كاسة/مَحزيك">
+                    <h3> مچين2 - صورة عادية</h3>
+                    <p>
+                        <span class="old-price">140₪</span> <span class="new-price">100₪</span>
+                    </p>
+                    <label for="phoneType">نوع الهاتف:</label>
+                    <select id="phoneType" name="phoneType" required>
+                     <option value="iPhone11">iphone 11</option>
+                    <option value="iPhone11 pro">iphone 11 pro</option>
+                    <option value="iPhone 11 promax">iphone 11 promax</option>
+                    <option value="iPhone 12">iphone 12</option>
+                    <option value="iPhone 12 pro">iphone 12 pro</option>
+                    <option value="iPhone 12 promax">iphone 12 promax</option>
+                    <option value="iPhone 13">iphone 13</option>
+                    <option value="iPhone 13 pro">iphone 13 pro</option>
+                    <option value="iPhone 13 promax">iphone 13 promax</option>
+                    <option value="iPhone 14">iphone 14</option>
+                    <option value="iPhone 14 pro">iphone 14 pro</option>
+                    <option value="iPhone 14 promax">iphone 14 promax</option>
+                    <option value="iPhone 14 plus">iphone 14 blus </option>
+                    <option value="iPhone 15">iphone 15</option>
+                    <option value="iPhone 15 pro">iphone 15 pro</option>
+                    <option value="iPhone 15 promax">iphone 15 promax</option>
+            
+            
+                    <option value="Samsung 21 ultra">21 ultra</option>
+                    <option value="Samsung 22 ultra">22 ultra</option>
+                    <option value="Samsung 23 ultra">23 ultra</option>
+            
+                    <option value="Samsung A52">A52</option>
+                    <option value="Samsung A53">A53</option>
+                    <option value="Samsung A71">A71</option>
+                    <option value="Samsung A73">A73</option>
+            
+                    </select>
+            
+                    <button onclick="addToCart(' 2 مچين - صورة عادية- ', 100)">أضف إلى السلة</button>
+                </div>
+
 <div class="container">
     <div class="catalog">
         <div class="product">
@@ -601,4 +685,3 @@ window.open(whatsappURL, '_blank');
     </body>
     </html>  
     
-
