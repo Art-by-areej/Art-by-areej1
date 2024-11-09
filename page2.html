@@ -788,46 +788,39 @@
     }
 
     function sendOrder() {
-    // جمع البيانات من النموذج
+    const totalAmount = calculateTotalPrice();
+    alert('إجمالي الطلب مع التوصيل: ' + totalAmount + ' ₪');
+    
+    // باقي أكواد إرسال الطلب
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
-    const additionalNumber = document.getElementById('additionalNumber').value;
+    const additionalNumber = document.getElementById('additionalNumber').value || 'لا يوجد';
     const deliveryOption = document.getElementById('deliveryOption').value;
-    const deliveryArea = document.getElementById('deliveryArea') ? document.getElementById('deliveryArea').value : '';
-    const region = document.getElementById('region').value;
-    const specificDate = document.getElementById('specificDate').value;
-    const note = document.getElementById('note').value;
+    const deliveryArea = document.getElementById('deliveryArea').value || 'غير محدد';
+    const region = document.getElementById('region').value || 'غير محدد';
+    const specificDate = document.getElementById('specificDate').value || 'غير محدد';
+    const phoneType = document.getElementById('phoneType').value || 'لا يوجد';
+    const note = document.getElementById('note').value || 'لا يوجد ملاحظات';
 
-    // تنسيق رسالة WhatsApp
-    let message = `طلب جديد من العميل: 
-اسم العميل: ${name}
-رقم الهاتف: ${phone}
-رقم إضافي: ${additionalNumber}
-طريقة التوصيل: ${deliveryOption}`;
+    let orderDetails = `الاسم: ${name}\nرقم الهاتف: ${phone}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption}\nالمنطقة: ${region}\nتاريخ الاستلام: ${specificDate}\nنوع الهاتف: ${phoneType}\nالمنتجات:\n`;
 
-    if (deliveryOption === 'delivery') {
-        message += `\nمنطقة التوصيل: ${deliveryArea} - ${region}`;
-    }
+    // إضافة تفاصيل المنتجات مع نوع الكفر إذا كان متوفراً
+    cart.forEach(item => {
+        orderDetails += `- ${item.name} - ${item.price}₪`;
+        if (item.phoneCaseType) {  // تحقق إذا كان هناك نوع كفر للمنتج
+            orderDetails += ` (نوع الكفر: ${item.phoneCaseType})`;
+        }
+        orderDetails += "\n";
+    });
 
-    if (specificDate) {
-        message += `\nتاريخ الاستلام: ${specificDate}`;
-    }
+    orderDetails += `ملاحظة: ${note}\n`;
+    orderDetails += `المجموع الكلي: ${totalAmount}₪\n`;
 
-    if (note) {
-        message += `\nملاحظة: ${note}`;
-    }
-
-    
-    // رابط WhatsApp لإرسال الرسالة
-    const whatsappNumber = "972535845120";  // أدخل رقم العمل هنا
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-    // فتح رابط WhatsApp لإرسال الرسالة
-    window.open(whatsappLink, "_blank");
+    const whatsappURL = `https://wa.me/?text=${encodeURIComponent(orderDetails)}`;
+    window.open(whatsappURL, '_blank');
 }
 
-    
-    </script>
+</script>
+
 </body>
 </html>  
