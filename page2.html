@@ -77,16 +77,20 @@
             flex: 1; /* السماح للكتالوج بأخذ المساحة المتبقية */
         }
 
-        /* أنماط المنتجات (Product) */
-        .product {
-            background-color: #ffdbbec0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            flex: 1 1 calc(33.333% - 40px);
-            text-align: center;
-            border: 1px solid #eccdb1;
-        }
+           /* أنماط السلة (Cart) */
+        .cart {
+    position: fixed;
+    top: 5%;
+    right: 0;
+    width: 400px;
+    height: 80%;
+    background-color: #fffffd;
+    border-left: 2px solid #ffffff9e;
+    padding: 20px;
+    display: none;
+    overflow-y: auto;
+    direction: rtl; /* توجيه النص في السلة بالكامل */
+}
 
         .product img {
             width: 100%;
