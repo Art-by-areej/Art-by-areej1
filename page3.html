@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتالوج المنتجات</title>
     <style>
+    
         /* تعيين أنماط الجسم العامة */
         body {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -77,19 +78,6 @@
             flex: 1; /* السماح للكتالوج بأخذ المساحة المتبقية */
         }
 
-        /* أنماط الأسعار (Prices) */
-.old-price {
-    text-decoration: line-through;
-    color: #e74c3c; /* لون أحمر للسعر القديم */
-    margin-right: 10px;
-    font-size: 14px; /* حجم خط أصغر للسعر القديم */
-}
-.new-price {
-    color: #27ae60; /* لون أخضر للسعر الجديد */
-    font-size: 18px; /* حجم خط أكبر للسعر الجديد لجعله بارزاً */
-    font-weight: bold;
-} 
-
         /* أنماط المنتجات (Product) */
         .product {
             background-color: #ffdbbec0;
@@ -140,7 +128,7 @@
     right: 0;
     width: 400px;
     height: 80%;
-    background-color: #f9f9f9;
+    background-color: #9f750074;
     border-left: 2px solid #ccc;
     padding: 20px;
     display: none;
@@ -193,7 +181,7 @@
             right: 10px;
             cursor: pointer;
             font-size: 30px;
-            color: #ffffff;
+            color: #6b4f3b;
             z-index: 1000;
         }
 
@@ -276,6 +264,19 @@
     font-size: 20px; /* حجم أكبر للعناوين الأولى */
     color: #d9534f; /* لون مميز للعنوان الأول */
 }
+/* أنماط الأسعار (Prices) */
+.old-price {
+    text-decoration: line-through;
+    color: #e74c3c; /* لون أحمر للسعر القديم */
+    margin-right: 10px;
+    font-size: 14px; /* حجم خط أصغر للسعر القديم */
+}
+.new-price {
+    color: #27ae60; /* لون أخضر للسعر الجديد */
+    font-size: 18px; /* حجم خط أكبر للسعر الجديد لجعله بارزاً */
+    font-weight: bold;
+}
+
     </style>
 </head>
 
@@ -286,9 +287,9 @@
             الذّكرَياتُ الجَميلَةُ، هِيَ شَيْءٌ فَوْقَ القَلْبِ وَفَوْقَ المَشاعِرِ، لِذلِكَ دَعْها تُرافِقُكَ بِهَيْئَةِ صورَةٍ في كُلِّ مَكانٍ وَزَمانٍ    
         </div>
         <div class="nav">
-            <a href="index.html">الصفحة الرئيسية</a>
             <a href="page2.html">كتالوج البراويز</a>
             <a href="page3.html">كتالوج المنتجات الاخرى</a>
+                <a href="index.html">الصفحة الرئيسية</a>
         </div>
     </header>
    
@@ -391,8 +392,7 @@
             <button onclick="addToCart('   مچين/كاسة/مَحزيك - ', 100)">أضف إلى السلة</button>
         </div>
 
-        <div class="container">
-            <div class="catalog">
+        
                 <div class="product">
                     <img src="مجين كاسة محزيك.jpg" alt="مچين/كاسة/مَحزيك">
                     <h3> مچين2 - صورة عادية</h3>
@@ -433,8 +433,7 @@
                     <button onclick="addToCart(' 2 مچين - صورة عادية- ', 100)">أضف إلى السلة</button>
                 </div>
 
-<div class="container">
-    <div class="catalog">
+
         <div class="product">
             <img src="كاسة رسمة ديجتال رصاصي.jpg" alt="كاسةرسمة ديچتال - رصاصي ">
             <h3> كاسة رسمة ديچتال - رصاصي  </h3>
