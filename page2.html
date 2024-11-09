@@ -249,7 +249,7 @@ footer {
 
         <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
         <div class="welcome-message">
-            إ جْعَلوا  جُدْرانَ بيوتِكُمْ وَزَواياهُ تَتَأَلَّقُ بِمَزيجٍ خاصٍّ مِنْ صُوَرِكُمْ وَلَمَساتِ الأريجِ المُتَمَيِّزَةِ        </div>
+            إ جْعَلوا  جُدْرانَ بيوتِكُمْ وَزَواياهُ تَتَأَلَّقُ بِمَزيجٍ خاصٍّ مِنْ صُوَرِكُمْ وَلَمَساتِ الأريجِ المُتَمَيِّزَةِ        </div>
        
         <div class="nav">
             <a href="index.html">الصفحة الرئيسية</a>
@@ -552,7 +552,7 @@ footer {
    
 
 <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: rgb(0, 0, 0);">
-    <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
+    <p>©️ 2024 جميع الحقوق محفوظة - Art By Areej </p>
     <p>تم تصميم وتطوير الموقع بواسطة</p>
     <P>Design.2023D</P>
 </footer>
@@ -565,7 +565,7 @@ footer {
     const selectedSize = sizeSelect.value;
     
     // إضافة المنتج مع الحجم إلى السلة
-    const cartItem = ${productName} - حجم: ${selectedSize};
+    const cartItem = `${productName} - حجم: ${selectedSize}`;
     const cartList = document.getElementById("cartItems");
     const listItem = document.createElement("li");
     listItem.textContent = cartItem;
@@ -588,7 +588,7 @@ footer {
             // إضافة المنتج إلى السلة
             cart.push(productName);
             updateCartDisplay();
-            alert(${productName} تم إضافته إلى السلة.);
+            alert(`${productName} تم إضافته إلى السلة.`);
         }
     
         // تحديث عرض السلة
@@ -663,7 +663,7 @@ ${cartDetails}`;
     // تحويل النص إلى رابط URL وإرسال الرسالة عبر واتساب
     const encodedMessage = encodeURIComponent(message);
     const phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
-            const whatsappUrl = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
             window.location.href = whatsappUrl;
         }
