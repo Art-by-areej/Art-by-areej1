@@ -1167,7 +1167,7 @@
     const region = document.getElementById('region').value || 'غير محدد';
     const specificDate = document.getElementById('specificDate').value || 'غير محدد';
     const phoneType = document.getElementById('phoneType').value || 'لا يوجد';
-    const number= document.getElementById('number').value || 'لا يوجد';
+    const number= document.getElementById('number').value || 'غير محدد';
 
     const note = document.getElementById('note').value || 'لا يوجد ملاحظات';
 
@@ -1181,6 +1181,17 @@
         }
         orderDetails += "\n";
     });
+
+     ;
+
+    // إضافة تفاصيل المنتجات مع نوع الكفر إذا كان متوفراً
+    cart.forEach(item => {
+        orderDetails += `- ${item.name} - ${item.price}₪`;
+        if (item.number) {  // تحقق إذا كان هناك رقم
+            orderDetails += ` (الرقم للتصميم: ${item.number})`;
+        }
+        orderDetails += "\n";
+    });   
 
     orderDetails += `ملاحظة: ${note}\n`;
     orderDetails += `المجموع الكلي: ${totalAmount}₪\n`;
