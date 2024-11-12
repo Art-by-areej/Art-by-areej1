@@ -120,18 +120,21 @@
         .product button:hover {
             background-color: #5a472a; /* لون مختلف عند التمرير */
         }
-
-    .cart {
-    position: fixed; /* تجعل السلة ثابتة في مكانها */
-    top: 0; /* تجعلها تبدأ من أعلى الصفحة */
-    right: 0; /* تثبيتها على الجانب الأيمن */
-    width: 300px; /* عرض السلة */
-    height: 100%; /* ارتفاع السلة يملأ الصفحة بالكامل */
-    background-color: #fffffd; /* خلفية السلة */
-    border-left: 2px solid #ccc;
+/* أنماط السلة (Cart) */
+        .cart {
+    position: fixed;
+    top: 5%;
+    right: 0;
+    width: 300px;
+    height: 80%;
+    background-color: #fffffd;
+    border-left: 2px solid #ffffff9e;
     padding: 20px;
-    overflow-y: auto; /* السماح بالتمرير داخل السلة في حال كان هناك منتجات كثيرة */
+    display: none;
+    overflow-y: auto;
+    direction: rtl; /* توجيه النص في السلة بالكامل */
 }
+
 
 
 
