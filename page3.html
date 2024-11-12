@@ -682,7 +682,6 @@ function sendOrder() {
     if (!phone.value.trim()) missingFields.push('رقم الهاتف');
     if (!deliveryOption.value) missingFields.push('طريقة التوصيل');
     if (deliveryOption.value === 'delivery' && !deliveryArea.value) missingFields.push('منطقة التوصيل');
-    if (!region.value) missingFields.push('اسم المنطقة');
     if (!specificDate.value) missingFields.push('تاريخ الاستلام');
     if (phoneType && !phoneType.value) missingFields.push('نوع الهاتف');
     if (number && !number.value) missingFields.push('الرقم للتصميم');
