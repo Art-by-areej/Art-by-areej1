@@ -126,7 +126,7 @@
     position: fixed;
     top: 5%;
     right: 0;
-    width: 300px;
+    width: 400px;
     height: 80%;
     background-color: #fffffd;
     border-left: 2px solid #ffffff9e;
@@ -291,10 +291,9 @@
             الذّكرَياتُ الجَميلَةُ، هِيَ شَيْءٌ فَوْقَ القَلْبِ وَفَوْقَ المَشاعِرِ، لِذلِكَ دَعْها تُرافِقُكَ بِهَيْئَةِ صورَةٍ في كُلِّ مَكانٍ وَزَمانٍ    
         </div>
         <div class="nav">
-            
+            <a href="index.html">الصفحة الرئيسية</a>
             <a href="page2.html">كتالوج البراويز</a>
             <a href="page3.html">كتالوج المنتجات الاخرى</a>
-            <a href="index.html">الصفحة الرئيسية</a>
         </div>
     </header>
    
@@ -662,41 +661,76 @@
             const deliveryOption = document.getElementById('deliveryOption').value;
             document.getElementById('deliveryDetails').style.display = deliveryOption === 'delivery' ? 'block' : 'none';
         }
+        function toggleCart() {
+    const cartElement = document.getElementById('cart');
     
+    // التحقق من حالة العرض الحالية وتغييرها بناءً على ذلك
+    if (cartElement.style.display === 'none' || cartElement.style.display === '') {
+        cartElement.style.display = 'block';
+    } else {
+        cartElement.style.display = 'none';
+    }
+}
+
         function sendOrder() {
-        const totalAmount = calculateTotalPrice();
-        alert('سعر الطلبيه: ' + totalAmount + ' ₪');
-        
-        // باقي أكواد إرسال الطلب
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const additionalNumber = document.getElementById('additionalNumber').value || 'لا يوجد';
-        const deliveryOption = document.getElementById('deliveryOption').value;
-        const deliveryArea = document.getElementById('deliveryArea').value || 'غير محدد';
-        const region = document.getElementById('region').value || 'غير محدد';
-        const specificDate = document.getElementById('specificDate').value || 'غير محدد';
-        const phoneType = document.getElementById('phoneType').value || 'لا يوجد';
-        const note = document.getElementById('note').value || 'لا يوجد ملاحظات';
+    // الحصول على عناصر الحقول
+    const name = document.getElementById('name');
+    const phone = document.getElementById('phone');
+    const deliveryOption = document.getElementById('deliveryOption');
+    const deliveryArea = document.getElementById('deliveryArea');
+    const region = document.getElementById('region');
+    const specificDate = document.getElementById('specificDate');
+    const phoneType = document.getElementById('phoneType');
+    const number = document.getElementById('number');
+
+    // متغير لتخزين الحقول الناقصة
+    let missingFields = [];
+
+    // التحقق من كل حقل وإضافته إلى الرسالة إذا كان فارغًا
+    if (!name.value.trim()) missingFields.push('الاسم');
+    if (!phone.value.trim()) missingFields.push('رقم الهاتف');
+    if (!deliveryOption.value) missingFields.push('طريقة التوصيل');
+    if (deliveryOption.value === 'delivery' && !deliveryArea.value) missingFields.push('منطقة التوصيل');
+    if (!region.value) missingFields.push('اسم المنطقة');
+    if (!specificDate.value) missingFields.push('تاريخ الاستلام');
+    if (phoneType && !phoneType.value) missingFields.push('نوع الهاتف');
+    if (number && !number.value) missingFields.push('الرقم للتصميم');
+
+    // إذا كانت هناك حقول ناقصة، عرض رسالة للمستخدم
+    if (missingFields.length > 0) {
+        alert('يرجى تعبئة الحقول التالية: ' + missingFields.join(', '));
+        return; // إيقاف الدالة إذا كانت هناك حقول ناقصة
+    }
+
+    // تابع تنفيذ بقية الكود بعد التأكد من تعبئة جميع الحقول
+    const totalAmount = calculateTotalPrice();
+    alert('إجمالي الطلب مع التوصيل: ' + totalAmount + ' ₪');
     
-        let orderDetails = `الاسم: ${name}\nرقم الهاتف: ${phone}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption}\nالمنطقة: ${region}\nتاريخ الاستلام: ${specificDate}\nنوع الهاتف: ${phoneType}\nالمنتجات:\n`;
-    
-        // إضافة تفاصيل المنتجات مع نوع الكفر إذا كان متوفراً
-        cart.forEach(item => {
-            orderDetails += `- ${item.name} - ${item.price}₪`;
-            if (item.phoneCaseType) {  // تحقق إذا كان هناك نوع كفر للمنتج
-                orderDetails += ` (نوع الكفر: ${item.phoneCaseType})`;
-            }
-            orderDetails += "\n";
-        });
-    
-        orderDetails += `ملاحظة: ${note}\n`;
-        orderDetails += `المجموع الكلي: ${totalAmount}₪\n`;
-    
-        const whatsappPhone = "972535845120"; // استبدل هذا الرقم برقم هاتفك الشخصي
-const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
-window.open(whatsappURL, '_blank');
+    // باقي أكواد إرسال الطلب
+    const additionalNumber = document.getElementById('additionalNumber').value || 'لا يوجد';
+    const note = document.getElementById('note').value || 'لا يوجد ملاحظات';
+
+    let orderDetails = `الاسم: ${name.value}\nرقم الهاتف: ${phone.value}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption.value}\nالمنطقة: ${region.value}\nتاريخ الاستلام: ${specificDate.value}\nالمنتجات:\n`;
+
+    cart.forEach(item => {
+        orderDetails += `- ${item.name} - ${item.price}₪`;
+        if (item.phoneCaseType) {
+            orderDetails += ` (نوع الكفر: ${item.phoneCaseType})`;
         }
-    
+        if (item.designNumber) {
+            orderDetails += ` (الرقم للتصميم: ${item.designNumber})`;
+        }
+        orderDetails += "\n";
+    });
+
+    orderDetails += `ملاحظة: ${note}\nالمجموع الكلي: ${totalAmount}₪\n`;
+
+    // إرسال الطلب عبر واتساب
+    const whatsappPhone = "972535845120";
+    const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
+    window.open(whatsappURL, '_blank');
+}
+
     </script>
     
     </body>
