@@ -125,7 +125,7 @@
     position: fixed;
     top: 5%;
     right: 0;
-    width: 300px;
+    width: 400px;
     height: 80%;
     background-color: #fffffd;
     border-left: 2px solid #ffffff9e;
@@ -235,24 +235,20 @@
             background-color: #fffff6b4f3bf;
         }
 
-
-/* تعديل الأنماط في الشاشات الأصغر */
+        /* تعديل عرض المنتجات لتكون اثنين بجانب بعض في الشاشات الصغيرة */
 @media (max-width: 768px) {
     .product {
-        flex: 1 1 calc(50% - 20px); /* عرض المنتجات بنسبة 50% مع المسافة بينهما */
-        max-width: calc(50% - 20px); /* الحد الأقصى للعرض */
-        margin-bottom: 20px; /* إضافة مسافة بين الأسطر */
+        flex: 1 1 calc(50% - 40px); /* عرض المنتجات بنسبة 50% في الشاشات الأصغر */
+        max-width: calc(50% - 40px); /* لتقليل المسافة بين المنتجات */
     }
 }
 
 @media (max-width: 480px) {
     .product {
-        flex: 1 1 100%; /* عرض المنتج 100% في الشاشات الصغيرة */
-        max-width: 100%;
-        margin-bottom: 20px; /* إضافة مسافة بين الأسطر */
+        flex: 1 1 100%; /* عرض المنتجات 100% في الشاشات الصغيرة جدًا */
+        max-width: 100%; /* عرض المنتج كاملًا في كل صف */
     }
 }
-
 
         .cart-message {
     background-color: #ffefc6; /* خلفية فاتحة للتمييز */
@@ -321,8 +317,8 @@
 
 
     <form id="form">
-          <label for="name">الاسم:</label>
-          <input type="text" id="name" name="name" required>
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
         
         <label for="phone">رقم الهاتف:</label>
         <input type="tel" id="phone" name="phone" required>
@@ -379,7 +375,6 @@
             </p>
             <label for="phoneType">نوع الهاتف:</label>
             <select id="phoneType" name="phoneType" required>
-            <option value="-">-</option>   
              <option value="iPhone11">iphone 11</option>
             <option value="iPhone11 pro">iphone 11 pro</option>
             <option value="iPhone 11 promax">iphone 11 promax</option>
@@ -420,7 +415,6 @@
             </p>
             <label for="phoneType">نوع الهاتف:</label>
             <select id="phoneType" name="phoneType" required>
-            <option value="-">-</option>   
              <option value="iPhone11">iphone 11</option>
             <option value="iPhone11 pro">iphone 11 pro</option>
             <option value="iPhone 11 promax">iphone 11 promax</option>
@@ -538,9 +532,8 @@
         <div class="product">
             <img src="دمج صور ديجتال رصاصي3 A4.jpg" alt="رسمة ديچتال - رصاصي حجم A4 ">
             <h3>رسمة ديچتال - رصاصي </h3>
-                <p>  A4 حجم</p>
             <p> 80₪</p>
-        
+            <p>  A4 حجم</p>
 
             <button onclick="addToCart('A4برواز ديجتال رصاصي حجم ',80)">أضف إلى السلة</button>
         </div>
@@ -548,16 +541,16 @@
         <div class="product">
             <img src="دمج صور ديجتال رصاصي3 A.jpg" alt="رسم ديجتال - رصاصي حجم A3 ">
             <h3>رسم ديجتال - رصاصي  </h3>
-            <P>A3 حجم</P>
             <p>  100₪</p>
+            <P>A3 حجم</P>
             <button onclick="addToCart(' رسم ديچتال - رصاصي', 100)">أضف إلى السلة</button>
         </div>
 
   <div class="product">
             <img src="دمج رصاصي A4.jpg" alt="برواز ديجتال رصاصي A3 ">
             <h3>  دمج صور برسمة ديچتال - رصاصي </h3>
-        <P>A4 حجم</P>
             <p>  100₪</p>
+            <P>A4 حجم</P>
             <button onclick="addToCart('  دمج صور برسمة ديچتال - رصاصي  ', 100)">أضف إلى السلة</button>
         </div>
 
@@ -565,26 +558,24 @@
         <div class="product">
             <img src="دمج صور ديجتال رصاصي2.jpg" alt="برواز ديجتال رصاصي A3 ">
             <h3>  دمج صور برسمة ديچتال - رصاصي </h3>
-            <P>A3 حجم</P>
             <p>  120₪</p>
+            <P>A3 حجم</P>
             <button onclick="addToCart('دمج صور ديجتال رصاصيA3' , 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="ديجتال ملون A4.jpg" alt=" رسم ديجتال - ملوّن حجم A4">
             <h3>رسم ديجتال - ملوّن </h3>
-            <P>A4 حجم</P
             <p>  100₪</p>
-            
+            <P>A4 حجم</P>
             <button onclick="addToCart('رسم ديجتال - ملوّن حجم A4', 100)">أضف إلى السلة</button>
         </div>
 
             <div class="product">
                 <img src="رسمة ديجتال ملون 1 A3.jpg" alt="رسم ديجتال - ملوّن حجم A3 ">
                 <h3> رسم ديجتال - ملوّن </h3>
-                            <P>A3 حجم</P>
-
                 <p>  120₪</p>
+            <P>A3 حجم</P>
                 <button onclick="addToCart('رسم ديجتال - ملوّن حجم A3' , 120)">أضف إلى السلة</button>
             </div>
 
@@ -592,16 +583,16 @@
         <div class="product">
             <img src="دمج ملون A4.jpg" alt=" دمج صور برسمة ديچتال - ملون حجم A4">
               <h3>دمج صور برسمة ديچتال - ملون</h3>
-                        <P>A4 حجم</P>
               <p>  120₪</p>
+            <P>A4 حجم</P>
               <button onclick="addToCart(' دمج صور برسمة ديچتال ملون A4', 120)">أضف إلى السلة</button>
             </div>
 
 <div class="product">
     <img src="A3 دمج ملون.jpg" alt=" دمج صور برسمة ديچتال - ملون حجم A3">
       <h3>دمج صور برسمة ديچتال - ملون</h3>
-       <P>A3 حجم</P> 
-    <p>  140₪</p>
+      <p>  140₪</p>
+      <P>A3 حجم</P>
 <button onclick="addToCart('  دمج صور برسمة ديچتال ملونA3 ', 140)">أضف إلى السلة</button>
 </div>
       
@@ -609,8 +600,9 @@
    <div class="product">
    <img src="تصميم العمر الرقم A3.jpg" alt="  تصميم الرَقم/العُمر- حجم A3  ">
    <h3>تصميم الرَقم/العُمر  </h3>
-       <P>A3 حجم</P>
    <p>  120₪</p>
+<P>A3 حجم</P>
+
 <label for="number">الرقم للتَصميم</label>
 
             <select id="number" name="number" required>
@@ -682,8 +674,8 @@
  <div class="product">
   <img src="A4 تصميم العمر الرقم.jpg" alt="  تصميم الرَقم/العُمر- حجم A4 ">
  <h3>تصميم الرَقم/العُمر  </h3>
-      <P>A4 حجم</P>
  <p>  100₪</p>
+ <P>A4 حجم</P>
  <label for="number">الرقم للتَصميم</label>
 
             <select id="number" name="number" required>
@@ -756,8 +748,8 @@
    <div class="product">
     <img src="تصميم العمر الرقم A3 15.jpg" alt="تصميم الرَقم/العُمر- حجم A3 ">
      <h3>تصميم الرَقم/العُمر </h3>
-            <P>A3 حجم</P>
      <p>  120₪</p>
+     <P>A3 حجم</P>
      <label for="number">الرقم للتَصميم</label>
 
             <select id="number" name="number" required>
@@ -830,8 +822,8 @@
    <div class="product">
     <img src="A4 تصميم العمر الرقم.jpg 2.jpg" alt="تصميم الرَقم/العُمر- حجم A4 ">
     <h3>تصميم الرَقم/العُمر </h3>
-           <P>A4 حجم</P>   
     <p>  100₪</p>
+    <P>A4 حجم</P>   
 
     <label for="number">الرقم للتَصميم</label>
 
@@ -906,48 +898,48 @@
         <div class="product">
             <img src=" فكرة الاريج باضافة رسم ديجتال2.jpg" alt="برواز ديجتال رصاصي A3 ">
             <h3>  تصميم فكرة الأريج باضافة رسمة ديجتال </h3>
-                        <P>A3حجم</P>    
             <p>  140₪</p>
+            <P>A3حجم</P>    
          <button onclick="addToCart(' 1 تصميم فكرة الأريج باضافة رسمة ديجتال  A3 ', 140)">أضف إلى السلة</button>
         </div>
         
         <div class="product">
             <img src="رسمة فكرة الاريج باضافة رسم ديجتال3.jpg" alt="برواز ديجتال رصاصي A4 ">
             <h3> تصميم فكرة الأريج باضافة رسمة ديجتال </h3>
-                        <P>A4 حجم</P>  
             <p>  120₪</p>
+            <P>A4 حجم</P>  
              <button onclick="addToCart(' 2 تصميم فكرة الأريج باضافة رسمة ديجتال A4  ', 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="فكرة الاريج A3.jpg" alt="فكرةالاريج1">
             <h3>تصميم فكرة الأريج 1 </h3>
-                        <P>A3 حجم</P>      
             <p>  120₪</p>
+            <P>A3 حجم</P>      
                   <button onclick="addToCart(' A3 تصميم فكرة الأريج باضافة رسمة ديجتال -  ', 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="فكرة الاريج A4.jpg" alt="فكرة الاريج1 ">
             <h3>تصميم فكرة الأريج 1 </h3>
-           <P>A4 حجم</P>         
-  <p>  100₪</p>
+            <p>  100₪</p>
+            <P>A4 حجم</P>         
      <button onclick="addToCart('1 الأريج باضافة رسمة ديجتال A4 ', 100)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="فكرة الاريج 2 A3.jpg" alt="فكرةالاريج2 ">
             <h3>تصميم  فكرة الأريج 2</h3>
-             <P>A3 حجم</P>    
             <p>  120₪</p>
+            <P>A3 حجم</P>         
       <button onclick="addToCart(' تصميم فكرة الاريج 2  A3 ', 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="A4 فكرة الاريج2.jpg" alt="فكرةالاريج2 ">
             <h3>تصميم  فكرة الأريج 2</h3>
-           <P>A4 حجم</P>  
             <p>  100₪</p>
+            <P>A4 حجم</P>  
           <button onclick="addToCart(' تصميم فكرة الاريج 2  A4 ', 100)">أضف إلى السلة</button>
         </div>
 
@@ -956,40 +948,40 @@
         <div class="product">
             <img src="خريطة النجومA3.jpg" alt="A3Sky map-خريطة النجوم">
             <h3>Sky map-خريطة النجوم</h3>
-             <P>A3 حجم</P>      
             <p>  150₪</p>
-          <button onclick="addToCart(' A3 Sky map-خريطة النجوم-  ', 150)">أضف إلى السلة</button>
+            <P>A3 حجم</P>      
+                  <button onclick="addToCart(' A3 Sky map-خريطة النجوم-  ', 150)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="خريطة النجوم.jpg" alt="A4Sky map-خريطة النجوم">
             <h3>Sky map-خريطة النجوم</h3>
-              <P>A4 حجم</P>  
             <p>  120₪</p>
+            <P>A4 حجم</P>  
              <button onclick="addToCart(' A4 Sky map-خريطة النجوم-  ', 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="تصميم المولود A4.jpg" alt=" تصميم المولود - حجم A4">
             <h3>تصميم المولود  </h3>
-              <P>A4 حجم</P>          
             <p>  80₪</p>
+            <P>A4 حجم</P>          
               <button onclick="addToCart('1 تصميم المولود A4 ', 80)">أضف إلى السلة</button>
             </div>
 
             <div class="product">
                 <img src="تصميم المولود A3.jpg" alt="تصميم المولود - حجم A3">
                 <h3>تصميم المولود  </h3>
-                     <P>A3 حجم</P> 
                 <p>  100₪</p>
+                <P>A3 حجم</P> 
           <button onclick="addToCart(' 2 تصميم المولود A3 ', 100)">أضف إلى السلة</button>
             </div>
 
                 <div class="product">
                     <img src="تصميم مميز A3.jpg" alt="َتصميم مُميّز1 A3">
                     <h3>تَصميم مُميّز </h3>
-                     <P>A3 حجم</P>  
                     <p>  100₪</p>
+                    <P>A3 حجم</P>  
                 <button onclick="addToCart('1 تَصميم مُميّز A3', 100)">أضف إلى السلة</button>
                 </div>
     
@@ -997,48 +989,48 @@
                 <div class="product">
                     <img src="تصميم مميز4.jpg" alt="َتصميم مُميّز2 A3">
                     <h3>تَصميم مُميّز </h3>
-                      <P>A3 حجم</P> 
                     <p>  100₪</p>
+                    <P>A3 حجم</P> 
                   <button onclick="addToCart('2تَصميم مُميّز A3', 100)">أضف إلى السلة</button>
                     </div>
 
                     <div class="product">
                         <img src="تصميم مميز جديد 2.jpg" alt="َتصميم مُميّز3 A3">
                         <h3>تَصميم مُميّز </h3>
-                         <P>A3حجم</P>            
                         <p>  100₪</p>
+                        <P>A3حجم</P>            
                      <button onclick="addToCart('3 تَصميم مُميّز A3', 100)">أضف إلى السلة</button>
                     </div>
 
                         <div class="product">
                             <img src="تصميم مميز جديد.jpg" alt="َتصميم مُميّز4 A3">
                             <h3>تَصميم مُميّز </h3>
-                    <P>A3 حجم</P>   
                             <p>  100₪</p>
+                            <P>A3 حجم</P>   
                            <button onclick="addToCart('4 تَصميم مُميّز A3', 100)">أضف إلى السلة</button>
                         </div>
 
                              <div class="product">
                                 <img src="تصميم مميز3 a3.jpg" alt="َتصميم مُميّز5 A3">
                                 <h3>تَصميم مُميّز </h3>
-                                  <P>A3 حجم</P> 
                                 <p>  80₪</p>
+                                <P>A3 حجم</P> 
                             <button onclick="addToCart(' 5 تَصميم مُميّز A3', 80)">أضف إلى السلة</button>
                             </div>
 
          <div class="product">
         <img src="a3 تصميم مميز 4.jpg" alt="َتصميم مُميّز6 A3">
      <h3>تَصميم مُميّز </h3>
-  <P>A3 حجم</P> 
-    <p>  80₪</p> 
+    <p>  80₪</p>
+    <P>A3حجم</P>  
      <button onclick="addToCart(' 6 تَصميم مُميّز A3', 80)">أضف إلى السلة</button>
      </div>
                         
         <div class="product">
             <img src="تصميم صوره باركودa3.jpg" alt="تصميم صورة بباركود اغنية ">
             <h3>تصميم صورة بباركود اغنية   </h3>
-             <P>60₪</P>
             <p>  حجم A3  </p>
+            <P>60₪</P>
             <button onclick="addToCart(' 1 تصميم صورة A3بباركود اغنية ', 60)">أضف إلى السلة</button>
         </div>
 
@@ -1046,8 +1038,8 @@
             <div class="product">
                 <img src="تصميم صوره باركودa4.jpg" alt="تصميم صورة بباركود اغنية ">
                 <h3>تصميم صورة بباركود اغنية </h3>
-                 <P>50₪ </P>
                 <p>  A4حجم  </p>
+                <P>50₪ </P>
                 <button onclick="addToCart('2 تصميم صورةA4 بباركود اغنية ', 50)">أضف إلى السلة</button>
             </div>
 
@@ -1056,16 +1048,16 @@
         <div class="product">
             <img src="طباعة صور.jpg" alt=" طِباعة صور بجودة عالية">
             <h3>  طِباعة صور بجودة عالية</h3>
-             <P>A4 حجم</P> 
             <p>  50₪</p>
+            <P>A4 حجم</P> 
           <button onclick="addToCart(' طِباعة صورA4 بجودة عالية', 50)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="طباعة صور A3.jpg" alt=" A3طِباعة صور بجودة عالية">
             <h3>  طِباعة صور بجودة عالية</h3>
-            <P>A3 حجم</P>
-            <p>  70₪</p>          
+            <p>  70₪</p>
+            <P>A3 حجم</P>          
             <button onclick="addToCart('طِباعة صورA3 بجودة عالية', 70)">أضف إلى السلة</button>
         </div>
 
@@ -1084,116 +1076,136 @@
 </div>
 
 <script>
-    let cart = []; // السلة
+      let cart = [];
 
-    function addToCart(productName, price) {
+// تحميل السلة من Local Storage عند تحميل الصفحة
+window.onload = function() {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCart();
+    }
+};
+
+function addToCart(productName, price) {
     cart.push({ name: productName, price: price });
     alert(productName + ' أُضيف إلى السلة!');
+    localStorage.setItem('cart', JSON.stringify(cart));
     updateCart();
 }
 
+function updateCart() {
+    const cartItems = document.getElementById('cartItems');
+    cartItems.innerHTML = '';
 
-    function updateCart() {
-        const cartItems = document.getElementById('cartItems');
-        cartItems.innerHTML = ''; // تفريغ السلة
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price}₪`;
 
-        cart.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = `${item.name} - ${item.price}₪`;
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'إزالة';
-            removeButton.classList.add('remove-button');
-            removeButton.onclick = () => removeFromCart(item.name);
-            li.appendChild(removeButton);
-            cartItems.appendChild(li);
-        });
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'إزالة';
+        removeButton.onclick = () => removeFromCart(item.name);
+        
+        li.appendChild(removeButton);
+        cartItems.appendChild(li);
+    });
 
-        document.getElementById('cartCount').textContent = cart.length;
-        document.getElementById('totalPrice').textContent = 'المجموع الكلي: ' + calculateTotalPrice() + ' ₪';
+    document.getElementById('cartCount').textContent = cart.length;
+}
+
+function removeFromCart(productName) {
+    cart = cart.filter(item => item.name !== productName);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCart();
+}
+
+function toggleCart() {
+    const cartElement = document.getElementById('cart');
+    cartElement.style.display = (cartElement.style.display === 'none' || cartElement.style.display === '') ? 'block' : 'none';
+}
+
+function toggleOrderForm() {
+    const orderForm = document.getElementById('orderForm');
+    orderForm.style.display = (orderForm.style.display === 'none') ? 'block' : 'none';
+}
+
+function toggleDeliveryDetails() {
+    const deliveryOption = document.getElementById('deliveryOption').value;
+    document.getElementById('deliveryDetails').style.display = (deliveryOption === 'delivery') ? 'block' : 'none';
+}
+
+function calculateTotalPrice() {
+    let total = cart.reduce((sum, item) => sum + item.price, 0);
+    const deliveryOption = document.getElementById('deliveryOption').value;
+    const deliveryArea = document.getElementById('deliveryArea').value;
+
+    if (deliveryOption === 'delivery') {
+        if (deliveryArea === 'north') total += 50;
+        else if (deliveryArea === 'south') total += 60;
+        else if (deliveryArea === 'triangle') total += 40;
     }
 
-    function calculateTotalPrice() {
-        let total = cart.reduce((total, item) => total + item.price, 0);
+    return total;
+}
 
-        const deliveryOption = document.getElementById('deliveryOption').value;
-        const deliveryArea = document.getElementById('deliveryArea').value;
+function sendOrder() {
+    // الحصول على عناصر الحقول
+    const name = document.getElementById('name');
+    const phone = document.getElementById('phone');
+    const deliveryOption = document.getElementById('deliveryOption');
+    const deliveryArea = document.getElementById('deliveryArea');
+    const region = document.getElementById('region');
+    const specificDate = document.getElementById('specificDate');
+    const phoneType = document.getElementById('phoneType');
+    const number = document.getElementById('number');
 
-        // إضافة تكلفة التوصيل بناءً على المنطقة
-        if (deliveryOption === 'delivery') {
-            if (deliveryArea === 'north') {
-                total += 50;
-            } else if (deliveryArea === 'south') {
-                total += 60;
-            } else if (deliveryArea === 'triangle') {
-                total += 40;
-            }
-        }
+    // متغير لتخزين الحقول الناقصة
+    let missingFields = [];
 
-        return total;
+    // التحقق من كل حقل وإضافته إلى الرسالة إذا كان فارغًا
+    if (!name.value.trim()) missingFields.push('الاسم');
+    if (!phone.value.trim()) missingFields.push('رقم الهاتف');
+    if (!deliveryOption.value) missingFields.push('طريقة التوصيل');
+    if (deliveryOption.value === 'delivery' && !deliveryArea.value) missingFields.push('منطقة التوصيل');
+    if (!region.value) missingFields.push('اسم المنطقة');
+    if (!specificDate.value) missingFields.push('تاريخ الاستلام');
+    if (phoneType && !phoneType.value) missingFields.push('نوع الهاتف');
+    if (number && !number.value) missingFields.push('الرقم للتصميم');
+
+    // إذا كانت هناك حقول ناقصة، عرض رسالة للمستخدم
+    if (missingFields.length > 0) {
+        alert('يرجى تعبئة الحقول التالية: ' + missingFields.join(', '));
+        return; // إيقاف الدالة إذا كانت هناك حقول ناقصة
     }
 
-    function toggleCart() {
-        if (cart.length > 0) {
-            const cartElement = document.getElementById('cart');
-            cartElement.style.display = cartElement.style.display === 'none' ? 'block' : 'none';
-        } else {
-            alert("يرجى إضافة منتجات إلى السلة أولاً.");
-        }
-    }
-
-    function toggleOrderForm() {
-        const orderForm = document.getElementById('orderForm');
-        orderForm.style.display = orderForm.style.display === 'none' ? 'block' : 'none';
-    }
-
-    function removeFromCart(productName) {
-        cart = cart.filter(item => item.name !== productName);
-        updateCart();
-    }
-
-    function toggleDeliveryDetails() {
-        const deliveryOption = document.getElementById('deliveryOption').value;
-        document.getElementById('deliveryDetails').style.display = deliveryOption === 'delivery' ? 'block' : 'none';
-    }
-
-    function sendOrder() {
+    // تابع تنفيذ بقية الكود بعد التأكد من تعبئة جميع الحقول
     const totalAmount = calculateTotalPrice();
-    alert('سعر الطلبيه: ' + totalAmount + ' ₪');
+    alert('إجمالي الطلب مع التوصيل: ' + totalAmount + ' ₪');
     
     // باقي أكواد إرسال الطلب
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
     const additionalNumber = document.getElementById('additionalNumber').value || 'لا يوجد';
-    const deliveryOption = document.getElementById('deliveryOption').value;
-    const deliveryArea = document.getElementById('deliveryArea').value || 'غير محدد';
-    const region = document.getElementById('region').value || 'غير محدد';
-    const specificDate = document.getElementById('specificDate').value || 'غير محدد';
-    const number = document.getElementById('number').value || 'لا يوجد';
-    const phoneType = document.getElementById('phoneType').value || 'لا يوجد';
     const note = document.getElementById('note').value || 'لا يوجد ملاحظات';
 
-    let orderDetails = `الاسم: ${name}\nرقم الهاتف: ${phone}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption}\nالمنطقة: ${region}\nتاريخ الاستلام: ${specificDate}\nنوع الهاتف: ${phoneType}\nالرقم للتصميم: ${number}\nالمنتجات:\n`;
+    let orderDetails = `الاسم: ${name.value}\nرقم الهاتف: ${phone.value}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption.value}\nالمنطقة: ${region.value}\nتاريخ الاستلام: ${specificDate.value}\nالمنتجات:\n`;
 
-    // إضافة تفاصيل المنتجات مع نوع الكفر إذا كان متوفراً
     cart.forEach(item => {
         orderDetails += `- ${item.name} - ${item.price}₪`;
-        if (item.phoneCaseType) {  // تحقق إذا كان هناك نوع كفر للمنتج
+        if (item.phoneCaseType) {
             orderDetails += ` (نوع الكفر: ${item.phoneCaseType})`;
+        }
+        if (item.designNumber) {
+            orderDetails += ` (الرقم للتصميم: ${item.designNumber})`;
         }
         orderDetails += "\n";
     });
 
-     ;
+    orderDetails += `ملاحظة: ${note}\nالمجموع الكلي: ${totalAmount}₪\n`;
 
-
-    orderDetails += `ملاحظة: ${note}\n`;
-    orderDetails += `المجموع الكلي: ${totalAmount}₪\n`;
-
- 
-    const whatsappPhone = "972535845120"; // استبدل هذا الرقم برقم هاتفك الشخصي
-const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
-window.open(whatsappURL, '_blank');
-        }
+    // إرسال الطلب عبر واتساب
+    const whatsappPhone = "972535845120";
+    const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
+    window.open(whatsappURL, '_blank');
+}
 
 </script>
 
