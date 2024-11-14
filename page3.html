@@ -121,7 +121,7 @@
             background-color: #5a472a; /* لون مختلف عند التمرير */
         }
 .cart {
-    position: absolute; /* تم تغييرها من fixed إلى absolute */
+    position:fixed; /* تم تغييرها من fixed إلى absolute */
     top: 5%;
     right: 0;
     width: 300px;
@@ -131,6 +131,7 @@
     padding: 20px;
     overflow-y: auto;
     direction: rtl; /* توجيه النص في السلة بالكامل */
+    display: none;
 }
 
 
@@ -589,54 +590,71 @@
         🛒 <span id="cartCount" style="font-weight: bold; color: #e74c3c;">0</span> <!-- عنصر لعرض عدد المنتجات -->
     </div>
     
+    <div id="cart" style="display: none;">
+        <!-- محتوى السلة -->
+    </div>
+    
     <script>
-          let cart = [];
-
-// تحميل السلة من Local Storage عند تحميل الصفحة
-window.onload = function() {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-        updateCart();
-    }
-};
-
-function addToCart(productName, price) {
-    cart.push({ name: productName, price: price });
-    alert(productName + ' أُضيف إلى السلة!');
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCart();
-}
-
-function updateCart() {
-    const cartItems = document.getElementById('cartItems');
-    cartItems.innerHTML = '';
-
-    cart.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.price}₪`;
-
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'إزالة';
-        removeButton.onclick = () => removeFromCart(item.name);
-        
-        li.appendChild(removeButton);
-        cartItems.appendChild(li);
-    });
-
-    document.getElementById('cartCount').textContent = cart.length;
-}
-
-function removeFromCart(productName) {
-    cart = cart.filter(item => item.name !== productName);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCart();
-}
-
-function toggleCart() {
+        let cart = [];
+    
+        // تحميل السلة من Local Storage عند تحميل الصفحة
+        window.onload = function() {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCart();
+            }
+        };
+    
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            alert(productName + ' أُضيف إلى السلة!');
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+    
+            // إظهار السلة عند إضافة أول منتج
+            if (cart.length === 1) {
+                document.getElementById('cart').style.display = 'block';
+            }
+        }
+    
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+    
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - ${item.price}₪`;
+    
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'إزالة';
+                removeButton.onclick = () => removeFromCart(item.name);
+                
+                li.appendChild(removeButton);
+                cartItems.appendChild(li);
+            });
+    
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+    
+        function removeFromCart(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+    
+            // إخفاء السلة إذا أصبحت فارغة
+            if (cart.length === 0) {
+                document.getElementById('cart').style.display = 'none';
+            }
+        }
+        function toggleCart() {
     const cartElement = document.getElementById('cart');
-    cartElement.style.display = (cartElement.style.display === 'none' || cartElement.style.display === '') ? 'block' : 'none';
+    if (cart.length > 0) { // عرض السلة فقط إذا كانت تحتوي على منتجات
+        cartElement.style.display = (cartElement.style.display === 'none' || cartElement.style.display === '') ? 'block' : 'none';
+    }
 }
+
+    
 
 function toggleOrderForm() {
     const orderForm = document.getElementById('orderForm');
