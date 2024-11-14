@@ -120,7 +120,7 @@
             background-color: #5a472a; /* لون مختلف عند التمرير */
         }
 .cart {
-    position: absolute; /* تم تغييرها من fixed إلى absolute */
+    position:fixed;/* تم تغييرها من fixed إلى absolute */
     top: 5%;
     right: 0;
     width: 300px;
@@ -130,6 +130,7 @@
     padding: 20px;
     overflow-y: auto;
     direction: rtl; /* توجيه النص في السلة بالكامل */
+    display: none;
 }
 
 
@@ -1070,53 +1071,65 @@
 </div>
 
 <script>
-      let cart = [];
+    let cart = [];
 
-// تحميل السلة من Local Storage عند تحميل الصفحة
-window.onload = function() {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
+    // تحميل السلة من Local Storage عند تحميل الصفحة
+    window.onload = function() {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+            cart = JSON.parse(savedCart);
+            updateCart();
+        }
+    };
+
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: price });
+        alert(productName + ' أُضيف إلى السلة!');
+        localStorage.setItem('cart', JSON.stringify(cart));
         updateCart();
+
+        // إظهار السلة عند إضافة أول منتج
+        if (cart.length === 1) {
+            document.getElementById('cart').style.display = 'block';
+        }
     }
-};
 
-function addToCart(productName, price) {
-    cart.push({ name: productName, price: price });
-    alert(productName + ' أُضيف إلى السلة!');
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCart();
-}
+    function updateCart() {
+        const cartItems = document.getElementById('cartItems');
+        cartItems.innerHTML = '';
 
-function updateCart() {
-    const cartItems = document.getElementById('cartItems');
-    cartItems.innerHTML = '';
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = `${item.name} - ${item.price}₪`;
 
-    cart.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.price}₪`;
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'إزالة';
+            removeButton.onclick = () => removeFromCart(item.name);
+            
+            li.appendChild(removeButton);
+            cartItems.appendChild(li);
+        });
 
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'إزالة';
-        removeButton.onclick = () => removeFromCart(item.name);
-        
-        li.appendChild(removeButton);
-        cartItems.appendChild(li);
-    });
+        document.getElementById('cartCount').textContent = cart.length;
+    }
 
-    document.getElementById('cartCount').textContent = cart.length;
-}
+    function removeFromCart(productName) {
+        cart = cart.filter(item => item.name !== productName);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
 
-function removeFromCart(productName) {
-    cart = cart.filter(item => item.name !== productName);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCart();
-}
-
-function toggleCart() {
-    const cartElement = document.getElementById('cart');
+        // إخفاء السلة إذا أصبحت فارغة
+        if (cart.length === 0) {
+            document.getElementById('cart').style.display = 'none';
+        }
+    }
+    function toggleCart() {
+const cartElement = document.getElementById('cart');
+if (cart.length > 0) { // عرض السلة فقط إذا كانت تحتوي على منتجات
     cartElement.style.display = (cartElement.style.display === 'none' || cartElement.style.display === '') ? 'block' : 'none';
 }
+}
+
 
 function toggleOrderForm() {
     const orderForm = document.getElementById('orderForm');
