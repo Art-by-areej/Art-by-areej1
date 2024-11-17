@@ -395,7 +395,7 @@
     
             </select>
     
-            <button onclick="addToCart('   مچين/كاسة/مَحزيك - ', 100 ,'phoneType1')">أضف إلى السلة</button>
+            <button onclick="addToCart('   مچين/كاسة/مَحزيك  ', 100 ,'phoneType1')">أضف إلى السلة</button>
         </div>
 
         
@@ -609,15 +609,17 @@
             }
         };
     
-        function addToCart(productName, price, phoneTypeId) {
-    const phoneType = document.getElementById(phoneTypeId)?.value;
-    
-  
+        function addToCart(productName, price, designNumberId) {
+    // الحصول على قيمة رقم التصميم
+    const designNumber = document.getElementById(designNumberId)?.value;
 
+   
+
+    // إضافة المنتج إلى السلة
     cart.push({
         name: productName,
         price: price,
-        phoneCaseType: phoneType
+        designNumber: designNumber  // رقم التصميم فقط هنا
     });
 
     alert(`${productName} أُضيف إلى السلة!`);
@@ -629,15 +631,22 @@
     }
 }
 
-    
+
+
 function updateCart() {
     const cartItems = document.getElementById('cartItems');
     cartItems.innerHTML = '';
 
     cart.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.price}₪ - نوع الهاتف: ${item.phoneCaseType}`;
-        
+        li.textContent = `${item.name} - ${item.price}₪`;
+
+        // عرض رقم التصميم إذا كان موجودًا
+        if (item.designNumber) {
+            li.textContent += ` -  ${item.designNumber}`;
+        }
+       
+
         const removeButton = document.createElement('button');
         removeButton.textContent = 'إزالة';
         removeButton.onclick = () => removeFromCart(item.name);
@@ -648,7 +657,6 @@ function updateCart() {
 
     document.getElementById('cartCount').textContent = cart.length;
 }
-
 
         function removeFromCart(productName) {
             cart = cart.filter(item => item.name !== productName);
