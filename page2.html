@@ -1220,10 +1220,10 @@ function sendOrder() {
     cart.forEach(item => {
         orderDetails += `- ${item.name} - ${item.price}₪`;
         if (item.phoneCaseType) {
-            orderDetails += ` (نوع الكفر: ${item.phoneCaseType})`;
+            orderDetails += `  ${item.phoneCaseType})`;
         }
         if (item.designNumber) {
-            orderDetails += ` (الرقم للتصميم: ${item.designNumber})`;
+            orderDetails += ` : ${item.designNumber})`;
         }
         orderDetails += "\n";
     });
