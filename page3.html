@@ -363,8 +363,9 @@
             <p>
                 <span class="old-price">130₪</span> <span class="new-price">100₪</span>
             </p>
-            <label for="phoneType">نوع الهاتف:</label>
-            <select id="phoneType" name="phoneType" required>
+            <label for="phoneType1">نوع الهاتف:</label>
+            <select id="phoneType1" name="phoneType2" required>
+            <option value="" disabled selected>اختر نوع الهاتف</option>
              <option value="iPhone11">iphone 11</option>
             <option value="iPhone11 pro">iphone 11 pro</option>
             <option value="iPhone 11 promax">iphone 11 promax</option>
@@ -394,7 +395,7 @@
     
             </select>
     
-            <button onclick="addToCart('   مچين/كاسة/مَحزيك - ', 100)">أضف إلى السلة</button>
+            <button onclick="addToCart('   مچين/كاسة/مَحزيك - ', 100 ,'phoneType1')">أضف إلى السلة</button>
         </div>
 
         
@@ -404,8 +405,9 @@
                     <p>
                         <span class="old-price">140₪</span> <span class="new-price">100₪</span>
                     </p>
-                    <label for="phoneType">نوع الهاتف:</label>
-                    <select id="phoneType" name="phoneType" required>
+                    <label for="phoneType2">نوع الهاتف:</label>
+                    <select id="phoneType2" name="phoneType2" required>
+                    <option value="" disabled selected>اختر نوع الهاتف</option>
                      <option value="iPhone11">iphone 11</option>
                     <option value="iPhone11 pro">iphone 11 pro</option>
                     <option value="iPhone 11 promax">iphone 11 promax</option>
@@ -435,7 +437,7 @@
             
                     </select>
             
-                    <button onclick="addToCart(' 2 مچين - صورة عادية- ', 100)">أضف إلى السلة</button>
+                    <button onclick="addToCart(' 2 مچين - صورة عادية- ', 100 ,'phoneType1')">أضف إلى السلة</button>
                 </div>
 
 
@@ -476,9 +478,9 @@
             <img src="كفر صوره عاديه.jpg" alt="كڤر/مچين تلفون - صورة عادية ٧٠₪">
             <h3>كڤر/مچين تلفون - صورة عادية </h3>
             <p>70₪ </p>
-
-            <label for="phoneType">نوع الهاتف:</label>
-        <select id="phoneType" name="phoneType" required>
+            <label for="phoneType3">نوع الهاتف:</label>
+             <select id="phoneType3" name="phoneType3" required>
+         <option value="" disabled selected>اختر نوع الهاتف</option>
          <option value="iPhone11">iphone 11</option>
         <option value="iPhone11 pro">iphone 11 pro</option>
         <option value="iPhone 11 promax">iphone 11 promax</option>
@@ -508,15 +510,16 @@
 
         </select>
 
-            <button onclick="addToCart(' كڤر/مچين تلفون - صورة عادية -  ', 70)">أضف إلى السلة</button>
+            <button onclick="addToCart(' كڤر/مچين تلفون - صورة عادية -  ', 70 ,'phoneType3')">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="كفر رسم  ديجتال.jpg" alt="كڤر /مچين تلفون - رسم ديچتال ١٠٠₪">
             <h3>كڤر /مچين تلفون - رسم ديچتال </h3>
             <p> 100₪</p>
-            <label for="coverType">اختر نوع الكفر:</label>
-            <select id="coverType" class="cover-type">
+            <label for="phoneType4">نوع الهاتف:</label>
+            <select id="phoneType4" name="phoneType4" required>
+        <option value="" disabled selected>اختر نوع الهاتف</option>
             <option value="iPhone11">iphone 11</option>
         <option value="iPhone11 pro">iphone 11 pro</option>
         <option value="iPhone 11 promax">iphone 11 promax</option>
@@ -544,7 +547,7 @@
         <option value="Samsung A71">A71</option>
         <option value="Samsung A73">A73</option>
     </select>
-            <button onclick="addToCart('كڤر /مچين تلفون - رسم ديچتال', 100)">أضف إلى السلة</button>
+            <button onclick="addToCart('كڤر /مچين تلفون - رسم ديچتال', 100,'phoneType4')">أضف إلى السلة</button>
         </div>
 
 
@@ -606,37 +609,47 @@
             }
         };
     
-        function addToCart(productName, price) {
-            cart.push({ name: productName, price: price });
-            alert(productName + ' أُضيف إلى السلة!');
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCart();
+        function addToCart(productName, price, phoneTypeId) {
+    const phoneType = document.getElementById(phoneTypeId)?.value;
     
-            // إظهار السلة عند إضافة أول منتج
-            if (cart.length === 1) {
-                document.getElementById('cart').style.display = 'block';
-            }
-        }
+  
+
+    cart.push({
+        name: productName,
+        price: price,
+        phoneCaseType: phoneType
+    });
+
+    alert(`${productName} أُضيف إلى السلة!`);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCart();
+
+    if (cart.length === 1) {
+        document.getElementById('cart').style.display = 'block';
+    }
+}
+
     
-        function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            cartItems.innerHTML = '';
-    
-            cart.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = `${item.name} - ${item.price}₪`;
-    
-                const removeButton = document.createElement('button');
-                removeButton.textContent = 'إزالة';
-                removeButton.onclick = () => removeFromCart(item.name);
-                
-                li.appendChild(removeButton);
-                cartItems.appendChild(li);
-            });
-    
-            document.getElementById('cartCount').textContent = cart.length;
-        }
-    
+function updateCart() {
+    const cartItems = document.getElementById('cartItems');
+    cartItems.innerHTML = '';
+
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price}₪ - نوع الهاتف: ${item.phoneCaseType}`;
+        
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'إزالة';
+        removeButton.onclick = () => removeFromCart(item.name);
+        
+        li.appendChild(removeButton);
+        cartItems.appendChild(li);
+    });
+
+    document.getElementById('cartCount').textContent = cart.length;
+}
+
+
         function removeFromCart(productName) {
             cart = cart.filter(item => item.name !== productName);
             localStorage.setItem('cart', JSON.stringify(cart));
@@ -689,7 +702,6 @@ function sendOrder() {
     const region = document.getElementById('region');
     const specificDate = document.getElementById('specificDate');
     const phoneType = document.getElementById('phoneType');
-    const number = document.getElementById('number');
 
     // متغير لتخزين الحقول الناقصة
     let missingFields = [];
@@ -700,8 +712,7 @@ function sendOrder() {
     if (!deliveryOption.value) missingFields.push('طريقة التوصيل');
     if (deliveryOption.value === 'delivery' && !deliveryArea.value) missingFields.push('منطقة التوصيل');
     if (!specificDate.value) missingFields.push('تاريخ الاستلام');
-    if (phoneType && !phoneType.value) missingFields.push('نوع الهاتف');
-    if (number && !number.value) missingFields.push('الرقم للتصميم');
+    if (phoneType && !phoneType.value.trim()) missingFields.push('نوع الهاتف');
 
     // إذا كانت هناك حقول ناقصة، عرض رسالة للمستخدم
     if (missingFields.length > 0) {
@@ -720,15 +731,14 @@ function sendOrder() {
     let orderDetails = `الاسم: ${name.value}\nرقم الهاتف: ${phone.value}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption.value}\nالمنطقة: ${region.value}\nتاريخ الاستلام: ${specificDate.value}\nالمنتجات:\n`;
 
     cart.forEach(item => {
-        orderDetails += `- ${item.name} - ${item.price}₪`;
-        if (item.phoneCaseType) {
-            orderDetails += ` (نوع الكفر: ${item.phoneCaseType})`;
-        }
-        if (item.designNumber) {
-            orderDetails += ` (الرقم للتصميم: ${item.designNumber})`;
-        }
-        orderDetails += "\n";
-    });
+    orderDetails += `- ${item.name} - ${item.price}₪`;
+    if (item.phoneCaseType) {
+        orderDetails += ` (نوع الهاتف: ${item.phoneCaseType})`;
+    }
+  
+    orderDetails += "\n";
+});
+
 
     orderDetails += `ملاحظة: ${note}\nالمجموع الكلي: ${totalAmount}₪\n`;
 
