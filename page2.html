@@ -602,9 +602,9 @@
    <p>  120₪</p>
 <P>A3 حجم</P>
 
-<label for="number">الرقم للتَصميم</label>
-
-            <select id="number" name="number" required>
+<label for="designNumber1">الرقم للتصميم:</label>
+<select id="designNumber1" name="designNumber1" required>
+<option value="" disabled selected>اختر الرقم للتصميم</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -667,7 +667,7 @@
                 
             </select>
 
-  <button onclick="addToCart(' 1 تصميم الرَقم/العُمر A3 ', 120)">أضف إلى السلة</button>
+  <button onclick="addToCart(' 1 تصميم الرَقم/العُمر A3 ', 120,'designNumber1')">أضف إلى السلة</button>
 </div>
 
  <div class="product">
@@ -675,9 +675,9 @@
  <h3>تصميم الرَقم/العُمر  </h3>
  <p>  100₪</p>
  <P>A4 حجم</P>
- <label for="number">الرقم للتَصميم</label>
-
-            <select id="number" name="number" required>
+ <label for="designNumber2">الرقم للتصميم:</label>
+ <select id="designNumber2" name="designNumber2" required>
+ <option value="" disabled selected>اختر الرقم للتصميم</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -741,7 +741,7 @@
             </select>
 
 
- <button onclick="addToCart('2 تصميم الرَقم/العُمر A4', 100)">أضف إلى السلة</button>
+ <button onclick="addToCart('2 تصميم الرَقم/العُمر A4', 100,'designNumber2')">أضف إلى السلة</button>
 </div>
 
    <div class="product">
@@ -749,9 +749,9 @@
      <h3>تصميم الرَقم/العُمر </h3>
      <p>  120₪</p>
      <P>A3 حجم</P>
-     <label for="number">الرقم للتَصميم</label>
-
-            <select id="number" name="number" required>
+     <label for="designNumber3">الرقم للتصميم:</label>
+     <select id="designNumber3" name="designNumber3" required>
+     <option value="" disabled selected>اختر الرقم للتصميم</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -824,9 +824,9 @@
     <p>  100₪</p>
     <P>A4 حجم</P>   
 
-    <label for="number">الرقم للتَصميم</label>
-
-            <select id="number" name="number" required>
+    <label for="designNumber4">الرقم للتصميم:</label>
+    <select id="designNumber4" name="designNumber4" required>
+    <option value="" disabled selected>اختر الرقم للتصميم</option>
              <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -890,7 +890,7 @@
             </select>
 
             
-     <button onclick="addToCart('4 تصميم الرَقم/العُمر A4 ', 100)">أضف إلى السلة</button>
+     <button onclick="addToCart('4 تصميم الرَقم/العُمر A4 ', 100,'designNumber1')">أضف إلى السلة</button>
 </div>
 
 
@@ -1086,15 +1086,17 @@
         }
     };
 
-    function addToCart(productName, price, phoneTypeId) {
-    const phoneType = document.getElementById(phoneTypeId)?.value;
-    
-  
+    function addToCart(productName, price, designNumberId) {
+    // الحصول على قيمة رقم التصميم
+    const designNumber = document.getElementById(designNumberId)?.value;
 
+   
+
+    // إضافة المنتج إلى السلة
     cart.push({
         name: productName,
         price: price,
-        phoneCaseType: phoneType
+        designNumber: designNumber  // رقم التصميم فقط هنا
     });
 
     alert(`${productName} أُضيف إلى السلة!`);
@@ -1106,15 +1108,22 @@
     }
 }
 
-    
+
+
 function updateCart() {
     const cartItems = document.getElementById('cartItems');
     cartItems.innerHTML = '';
 
     cart.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.price}₪ - نوع الهاتف: ${item.phoneCaseType}`;
-        
+        li.textContent = `${item.name} - ${item.price}₪`;
+
+        // عرض رقم التصميم إذا كان موجودًا
+        if (item.designNumber) {
+            li.textContent += ` -  ${item.designNumber}`;
+        }
+       
+
         const removeButton = document.createElement('button');
         removeButton.textContent = 'إزالة';
         removeButton.onclick = () => removeFromCart(item.name);
@@ -1125,7 +1134,6 @@ function updateCart() {
 
     document.getElementById('cartCount').textContent = cart.length;
 }
-
 
 
     function removeFromCart(productName) {
@@ -1179,7 +1187,7 @@ function sendOrder() {
     const region = document.getElementById('region');
     const specificDate = document.getElementById('specificDate');
     const phoneType = document.getElementById('phoneType');
-    const number = document.getElementById('number');
+    const designNumber = document.getElementById('designNumber');
 
     // متغير لتخزين الحقول الناقصة
     let missingFields = [];
@@ -1191,7 +1199,7 @@ function sendOrder() {
     if (deliveryOption.value === 'delivery' && !deliveryArea.value) missingFields.push('منطقة التوصيل');
     if (!specificDate.value) missingFields.push('تاريخ الاستلام');
     if (phoneType && !phoneType.value) missingFields.push('نوع الهاتف');
-    if (number && !number.value) missingFields.push('الرقم للتصميم');
+    if (designNumber && !designNumber.value) missingFields.push('الرقم للتصميم');
 
     // إذا كانت هناك حقول ناقصة، عرض رسالة للمستخدم
     if (missingFields.length > 0) {
