@@ -737,15 +737,17 @@ function sendOrder() {
     const note = document.getElementById('note').value || 'لا يوجد ملاحظات';
 
     let orderDetails = `الاسم: ${name.value}\nرقم الهاتف: ${phone.value}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption.value}\nالمنطقة: ${region.value}\nتاريخ الاستلام: ${specificDate.value}\nالمنتجات:\n`;
-
+ 
     cart.forEach(item => {
-    orderDetails += `- ${item.name} - ${item.price}₪`;
-    if (item.phoneCaseType) {
-        orderDetails += ` -  ${item.phoneCaseType})`;
-    }
-  
-    orderDetails += "\n";
-});
+        orderDetails += `- ${item.name} - ${item.price}₪`;
+        if (item.phoneCaseType) {
+            orderDetails += ` - ${item.phoneCaseType})`;
+        }
+        if (item.designNumber) {
+            orderDetails += `- ${item.designNumber})`;
+        }
+        orderDetails += "\n";
+    });
 
 
     orderDetails += `ملاحظة: ${note}\nالمجموع الكلي: ${totalAmount}₪\n`;
