@@ -741,7 +741,7 @@ function sendOrder() {
     cart.forEach(item => {
     orderDetails += `- ${item.name} - ${item.price}₪`;
     if (item.phoneCaseType) {
-        orderDetails += ` (نوع الهاتف: ${item.phoneCaseType})`;
+        orderDetails += ` -  ${item.phoneCaseType})`;
     }
   
     orderDetails += "\n";
