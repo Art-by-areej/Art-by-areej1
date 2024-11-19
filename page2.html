@@ -69,7 +69,7 @@
         }
 
         /* أنماط الكتالوج (Catalog) */
- /* أنماط الكتالوج */
+/* أنماط الكتالوج */
 .catalog {
     display: flex;
     flex-wrap: wrap; /* السماح بالتفاف العناصر إلى صفوف */
@@ -87,50 +87,67 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    text-align: center;
+    text-align: left; /* محاذاة النص إلى اليسار داخل المنتج */
     border: 1px solid #eccdb1;
+    display: flex; /* جعل المحتوى أفقيًا */
+    flex-direction: row; /* ترتيب العناصر أفقياً */
+    gap: 15px; /* مسافة بين الصورة والنص */
+    align-items: center; /* محاذاة عمودية للعناصر */
 }
 
-/* لضمان توافق الشاشات الصغيرة جدًا */
-@media (max-width: 480px) {
-    .product {
-        flex: 1 1 calc(50% - 20px); /* عرض المنتج نصف الصف حتى على الشاشات الصغيرة */
-        max-width: calc(50% - 20px);
-    }
+/* أنماط الصور داخل المنتجات */
+.product img {
+    width: 120px; /* عرض ثابت للصور */
+    height: auto; /* الحفاظ على نسبة الصورة */
+    border: 3px solid #eccdb1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* أنماط النصوص داخل المنتج */
+.product-content {
+    flex: 1; /* السماح للنصوص بأخذ المساحة المتبقية */
+}
 
-        .product img {
-            width: 80%;
-            height: auto;
-            border: 5px solid #eccdb1;
-            box-shadow: 0 4px 8px rgb(255, 255, 255);
-        }
+.product-content h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+    color: #6b4f3b;
+}
 
-        .product h3 {
-            margin: 10px 0 5px;
-        }
+.product-content p {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #6b4f3b;
+    font-size: 14px;
+}
 
-        .product p {
-            margin: 5px 0;
-            font-weight: bold;
-            color: #6b4f3b;
-            font-size: 16px;
-        }
+.product-content .old-price {
+    text-decoration: line-through;
+    color: #e74c3c; /* لون أحمر للسعر القديم */
+    font-size: 12px;
+}
 
-        .product button {
-            padding: 10px 20px;
-            background-color: #6b4f3b;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+.product-content .new-price {
+    color: #27ae60; /* لون أخضر للسعر الجديد */
+    font-size: 16px;
+    font-weight: bold;
+}
 
-        .product button:hover {
-            background-color: #5a472a; /* لون مختلف عند التمرير */
-        }
+.product-content button {
+    padding: 10px 20px;
+    background-color: #6b4f3b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.product-content button:hover {
+    background-color: #5a472a; /* لون مختلف عند التمرير */
+}
+
 .cart {
     position:fixed;/* تم تغييرها من fixed إلى absolute */
     top: 5%;
@@ -363,9 +380,11 @@
             <img src=" حملة الاريج.jpg" alt="بوكس رسم ديچتال - رصاصي">
             <h3> بوكس رسم ديچتال - رصاصي  </h3>
             <p>  A4 حجم</p>
-            <p>
-                <span class="old-price">230₪</span> <span class="new-price">180₪</span>
-            </p>
+            
+  <p>
+                <span class="old-price">230₪</span>
+                <span class="new-price">180₪</span>
+  </p>           
             <label for="phoneType1">نوع الهاتف:</label>
             <select id="phoneType1" name="phoneType1" required>
         <option value="" disabled selected>اختر نوع الهاتف</option>
