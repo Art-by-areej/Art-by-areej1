@@ -69,32 +69,31 @@
         }
 
         /* أنماط الكتالوج (Catalog) */
-      /* أنماط الكتالوج */
+     /* الكتالوج */
 .catalog {
     display: flex;
-    flex-wrap: wrap; /* السماح بالتفاف العناصر إلى صفوف */
+    flex-wrap: wrap; /* السماح بالتفاف المنتجات إلى صفوف */
     gap: 20px; /* مسافة بين المنتجات */
     padding: 20px;
-    justify-content: center; /* محاذاة المنتجات إلى الوسط */
+    justify-content: center; /* محاذاة المنتجات في المنتصف */
 }
 
-/* أنماط المنتج */
+/* المنتج */
 .product {
-    flex: 1 1 calc(50% - 20px); /* عرض المنتج نصف الصف */
-    max-width: calc(50% - 20px); /* منع تجاوز العرض */
-    box-sizing: border-box; /* التأكد من حساب الحواف ضمن الحجم */
     background-color: #ffdbbec0;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 10px;
+    padding: 20px;
+    flex: 0 1 calc(50% - 20px); /* عرض كل منتجين في صف */
+    max-width: calc(50% - 20px); /* منع تجاوز العرض */
     text-align: center;
     border: 1px solid #eccdb1;
 }
 
-/* لضمان توافق الشاشات الصغيرة جدًا */
+/* تخصيص للهواتف الصغيرة */
 @media (max-width: 480px) {
     .product {
-        flex: 1 1 calc(50% - 20px); /* عرض المنتج نصف الصف حتى على الشاشات الصغيرة */
+        flex: 0 1 calc(50% - 20px); /* الحفاظ على منتجين في صف */
         max-width: calc(50% - 20px);
     }
 }
