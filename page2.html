@@ -69,24 +69,34 @@
         }
 
         /* أنماط الكتالوج (Catalog) */
-        .catalog {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            flex: 1; /* السماح للكتالوج بأخذ المساحة المتبقية */
-        }
+        /* الكتالوج */
+.catalog {
+    display: flex;
+    flex-wrap: wrap; /* السماح بالتفاف المنتجات إلى صفوف */
+    gap: 20px; /* مسافة بين المنتجات */
+    padding: 20px;
+    justify-content: center; /* محاذاة المنتجات في المنتصف */
+}
 
-        /* أنماط المنتجات (Product) */
-       .product {
-            background-color: #ffdbbec0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 5px;
-            flex: 1 1 calc(33.333% - 40px);
-            text-align: center;
-            border: 1px solid #eccdb1;
-        }
+/* المنتج */
+.product {
+    background-color: #ffdbbec0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 0 1 calc(50% - 20px); /* عرض كل منتجين في صف */
+    max-width: calc(50% - 20px); /* منع تجاوز العرض */
+    text-align: center;
+    border: 1px solid #eccdb1;
+}
+
+/* تخصيص للهواتف الصغيرة */
+@media (max-width: 480px) {
+    .product {
+        flex: 0 1 calc(50% - 20px); /* الحفاظ على منتجين في صف */
+        max-width: calc(50% - 20px);
+    }
+}
 
         .product img {
             width: 80%;
@@ -233,20 +243,6 @@
             background-color: #fffff6b4f3bf;
         }
 
-        /* تعديل عرض المنتجات لتكون اثنين بجانب بعض في الشاشات الصغيرة */
-@media (max-width: 768px) {
-    .product {
-        flex: 1 1 calc(50% - 40px); /* عرض المنتجات بنسبة 50% في الشاشات الأصغر */
-        max-width: calc(50% - 40px); /* لتقليل المسافة بين المنتجات */
-    }
-}
-
-@media (max-width: 480px) {
-    .product {
-        flex: 1 1 100%; /* عرض المنتجات 100% في الشاشات الصغيرة جدًا */
-        max-width: 100%; /* عرض المنتج كاملًا في كل صف */
-    }
-}
 
         .cart-message {
     background-color: #ffefc6; /* خلفية فاتحة للتمييز */
