@@ -1223,6 +1223,11 @@ function sendOrder() {
         alert('يرجى تعبئة الحقول التالية: ' + missingFields.join(', '));
         return; // إيقاف الدالة إذا كانت هناك حقول ناقصة
     }
+    document.getElementById("confirmButton").addEventListener("click", function(event){
+    event.preventDefault();  // لمنع النقر المتكرر
+    // تنفيذ إجراءات تأكيد الطلب هنا
+});
+
 
     // تابع تنفيذ بقية الكود بعد التأكد من تعبئة جميع الحقول
     const totalAmount = calculateTotalPrice();
