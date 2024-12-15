@@ -1,3 +1,4 @@
+page2
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -69,25 +70,34 @@
         }
 
         /* أنماط الكتالوج (Catalog) */
-        /* أنماط الكتالوج (Catalog) */
-        .catalog {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            flex: 1; /* السماح للكتالوج بأخذ المساحة المتبقية */
-        }
+     /* الكتالوج */
+.catalog {
+    display: flex;
+    flex-wrap: wrap; /* السماح بالتفاف المنتجات إلى صفوف */
+    gap: 20px; /* مسافة بين المنتجات */
+    padding: 20px;
+    justify-content: center; /* محاذاة المنتجات في المنتصف */
+}
 
-        /* أنماط المنتجات (Product) */
-        .product {
-            background-color: #ffdbbec0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            flex: 1 1 calc(33.333% - 40px);
-            text-align: center;
-            border: 1px solid #eccdb1;
-        }
+/* المنتج */
+.product {
+    background-color: #ffdbbec0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 0 1 calc(50% - 20px); /* عرض كل منتجين في صف */
+    max-width: calc(50% - 20px); /* منع تجاوز العرض */
+    text-align: center;
+    border: 1px solid #eccdb1;
+}
+
+/* تخصيص للهواتف الصغيرة */
+@media (max-width: 480px) {
+    .product {
+        flex: 0 1 calc(50% - 20px); /* الحفاظ على منتجين في صف */
+        max-width: calc(50% - 20px);
+    }
+}
 
         .product img {
             width: 100%;
@@ -450,7 +460,7 @@
             <img src=" برواز ومجين.jpg " alt=" رسمة ديجتال رصاصي + كفر/مجين تلفون">
             <h3>رسمة ديجتال رصاصي + كفر/مجين تلفون</h3>
             <P>A4 حجم</P>
-                <span class="old-price">180₪</span> <span class="new-price">120₪</span>
+                <span class="old-price">180₪</span> <span class="new-price">150₪</span>
             </p>
 
             <label for="phoneType3">نوع الهاتف:</label>
@@ -485,14 +495,14 @@
 
         </select>           
 
-        <button onclick="addToCart(' كڤر تلفون رسمة ديجتال -  A4رصاصي',120,'phoneType3')">أضف إلى السلة</button>
+        <button onclick="addToCart(' كڤر تلفون رسمة ديجتال -  A4رصاصي',150,'phoneType3')">أضف إلى السلة</button>
     </div> 
 
         <div class="product">
             <img src=" رسم ديجتال مع كفر a3.jpg " alt=" برواز + كڤر تلفون رسمة ديجتال - رصاصي حجم A3">
             <h3>رسمة ديجتال رصاصي + كفر/مجين تلفون</h3>
            <P>A3 حجم</P>
-            <span class="old-price">200₪</span> <span class="new-price">140₪</span>
+            <span class="old-price">200₪</span> <span class="new-price">170₪</span>
             </p>
 
             <label for="phoneType4">نوع الهاتف:</label>
@@ -526,32 +536,32 @@
         <option value="Samsung A73">A73</option>
 
         </select>
-        <button onclick="addToCart(' كڤر تلفون رسمة ديجتال -  A3رصاصي',140 ,'phoneType4')">أضف إلى السلة</button>
+        <button onclick="addToCart(' كڤر تلفون رسمة ديجتال -  A3رصاصي',170 ,'phoneType4')">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="دمج صور ديجتال رصاصي3 A4.jpg" alt="رسمة ديچتال - رصاصي حجم A4 ">
             <h3>رسمة ديچتال - رصاصي </h3>
             <p>  A4 حجم</p>
-            <span class="old-price">80₪</span> <span class="new-price">50₪</span>
+            <p> 80₪</p>
 
-          <p>  <button onclick="addToCart('A4برواز ديجتال رصاصي حجم ',50)">أضف إلى السلة</button></p>
+            <button onclick="addToCart('A4برواز ديجتال رصاصي حجم ',80)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="دمج صور ديجتال رصاصي3 A.jpg" alt="رسم ديجتال - رصاصي حجم A3 ">
             <h3>رسم ديجتال - رصاصي  </h3>
             <P>A3 حجم</P>
-            <span class="old-price">100₪</span> <span class="new-price">70₪</span>
-          <p>  <button onclick="addToCart(' رسم ديچتال - رصاصيA3', 70)">أضف إلى السلة</button></p>
+            <p>  100₪</p>
+            <button onclick="addToCart(' رسم ديچتال - رصاصيA3', 100)">أضف إلى السلة</button>
         </div>
 
   <div class="product">
             <img src="دمج رصاصي A4.jpg" alt="برواز ديجتال رصاصي A3 ">
             <h3>  دمج صور برسمة ديچتال - رصاصي </h3>
             <P>A4 حجم</P>
-            <p>  <span class="old-price">100₪</span> <span class="new-price">70₪</span> </p>
-            <button onclick="addToCart('دمج صور ديجتال رصاصيA4' , 70)">أضف إلى السلة</button>
+            <p>  100₪</p>
+            <button onclick="addToCart('دمج صور ديجتال رصاصيA4' , 100)">أضف إلى السلة</button>
         </div>
 
 
@@ -559,24 +569,24 @@
             <img src="دمج صور ديجتال رصاصي2.jpg" alt="برواز ديجتال رصاصي A3 ">
             <h3>  دمج صور برسمة ديچتال - رصاصي </h3>
             <P>A3 حجم</P>
-            <p>  <span class="old-price">120₪</span> <span class="new-price">100₪</span> </p>
-            <button onclick="addToCart('دمج صور ديجتال رصاصيA3' , 100)">أضف إلى السلة</button>
+            <p>  120₪</p>
+            <button onclick="addToCart('دمج صور ديجتال رصاصيA3' , 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="ديجتال ملون A4.jpg" alt=" رسم ديجتال - ملوّن حجم A4">
             <h3>رسم ديجتال - ملوّن </h3>
             <P>A4 حجم</P>
-            <p>  <span class="old-price">100₪</span> <span class="new-price">70₪</span>  </p>
-            <button onclick="addToCart('رسم ديجتال - ملوّن حجم A4', 70)">أضف إلى السلة</button>
+            <p>  100₪</p>
+            <button onclick="addToCart('رسم ديجتال - ملوّن حجم A4', 100)">أضف إلى السلة</button>
         </div>
 
             <div class="product">
                 <img src="رسمة ديجتال ملون 1 A3.jpg" alt="رسم ديجتال - ملوّن حجم A3 ">
                 <h3> رسم ديجتال - ملوّن </h3>
                 <P>A3 حجم</P>
-                <p>  <span class="old-price">120₪</span> <span class="new-price">90₪</span> </p>
-                <button onclick="addToCart('رسم ديجتال - ملوّن حجم A3' , 90)">أضف إلى السلة</button>
+                <p>  120₪</p>
+                <button onclick="addToCart('رسم ديجتال - ملوّن حجم A3' , 120)">أضف إلى السلة</button>
             </div>
 
 
@@ -584,16 +594,16 @@
             <img src="دمج ملون A4.jpg" alt=" دمج صور برسمة ديچتال - ملون حجم A4">
               <h3>دمج صور برسمة ديچتال - ملون</h3>
               <P>A4 حجم</P>
-              <p> <span class="old-price">120₪</span> <span class="new-price">100₪</span> </p>
-              <button onclick="addToCart(' دمج صور برسمة ديچتال ملون A4', 100)">أضف إلى السلة</button>
+              <p>  120₪</p>
+              <button onclick="addToCart(' دمج صور برسمة ديچتال ملون A4', 120)">أضف إلى السلة</button>
             </div>
 
 <div class="product">
     <img src="A3 دمج ملون.jpg" alt=" دمج صور برسمة ديچتال - ملون حجم A3">
       <h3>دمج صور برسمة ديچتال - ملون</h3>
       <P>A3 حجم</P>
-      <p> <span class="old-price">140₪</span> <span class="new-price">110₪</span></p>
-<button onclick="addToCart('  دمج صور برسمة ديچتال ملونA3 ', 110)">أضف إلى السلة</button>
+      <p>  140₪</p>
+<button onclick="addToCart('  دمج صور برسمة ديچتال ملونA3 ', 140)">أضف إلى السلة</button>
 </div>
       
             
@@ -601,8 +611,7 @@
    <img src="تصميم العمر الرقم A3.jpg" alt="  تصميم الرَقم/العُمر- حجم A3  ">
    <h3>تصميم الرَقم/العُمر1 </h3>
    <P>A3 حجم</P>
-   <p> <span class="old-price">120₪</span> <span class="new-price">90₪</span>
-   </p>
+   <p>  120₪</p>
 
 <label for="designNumber1">الرقم للتصميم:</label>
 <select id="designNumber1" name="designNumber1" required>
@@ -669,15 +678,14 @@
                 
             </select>
 
-  <button onclick="addToCart(' 1 تصميم الرَقم/العُمر A3 ', 90,'designNumber1')">أضف إلى السلة</button>
+  <button onclick="addToCart(' 1 تصميم الرَقم/العُمر A3 ', 120,'designNumber1')">أضف إلى السلة</button>
 </div>
 
  <div class="product">
   <img src="A4 تصميم العمر الرقم.jpg" alt="  تصميم الرَقم/العُمر- حجم A4 ">
  <h3>تصميم الرَقم/العُمر 1 </h3>
  <P>A4 حجم</P>
- <p> <span class="old-price">100₪</span> <span class="new-price">80₪</span>
- </p>
+ <p>  100₪</p>
  <label for="designNumber2">الرقم للتصميم:</label>
  <select id="designNumber2" name="designNumber2" required>
  <option value="" disabled selected>اختر الرقم للتصميم</option>
@@ -744,15 +752,14 @@
             </select>
 
 
- <button onclick="addToCart('1 تصميم الرَقم/العُمر A4', 80,'designNumber2')">أضف إلى السلة</button>
+ <button onclick="addToCart('1 تصميم الرَقم/العُمر A4', 100,'designNumber2')">أضف إلى السلة</button>
 </div>
 
    <div class="product">
     <img src="تصميم العمر الرقم A3 15.jpg" alt="تصميم الرَقم/العُمر- حجم A3 ">
      <h3>تصميم الرَقم/العُمر 2</h3>
      <P>A3 حجم</P>
-     <p>  <span class="old-price">120₪</span> <span class="new-price">90₪</span>
-     </p>
+     <p>  120₪</p>
      <label for="designNumber3">الرقم للتصميم:</label>
      <select id="designNumber3" name="designNumber3" required>
      <option value="" disabled selected>اختر الرقم للتصميم</option>
@@ -818,15 +825,14 @@
                 
             </select>
 
-            <button onclick="addToCart(' 2 تصميم الرَقم/العُمر A3 ', 90,'designNumber3')">أضف إلى السلة</button>
+            <button onclick="addToCart(' 2 تصميم الرَقم/العُمر A3 ', 120,'designNumber3')">أضف إلى السلة</button>
 </div>
 
    <div class="product">
     <img src="A4 تصميم العمر الرقم.jpg 2.jpg" alt="تصميم الرَقم/العُمر- حجم A4 ">
     <h3>تصميم الرَقم/العُمر 2</h3>
     <P>A4 حجم</P>   
-    <p> <span class="old-price">100₪</span> <span class="new-price">80₪</span>
-    </p>
+    <p>  100₪</p>
 
     <label for="designNumber4">الرقم للتصميم:</label>
     <select id="designNumber4" name="designNumber4" required>
@@ -894,7 +900,7 @@
             </select>
 
             
-     <button onclick="addToCart('2تصميم الرَقم/العُمر A4 ', 80,'designNumber4')">أضف إلى السلة</button>
+     <button onclick="addToCart('2تصميم الرَقم/العُمر A4 ', 100,'designNumber4')">أضف إلى السلة</button>
 </div>
 
 
@@ -902,54 +908,48 @@
             <img src=" فكرة الاريج باضافة رسم ديجتال2.jpg" alt="برواز ديجتال رصاصي A3 ">
             <h3>  تصميم فكرة الأريج باضافة رسمة ديجتال </h3>
             <P>A3حجم</P>    
-            <p> <span class="old-price">140₪</span> <span class="new-price">100₪</span>
-            </p>
-         <button onclick="addToCart('  تصميم فكرة الأريج باضافة رسمة ديجتال  A3 ', 100)">أضف إلى السلة</button>
+            <p>  140₪</p>
+         <button onclick="addToCart('  تصميم فكرة الأريج باضافة رسمة ديجتال  A3 ', 140)">أضف إلى السلة</button>
         </div>
         
         <div class="product">
             <img src="رسمة فكرة الاريج باضافة رسم ديجتال3.jpg" alt="برواز ديجتال رصاصي A4 ">
             <h3> تصميم فكرة الأريج باضافة رسمة ديجتال </h3>
             <P>A4 حجم</P>  
-            <p> <span class="old-price">120₪</span> <span class="new-price">80₪</span>
-            </p>
-             <button onclick="addToCart('  تصميم فكرة الأريج باضافة رسمة ديجتال A4  ', 80)">أضف إلى السلة</button>
+            <p>  120₪</p>
+             <button onclick="addToCart('  تصميم فكرة الأريج باضافة رسمة ديجتال A4  ', 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="فكرة الاريج A3.jpg" alt="فكرةالاريج1">
             <h3>تصميم فكرة الأريج 1 </h3>
             <P>A3 حجم</P>      
-            <p>  <span class="old-price">120₪</span> <span class="new-price">90₪</span>
-            </p>
-                  <button onclick="addToCart(' 1 تصميم فكرة الأريج A3  ', 90)">أضف إلى السلة</button>
+            <p>  120₪</p>
+                  <button onclick="addToCart(' 1 تصميم فكرة الأريج A3  ', 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="فكرة الاريج A4.jpg" alt="فكرة الاريج1 ">
             <h3>تصميم فكرة الأريج 1 </h3>
             <P>A4 حجم</P>         
-            <p> <span class="old-price">100₪</span> <span class="new-price">80₪</span>
-            </p>
-     <button onclick="addToCart('1 تصميم فكرة الأريج  A4 ', 80)">أضف إلى السلة</button>
+            <p>  100₪</p>
+     <button onclick="addToCart('1 تصميم فكرة الأريج  A4 ', 100)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="فكرة الاريج 2 A3.jpg" alt="فكرةالاريج2 ">
             <h3>تصميم  فكرة الأريج 2</h3>
             <P>A3 حجم</P>         
-            <p> <span class="old-price">120₪</span> <span class="new-price">90₪</span>
-            </p>
-      <button onclick="addToCart('2 تصميم فكرة الاريج  A3 ', 90)">أضف إلى السلة</button>
+            <p>  120₪</p>
+      <button onclick="addToCart('2 تصميم فكرة الاريج  A3 ', 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="A4 فكرة الاريج2.jpg" alt="فكرةالاريج2 ">
             <h3>تصميم  فكرة الأريج 2</h3>
             <P>A4 حجم</P>  
-            <p>  <span class="old-price">100₪</span> <span class="new-price">80₪</span>
-            </p>
-          <button onclick="addToCart(' 2 تصميم فكرة الاريج  A4 ', 80)">أضف إلى السلة</button>
+            <p>  100₪</p>
+          <button onclick="addToCart(' 2 تصميم فكرة الاريج  A4 ', 120)">أضف إلى السلة</button>
         </div>
 
        
@@ -958,45 +958,40 @@
             <img src="خريطة النجومA3.jpg" alt="A3Sky map-خريطة النجوم">
             <h3>Sky map-خريطة النجوم</h3>
             <P>A3 حجم</P>      
-            <p><span class="old-price">150₪</span> <span class="new-price">100₪</span>
-            </p>
-                  <button onclick="addToCart(' A3 Sky map-خريطة النجوم-  ', 100)">أضف إلى السلة</button>
+            <p>  150₪</p>
+                  <button onclick="addToCart(' A3 Sky map-خريطة النجوم-  ', 150)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="خريطة النجوم.jpg" alt="A4Sky map-خريطة النجوم">
             <h3>Sky map-خريطة النجوم</h3>
             <P>A4 حجم</P>  
-            <p> <span class="old-price">120₪</span> <span class="new-price">80₪</span>
-            </p>
-             <button onclick="addToCart(' A4 Sky map-خريطة النجوم-  ', 80)">أضف إلى السلة</button>
+            <p>  120₪</p>
+             <button onclick="addToCart(' A4 Sky map-خريطة النجوم-  ', 120)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="تصميم المولود A4.jpg" alt=" تصميم المولود - حجم A4">
             <h3>تصميم المولود  </h3>
             <P>A4 حجم</P>          
-            <p>  <span class="old-price">80₪</span> <span class="new-price">50₪</span></p>
-         
-              <button onclick="addToCart('1 تصميم المولود A4 ', 50)">أضف إلى السلة</button>
+            <p>  80₪</p>
+              <button onclick="addToCart('1 تصميم المولود A4 ', 80)">أضف إلى السلة</button>
             </div>
 
             <div class="product">
                 <img src="تصميم المولود A3.jpg" alt="تصميم المولود - حجم A3">
                 <h3>تصميم المولود  </h3>
+                <p>  100₪</p>
                 <P>A3 حجم</P> 
-                <span class="old-price">100₪</span> <span class="new-price">70₪</span></p>
-
-          <button onclick="addToCart(' 2 تصميم المولود A3 ', 70)">أضف إلى السلة</button>
+          <button onclick="addToCart(' 2 تصميم المولود A3 ', 100)">أضف إلى السلة</button>
             </div>
 
                 <div class="product">
                     <img src="تصميم مميز A3.jpg" alt="َتصميم مُميّز1 A3">
                     <h3>1تَصميم مُميّز </h3>
                     <P>A3 حجم</P>  
-                    <p> <span class="old-price">100₪</span> <span class="new-price">80₪</span></p>
-                    </p>
-                <button onclick="addToCart('1 تَصميم مُميّز A3', 80)">أضف إلى السلة</button>
+                    <p>  100₪</p>
+                <button onclick="addToCart('1 تَصميم مُميّز A3', 100)">أضف إلى السلة</button>
                 </div>
     
                     
@@ -1004,48 +999,48 @@
                     <img src="تصميم مميز4.jpg" alt="َتصميم مُميّز2 A3">
                     <h3>2تَصميم مُميّز </h3>
                     <P>A3 حجم</P> 
-                    <p> <span class="old-price">100₪</span> <span class="new-price">80₪</span></p>
-                        <button onclick="addToCart('2تَصميم مُميّز A3', 80)">أضف إلى السلة</button>
+                    <p>  100₪</p>
+                  <button onclick="addToCart('2تَصميم مُميّز A3', 100)">أضف إلى السلة</button>
                     </div>
 
                     <div class="product">
                         <img src="تصميم مميز جديد 2.jpg" alt="َتصميم مُميّز3 A3">
                         <h3>3تَصميم مُميّز </h3>
                         <P>A3حجم</P>            
-                        <p> <span class="old-price">100₪</span> <span class="new-price">80₪</span></p>
-                            <button onclick="addToCart('3 تَصميم مُميّز A3', 80)">أضف إلى السلة</button>
+                        <p>  100₪</p>
+                     <button onclick="addToCart('3 تَصميم مُميّز A3', 100)">أضف إلى السلة</button>
                     </div>
 
                         <div class="product">
                             <img src="تصميم مميز جديد.jpg" alt="َتصميم مُميّز4 A3">
                             <h3>4تَصميم مُميّز </h3>
                             <P>A3 حجم</P>   
-                            <p> <span class="old-price">100₪</span> <span class="new-price">80₪</span></p>
-                             <button onclick="addToCart('4 تَصميم مُميّز A3', 80)">أضف إلى السلة</button>
+                            <p>  100₪</p>
+                           <button onclick="addToCart('4 تَصميم مُميّز A3', 100)">أضف إلى السلة</button>
                         </div>
 
                              <div class="product">
                                 <img src="تصميم مميز3 a3.jpg" alt="َتصميم مُميّز5 A3">
                                 <h3>5تَصميم مُميّز </h3>
                                 <P>A3 حجم</P> 
-                                <p> <span class="old-price">80₪</span> <span class="new-price">60₪</span></p>
-                                    <button onclick="addToCart(' 5 تَصميم مُميّز A3', 60)">أضف إلى السلة</button>
+                                <p>  80₪</p>
+                            <button onclick="addToCart(' 5 تَصميم مُميّز A3', 80)">أضف إلى السلة</button>
                             </div>
 
          <div class="product">
         <img src="a3 تصميم مميز 4.jpg" alt="َتصميم مُميّز6 A3">
      <h3>6تَصميم مُميّز </h3>
      <P>A3حجم</P>  
-     <p> <span class="old-price">80₪</span> <span class="new-price">60₪</span> </p>
-        <button onclick="addToCart(' 6 تَصميم مُميّز A3', 60)">أضف إلى السلة</button>
+     <p>  80₪</p>
+     <button onclick="addToCart(' 6 تَصميم مُميّز A3', 80)">أضف إلى السلة</button>
      </div>
                         
         <div class="product">
             <img src="تصميم صوره باركودa3.jpg" alt="تصميم صورة بباركود اغنية ">
             <h3>تصميم صورة بباركود اغنية   </h3>
             <p>  حجم A3  </p>
-            <p> <span class="old-price">60</span> <span class="new-price">50₪</span></p>
-                <button onclick="addToCart(' 1 تصميم صورة A3بباركود اغنية ', 50)">أضف إلى السلة</button>
+            <P>60₪</P>
+            <button onclick="addToCart(' 1 تصميم صورة A3بباركود اغنية ', 60)">أضف إلى السلة</button>
         </div>
 
 
@@ -1053,8 +1048,8 @@
                 <img src="تصميم صوره باركودa4.jpg" alt="تصميم صورة بباركود اغنية ">
                 <h3>تصميم صورة بباركود اغنية </h3>
                 <p>  A4حجم  </p>
-                <p> <span class="old-price">50₪</span> <span class="new-price">40₪</span> </p>
-                    <button onclick="addToCart('2 تصميم صورةA4 بباركود اغنية ', 40)">أضف إلى السلة</button>
+                <P>50₪ </P>
+                <button onclick="addToCart('2 تصميم صورةA4 بباركود اغنية ', 50)">أضف إلى السلة</button>
             </div>
 
        
@@ -1063,18 +1058,16 @@
             <img src="طباعة صور.jpg" alt=" طِباعة صور بجودة عالية">
             <h3>  طِباعة صور بجودة عالية</h3>
             <P>A4 حجم</P> 
-            <p>  <span class="old-price">50₪</span> <span class="new-price">40₪</span> <p> 
-            </p>
-          <button onclick="addToCart(' طِباعة صورA4 بجودة عالية', 40)">أضف إلى السلة</button>
+            <p>  50₪</p>
+          <button onclick="addToCart(' طِباعة صورA4 بجودة عالية', 50)">أضف إلى السلة</button>
         </div>
 
         <div class="product">
             <img src="طباعة صور A3.jpg" alt=" A3طِباعة صور بجودة عالية">
             <h3>  طِباعة صور بجودة عالية</h3>
             <P>A3 حجم</P>          
-            <p> <span class="old-price">70₪</span> <span class="new-price">55₪</span>   <p> 
-            </p>
-            <button onclick="addToCart('طِباعة صورA3 بجودة عالية', 55)">أضف إلى السلة</button>
+            <p>  70₪</p>
+            <button onclick="addToCart('طِباعة صورA3 بجودة عالية', 70)">أضف إلى السلة</button>
         </div>
 
         </div>     
@@ -1223,8 +1216,6 @@ function sendOrder() {
         alert('يرجى تعبئة الحقول التالية: ' + missingFields.join(', '));
         return; // إيقاف الدالة إذا كانت هناك حقول ناقصة
     }
-
-
 
     // تابع تنفيذ بقية الكود بعد التأكد من تعبئة جميع الحقول
     const totalAmount = calculateTotalPrice();
