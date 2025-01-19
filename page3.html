@@ -327,12 +327,13 @@ page3
             <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
         </select>
     
-       <div id="deliveryDetails" style="display: none;">
+        <div id="deliveryDetails" style="display: none;">
             <label for="deliveryArea">اختر المنطقة:</label>
             <select id="deliveryArea" name="deliveryArea">
                 <option value="north">الشمال - 50</option>
+                <option value="triangle">المثلث - 50</option>
+                <option value="triangle2">ام الفحم,سالم,زلفة - 40</option>
                 <option value="south">الجنوب - 60</option>
-                <option value="triangle">المثلث - 40</option>
             </select>
             
             <label for="region">اسم المنطقة:</label>
@@ -696,7 +697,9 @@ function calculateTotalPrice() {
     if (deliveryOption === 'delivery') {
         if (deliveryArea === 'north') total += 50;
         else if (deliveryArea === 'south') total += 60;
-        else if (deliveryArea === 'triangle') total += 40;
+        else if (deliveryArea === 'triangle') total += 50;
+        else if (deliveryArea === 'triangle2') total += 40;
+
     }
 
     return total;
