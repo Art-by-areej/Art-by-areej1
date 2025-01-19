@@ -347,8 +347,9 @@ page2
             <label for="deliveryArea">اختر المنطقة:</label>
             <select id="deliveryArea" name="deliveryArea">
                 <option value="north">الشمال - 50</option>
+                <option value="triangle">المثلث - 50</option>
+                <option value="triangle2">ام الفحم,سالم,زلفة - 40</option>
                 <option value="south">الجنوب - 60</option>
-                <option value="triangle">المثلث - 40</option>
             </select>
             
             <label for="region">اسم المنطقة:</label>
@@ -372,6 +373,15 @@ page2
 <!-- كتالوج المنتجات -->
 <div class="container">
     <div class="catalog">
+<div class="product">
+    <img src="صندوق لمسة فن وذكرى.jpg" alt="صندوق لمسة فَن وذِكرى ">
+    <h3> صندوق لمسة فَن وذِكرى</h3>
+    <p>  160₪</p>
+    <button onclick="addToCart('صندوق لمسة فَن وذِكرى' , 160)">أضف إلى السلة</button>
+</div>
+
+
+
         <div class="product">
             <img src=" حملة الاريج.jpg" alt="بوكس رسم ديچتال - رصاصي">
             <h3> بوكس رسم ديچتال - رصاصي  </h3>
@@ -1182,7 +1192,9 @@ function calculateTotalPrice() {
     if (deliveryOption === 'delivery') {
         if (deliveryArea === 'north') total += 50;
         else if (deliveryArea === 'south') total += 60;
-        else if (deliveryArea === 'triangle') total += 40;
+        else if (deliveryArea === 'triangle') total += 50;
+        else if (deliveryArea === 'triangle2') total += 40;
+
     }
 
     return total;
