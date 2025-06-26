@@ -554,7 +554,7 @@
 </div>
 
 <p style="text-align: center; font-size: 16px; color: #99673e;">
-    <a href="page3.html" style="color: #99673e; text-decoration: none;">اضغط لرؤية كاتلوج المنتجات الأخرى</a>
+    <a href="page3.html" style="color: #99673e; text-decoration: none;">اضغط لرؤية كاتلوج البراويز</a>
 </p>
 <div class="four-images-container">
     <div class="image-item">
@@ -620,10 +620,10 @@
         <div id="deliveryDetails" style="display: none;">
             <label for="deliveryArea">اختر المنطقة:</label>
             <select id="deliveryArea" name="deliveryArea">
-                <option value="north">الشمال - 50</option>
-                <option value="triangle">المثلث - 50</option>
-                <option value="triangle2">ام الفحم,سالم,زلفة - 40</option>
-                <option value="south">الجنوب - 60</option>
+                <option value="الشمال">الشمال - 50</option>
+                <option value="المثلث">المثلث - 50</option>
+                <option value="المثلث">ام الفحم,سالم,زلفة - 40</option>
+                <option value="الجنوب">الجنوب - 60</option>
             </select>
             
             <label for="region">اسم المنطقة:</label>
@@ -631,8 +631,8 @@
         </div>
         
                 
-                <button class="submit-button" onclick="sendWhatsApp()">إرسال الطلب</button>
-            </div>
+        <button class="submit-button" onclick="sendWhatsApp(event)">إرسال الطلب</button>
+  
             
         </div>
     </div>
@@ -715,20 +715,23 @@
             orderForm.style.display = orderForm.style.display === 'none' || orderForm.style.display === '' ? 'block' : 'none';
         }
 
-        function sendWhatsApp() {
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const additionalNumber = document.getElementById('additionalNumber').value;
-            const deliveryOption = document.getElementById('deliveryOption').value;
-            const deliveryArea = document.getElementById('deliveryArea') ? document.getElementById('deliveryArea').value : 'غير محدد';
-            const region = document.getElementById('region').value || 'غير محدد';
+        function sendWhatsApp(event) {
+    event.preventDefault(); // هذا السطر يمنع النموذج من إعادة تحميل الصفحة
 
-            const message = `الاسم: ${name}رقم الهاتف: ${phone}رقم إضافي: ${additionalNumber}  طريقة التوصيل: ${deliveryOption}  منطقة التوصيل: ${deliveryArea} اسم المنطقة: ${region}`;
-            const phoneNumber = '972535845120'; // استبدل برقم هاتفك الفعلي
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const additionalNumber = document.getElementById('additionalNumber').value;
+    const deliveryOption = document.getElementById('deliveryOption').value;
+    const deliveryArea = document.getElementById('deliveryArea') ? document.getElementById('deliveryArea').value : 'غير محدد';
+    const region = document.getElementById('region').value || 'غير محدد';
 
-            window.location.href = whatsappUrl;
-        }
+    const message = `الاسم: ${name}\nرقم الهاتف: ${phone}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption}\nمنطقة التوصيل: ${deliveryArea}\nاسم المنطقة: ${region}`;
+    const phoneNumber = '972535845120';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, '_blank');
+}
+
     </script>
     <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: #99673e;">
         <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
