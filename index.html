@@ -715,9 +715,8 @@
             orderForm.style.display = orderForm.style.display === 'none' || orderForm.style.display === '' ? 'block' : 'none';
         }
 
-        
-        function sendWhatsApp(event) {
-    event.preventDefault(); // منع إعادة تحميل الصفحة
+function sendWhatsApp(event) {
+    event.preventDefault();
 
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
@@ -727,20 +726,21 @@
     const region = document.getElementById('region').value || 'غير محدد';
 
     const message = 
-`🔔 طلب لبوكس "وأخيرًا تجمّعنا"
+`✅ طلب جديد لبوكس "وأخيرًا تجمّعنا"
 
-🧾 الاسم: ${name}
+📝 الاسم: ${name}
 📞 رقم الهاتف: ${phone}
 📱 رقم إضافي: ${additionalNumber}
 🚚 طريقة التوصيل: ${deliveryOption}
 📍 منطقة التوصيل: ${deliveryArea}
-🗺️ اسم المنطقة: ${region}`;
+📌 اسم المنطقة: ${region}
+💵 السعر: 220 شيكل`;
 
-    const phoneNumber = '972535845120'; // رقم الواتساب المستلم
+    const phoneNumber = '972535845120';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappUrl, '_blank'); // فتح في تبويب جديد
+    window.open(whatsappUrl, '_blank');
 }
+
     </script>
     <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: #99673e;">
         <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
