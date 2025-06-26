@@ -715,8 +715,9 @@
             orderForm.style.display = orderForm.style.display === 'none' || orderForm.style.display === '' ? 'block' : 'none';
         }
 
+        
         function sendWhatsApp(event) {
-    event.preventDefault(); // هذا السطر يمنع النموذج من إعادة تحميل الصفحة
+    event.preventDefault(); // منع إعادة تحميل الصفحة
 
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
@@ -725,13 +726,21 @@
     const deliveryArea = document.getElementById('deliveryArea') ? document.getElementById('deliveryArea').value : 'غير محدد';
     const region = document.getElementById('region').value || 'غير محدد';
 
-    const message = `الاسم: ${name}\nرقم الهاتف: ${phone}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption}\nمنطقة التوصيل: ${deliveryArea}\nاسم المنطقة: ${region}`;
-    const phoneNumber = '972535845120';
+    const message = 
+`🔔 طلب لبوكس "وأخيرًا تجمّعنا"
+
+🧾 الاسم: ${name}
+📞 رقم الهاتف: ${phone}
+📱 رقم إضافي: ${additionalNumber}
+🚚 طريقة التوصيل: ${deliveryOption}
+📍 منطقة التوصيل: ${deliveryArea}
+🗺️ اسم المنطقة: ${region}`;
+
+    const phoneNumber = '972535845120'; // رقم الواتساب المستلم
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-    window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, '_blank'); // فتح في تبويب جديد
 }
-
     </script>
     <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: #99673e;">
         <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
