@@ -9,33 +9,86 @@
     <style>
 
 
-/* === كود البلاك فرايدي ثابت أسفل الشاشة === */
-.black-friday-popup {
-    position: fixed; /* يبقى ثابت على الشاشة */
-    bottom: 10px; /* 10 بكسل من الأسفل */
-    left: 50%; /* توسيط popup أفقياً */
-    transform: translateX(-50%); /* توسيط دقيق */
-    background-color: #000000; /* خلفية سوداء */
-    color: #ffdd00; /* نص أصفر بارز */
-    padding: 12px 20px; /* مساحة داخلية مناسبة */
-    border-radius: 8px; 
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); /* توهج خفيف */
-    font-size: 16px; /* حجم مناسب للهاتف */
-    font-weight: bold;
-    z-index: 1000; /* يبقى فوق كل العناصر */
+/* قسم بلاك فرايدي ثابت */
+#blackFridaySection {
+    width: 100%;
+    padding: 50px 0;
+    background: #fff;
     text-align: center;
-    max-width: 90%; /* لا يتجاوز 90% من عرض الشاشة */
+    position: relative;
+    overflow: hidden;
+    height: 220px; /* ارتفاع مناسب */
+    margin-bottom: 20px;
 }
 
-/* === Responsive للهواتف الصغيرة جداً === */
-@media (max-width: 480px) {
-    .black-friday-popup {
-        font-size: 14px; /* أصغر قليلًا للهواتف */
-        padding: 10px 15px;
+/* عنوان FRIDAY */
+#bfTitle {
+    font-size: 55px;
+    color: #8B0000;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+/* براويز الخصم */
+.discountFrame {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 4px solid #b58b3b; /* ذهبي */
+    outline: 3px solid #5a3a12; /* بني */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+    color: #5a3a12;
+    font-size: 20px;
+    animation: rainFall 3s linear infinite;
+    top: 0;
+}
+
+
+/* حركة المطر داخل القسم فقط */
+@keyframes rainFall {
+    0% {
+        transform: translateY(-40px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(200px);
+        opacity: 0;
     }
 }
 
+/* تايب رايتر */
+#typewriterText {
+    font-size: 22px;
+    font-weight: 600;
+    color: #8B0000;
+    margin-top: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #8B0000;
+    width: 0;
+    animation: typing 2.5s steps(40) 0.5s forwards,
+               blink 0.8s infinite;
+}
 
+@keyframes typing {
+    from { width: 0 }
+    to { width: 260px }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+/* إخفاء الأنيميشن */
+.hideAnimation {
+    display: none !important;
+}
 
 
         /* أنماط الكوبون */
@@ -793,7 +846,7 @@
     <script>
         // إنشاء براويز الخصم
         const discountContainer = document.getElementById('discountBoxes');
-        const discounts = ['8%', '10%', '18%'];
+        const discounts = ['10%', '15%', '20%'];
         
         for (let i = 0; i < 20; i++) {
             const frame = document.createElement('div');
@@ -805,26 +858,17 @@
         }
         
         // تايب رايتر
-        document.getElementById("typewriterText").textContent = "BLACK FRAIDY 25.11.25-10.12.25!";
+        document.getElementById("typewriterText").textContent = "BLACK FRAIDY 10% - 15% !";
         
         // إخفاء الأنيميشن بعد 4 ثواني
         setTimeout(() => {
             discountContainer.classList.add('hideAnimation');
             document.getElementById('typewriterText').classList.add('hideAnimation');
-        }, 4000); 
-        
+        }, 4000);
         </script>
         
         
 </body>
 
 </html>
-
-
-
-
-
-
-
-
 
