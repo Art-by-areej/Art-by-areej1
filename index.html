@@ -860,13 +860,19 @@
         // تايب رايتر
         document.getElementById("typewriterText").textContent = "BLACK FRAIDY 25.11.25-10.12.25!";
         
-      
+        // إخفاء الأنيميشن بعد 4 ثواني
+        setTimeout(() => {
+            discountContainer.classList.add('hideAnimation');
+            document.getElementById('typewriterText').classList.add('hideAnimation');
+        }, 4000); 
+        
         </script>
         
         
 </body>
 
 </html>
+
 
 
 
