@@ -9,86 +9,44 @@
     <style>
 
 
-/* قسم بلاك فرايدي ثابت */
-#blackFridaySection {
-    width: 80%;
-    padding: 20px 0;
-    background: #fff;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    height: 220px; /* ارتفاع مناسب */
-    margin-bottom: 20px;
-}
-
-/* عنوان FRIDAY */
-#bfTitle {
-    font-size: 55px;
-    color: #8B0000;
-    font-weight: 900;
-    letter-spacing: 3px;
-    margin: 0;
-}
-
-/* براويز الخصم */
-.discountFrame {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: white;
-    border: 4px solid #b58b3b; /* ذهبي */
-    outline: 3px solid #5a3a12; /* بني */
-    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+/* === الكتالوج (مرن) === */
+.catalog {
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
     justify-content: center;
-    align-items: center;
-    font-weight: 800;
-    color: #5a3a12;
-    font-size: 20px;
-    animation: rainFall 3s linear infinite;
-    top: 0;
 }
 
+/* === كل منتج === */
+.product {
+    background-color: #ffdbbe;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #eccdb1;
+    flex: 1 1 45%; /* عرض مرن تقريبًا نصف الشاشة */
+    max-width: 300px; /* الحد الأقصى للعرض */
+}
 
-/* حركة المطر داخل القسم فقط */
-@keyframes rainFall {
-    0% {
-        transform: translateY(-40px);
-        opacity: 1;
+/* === الصور داخل المنتج === */
+.product img {
+    width: 100%;  /* الصور تمتد لملء مساحة المنتج */
+    height: auto; /* ارتفاع تلقائي للحفاظ على النسب */
+    border-radius: 10px; 
+    border: 3px solid #eccdb1;
+    object-fit: cover;
+}
+
+/* === Responsive للشاشات المتوسطة === */
+@media (max-width: 768px) {
+    .product {
+        flex: 1 1 45%; /* تقريبًا نصف الشاشة */
+        max-width: 45%;
     }
-    100% {
-        transform: translateY(200px);
-        opacity: 0;
-    }
 }
 
-/* تايب رايتر */
-#typewriterText {
-    font-size: 22px;
-    font-weight: 600;
-    color: #8B0000;
-    margin-top: 15px;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid #8B0000;
-    width: 0;
-    animation: typing 2.5s steps(40) 0.5s forwards,
-               blink 0.8s infinite;
-}
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 260px }
-}
-
-@keyframes blink {
-    50% { border-color: transparent }
-}
-
-/* إخفاء الأنيميشن */
-.hideAnimation {
-    display: none !important;
-}
+/* === Responsive للشاشات*
 
 
         /* أنماط الكوبون */
@@ -872,6 +830,7 @@
 </body>
 
 </html>
+
 
 
 
