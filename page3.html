@@ -6,7 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتالوج المنتجات</title>
     <style>
-    
+        
+    .image-pair {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* المسافة بين الصورتين */
+    margin-bottom: 20px;
+}
+
+.image-pair img {
+    width: 48%; /* كل صورة تأخذ نصف العرض تقريبًا */
+    height: auto;
+    border-radius: 10px; /* اختياري */
+    object-fit: cover; 
+}
+
         /* تعيين أنماط الجسم العامة */
         body {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -772,6 +786,7 @@ function sendOrder() {
     </body>
     </html>  
     
+
 
 
 
