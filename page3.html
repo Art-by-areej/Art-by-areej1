@@ -236,19 +236,13 @@
             background-color: #fffff6b4f3bf;
         }
 
-        @media (max-width: 768px) {
-            .product {
-                flex: 1 1 calc(50% - 40px); 
-                max-width: calc(50% - 40px);
-            }
-        }
+     @media (max-width: 480px) {
+    .product {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
 
-        @media (max-width: 480px) {
-            .product {
-                flex: 1 1 100%; 
-                max-width: 100%;
-            }
-        }
         .cart-message {
     background-color: #ffefc6; /* خلفية فاتحة للتمييز */
     padding: 20px; /* إضافة مسافة داخلية */
@@ -778,6 +772,7 @@ function sendOrder() {
     </body>
     </html>  
     
+
 
 
 
