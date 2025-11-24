@@ -1,26 +1,12 @@
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كتالوج المنتجات</title>
     <style>
-        
-    .image-pair {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* المسافة بين الصورتين */
-    margin-bottom: 20px;
-}
-
-.image-pair img {
-    width: 48%; /* كل صورة تأخذ نصف العرض تقريبًا */
-    height: auto;
-    border-radius: 10px; /* اختياري */
-    object-fit: cover; 
-}
-
+    
         /* تعيين أنماط الجسم العامة */
         body {
             font-family: Georgia, 'Times New Roman', Times, serif;
@@ -250,13 +236,19 @@
             background-color: #fffff6b4f3bf;
         }
 
-    @media (max-width: 768px) {
-    .product {
-        flex: 1 1 calc(50% - 20px);
-        max-width: calc(50% - 20px);
-    }
-}
+        @media (max-width: 768px) {
+            .product {
+                flex: 1 1 calc(50% - 40px); 
+                max-width: calc(50% - 40px);
+            }
+        }
 
+        @media (max-width: 480px) {
+            .product {
+                flex: 1 1 100%; 
+                max-width: 100%;
+            }
+        }
         .cart-message {
     background-color: #ffefc6; /* خلفية فاتحة للتمييز */
     padding: 20px; /* إضافة مسافة داخلية */
@@ -541,37 +533,28 @@
         </div>
 
         <div class="product">
-            <img src="كاسة رسمة ديجتال رصاصي.jpg" alt="كاسةرسمة ديچتال - رصاصي ">
+            <img src="كاسة رسمة ديجتال رصاصي.jpg" alt="كاسة رسمة ديچتال - رصاصي ">
             <h3> كاسة رسمة ديچتال - رصاصي  </h3>
             <p>  60₪</p>
             <button onclick="addToCart('كاسة رسمة ديچتال - رصاصي   ', 60)">أضف إلى السلة</button>
         </div>
         
         <div class="product">
-
-    <!-- الزوج الأول من الصور (الكاسة) -->
-    <div class="image-pair">
-        <img src="كاسة صوره عاديه.jpg" alt="كاسة صورة عادية">
-        <img src="كاسة صوره عاديه2.jpg" alt="كاسة صورة عادية 2">
-    </div>
-
-    <h3>كاسة صورة عادية</h3>
-    <p>30₪</p>
-    <button onclick="addToCart('كاسة صورة عادية', 30)">أضف إلى السلة</button>
+            <img src=" كاسة صوره عاديه.jpg" alt=" كاسة صورة عادية ٣٠₪ ">
+            <h3>كاسة صورة عادية </h3>
+            <p> 30₪</p>
+            </p>
+            <button onclick="addToCart('كاسة رسمة عاديه   ', 30)">أضف إلى السلة</button>
+        </div> 
 
 
-    <!-- الزوج الثاني من الصور (البازل) -->
-    <div class="image-pair">
-        <img src="بازل صوره عاديه.jpg" alt="بازل - puzzle - صورة عادية">
-        <img src="بازل صوره عاديه2.jpg" alt="بازل - puzzle - صورة عادية 2">
-    </div>
-
-    <h3>صورة عادية - Puzzle - بازل</h3>
-    <p>60₪</p>
-    <button onclick="addToCart('بازل صورة عادية', 60)">أضف إلى السلة</button>
-
-</div>
-
+        <div class="product">
+            <img src=" بازل صوره عاديه.jpg " alt="بازل - puzzle -صورة عادية ٦٠₪">
+            <h3>صورة عادية- puzzle - بازل</h3>
+            <P>60₪</P>
+            </p>
+            <button onclick="addToCart('صورة عادية- puzzle - بازل-  ', 60)">أضف إلى السلة</button>
+        </div> 
 
         <div class="product">
             <img src=" بازل رسمة ديجتال.jpg " alt="رسمة ديجتال - puzzle - بازل ">
@@ -795,11 +778,5 @@ function sendOrder() {
     </body>
     </html>  
     
-
-
-
-
-
-
 
 
