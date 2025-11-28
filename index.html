@@ -9,99 +9,6 @@
     <style>
 
 
-/* قسم بلاك فرايدي ثابت */
-#blackFridaySection {
-    width: 100%;
-    padding: 50px 0;
-    background:#ffffff;;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    height: 180px; /* ارتفاع مناسب */
-    margin-bottom: 20px;
-}
-
-/* عنوان FRIDAY */
-#bfTitle1 {
-    font-size: 35px;
-    color: #8B0000;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin: 0;
-}
-#bfTitle2 {
-    font-size: 15px;
-    color: #8B0000;
-    font-weight: 800;
-    letter-spacing: 3px;
-    margin: 0;
-    font-family: 'Tajawal', sans-serif;
-}
-
-
-
-/* براويز الخصم */
-.discountFrame {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: white;
-    border: 4px solid #b58b3b; /* ذهبي */
-    outline: 3px solid #5a3a12; /* بني */
-    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 800;
-    color: #5a3a12;
-    font-size: 20px;
-    animation: rainFall 3s linear infinite;
-    top: 0;
-}
-
-
-/* حركة المطر داخل القسم فقط */
-@keyframes rainFall {
-    0% {
-        transform: translateY(-40px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(200px);
-        opacity: 0;
-    }
-}
-
-/* تايب رايتر */
-#typewriterText {
-    font-size: 22px;
-    font-weight: 500;
-    color: #8B0000;
-    margin-top: 15px;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid #8B0000;
-    width: 0;
-    animation: typing 2.5s steps(40) 0.5s forwards,
-               blink 0.8s infinite;
-    text-align: center;
-
-}
-
-
-@keyframes typing {
-    from { width: 0 }
-    to { width: 260px }
-}
-
-@keyframes blink {
-    50% { border-color: transparent }
-}
-
-/* إخفاء الأنيميشن */
-.hideAnimation {
-    display: none !important;
-}
 
 
         /* أنماط الكوبون */
@@ -620,19 +527,6 @@
 
 </style>
 
-
-<!-- Black Friday Banner -->
-<div id="blackFridaySection">
-    <h1 id="bfTitle1"> BLACK FRIDAY  </h1>
-    <h2 id="bfTitle2"> %لأنك بتستاهل! الغرض الثاني بخصم 30 </h2>
-    <h2 id="bfTitle2">لمدة 3 ايام</h2>
-
-    <div id="discountBoxes"></div>
-    <p id="typewriterText"></p>
-</div>
-
-
-
 <p style="text-align: center; font-size: 16px; color: #99673e;">
     <a href="page2.html" style="color: #99673e; text-decoration: none;">اضغط لرؤية كاتلوج البراويز</a>
 </p>
@@ -862,29 +756,7 @@
     </footer>
 
 
-    <script>
-        // إنشاء براويز الخصم
-        const discountContainer = document.getElementById('discountBoxes');
-        const discounts = ['30%'];
-        
-        for (let i = 0; i < 20; i++) {
-            const frame = document.createElement('div');
-            frame.className = 'discountFrame';
-            frame.textContent = discounts[Math.floor(Math.random()*discounts.length)];
-            frame.style.left = Math.random() * 90 + 'vw';
-            frame.style.animationDuration = (2 + Math.random()*2) + 's';
-            discountContainer.appendChild(frame);
-        }
-       
-        // إخفاء الأنيميشن بعد 4 ثواني
-        setTimeout(() => {
-            discountContainer.classList.add('hideAnimation');
-            document.getElementById('typewriterText').classList.add('hideAnimation');
-        }, 4000);
-
     
-
-typeWriter();
  
         </script>
         
@@ -892,6 +764,7 @@ typeWriter();
 </body>
 
 </html>
+
 
 
 
