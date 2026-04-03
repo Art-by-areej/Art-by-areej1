@@ -76,8 +76,6 @@ button {
     <div class="cart-icon" onclick="goToCart()">🛒</div>
 </div>
 
-<body>
-    <header>
 
         <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
         <div class="welcome-message">
@@ -94,63 +92,7 @@ button {
    
 
 
-    <div class="cart" id="cart">
-        <h2>السلة</h2>
-        <ul id="cartItems"></ul>
-        <button onclick="toggleCart()">إغلاق السلة</button>
-        <button onclick="toggleOrderForm()">تأكيد الطلب</button>
-        <!-- نموذج الطلب داخل السلة -->
-        <div id="orderForm" class="contact-form">
-            <p>ملاحظة مهمة</p>
-            <p>بعد تعبئة كامل التفاصيل، اضغط على "إرسل الطلب" وسوف تُرسل الطلبية عبر الواتس اب ومن ثم إرسال الصور المطلوبة.</p>
-
-
-
-    <form id="form">
-        <label for="name">الاسم:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="phone">رقم الهاتف:</label>
-        <input type="tel" id="phone" name="phone" required>
-        
-        
-        <label for="additionalNumber">رقم إضافي:</label>
-        <input type="tel" id="additionalNumber" name="additionalNumber">
-        
-        <label for="deliveryOption">اختر طريقة التوصيل:</label>
-        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
-            <option value="" disabled selected>اختر طريقة التوصيل</option>
-            <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
-            <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
-        </select>
     
-       <div id="deliveryDetails" style="display: none;">
-            <label for="deliveryArea">اختر المنطقة:</label>
-            <select id="deliveryArea" name="deliveryArea">
-                <option value="north">الشمال - 50</option>
-                <option value="triangle">المثلث - 50</option>
-                <option value="triangle2">ام الفحم,سالم,زلفة - 40</option>
-                <option value="south">الجنوب - 60</option>
-            </select>
-            
-            <label for="region">اسم المنطقة:</label>
-            <input type="text" id="region" name="region">
-        </div>
-        
-    <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
-    <input type="date" id="specificDate" name="specificDate">
-        
-                
-                <label for="note">:اذا كنت ترغب باضافة ملاحظة او اضافة اغنية أو عبارة</label>
-                <textarea id="note" name="note" rows="3" placeholder="اكتب  هنا"></textarea>
-
-        
- 
-    <button type="button" onclick="sendOrder()">إرسال الطلب</button>
-</form>
-    </div>
-</div>
-
 <!-- كتالوج المنتجات -->
    
 
