@@ -72,29 +72,17 @@
      /* الكتالوج */
 .catalog {
     display: flex;
-    flex-wrap: wrap; /* السماح بالتفاف المنتجات إلى صفوف */
-    gap: 20px; /* مسافة بين المنتجات */
-    padding: 20px;
-    justify-content: center; /* محاذاة المنتجات في المنتصف */
+    flex-wrap: wrap;
+    gap: 10px;
 }
-
 /* المنتج */
 .product {
-    background-color: #ffdbbec0;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    flex: 0 1 calc(50% - 20px); /* عرض كل منتجين في صف */
-    max-width: calc(50% - 20px); /* منع تجاوز العرض */
-    text-align: center;
-    border: 1px solid #eccdb1;
+    flex: 0 1 calc(33.33% - 10px);
 }
 
-/* تخصيص للهواتف الصغيرة */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .product {
         flex: 0 1 calc(50% - 10px);
-        max-width: calc(50% - 10px);
     }
 }
 
