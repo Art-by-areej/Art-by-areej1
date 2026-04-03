@@ -1095,6 +1095,76 @@ function goToCart() {
 }
 
 </script>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart</title>
+
+<style>
+
+body {
+    font-family: sans-serif;
+    padding: 15px;
+}
+
+/* عنصر المنتج */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* زر */
+button {
+    padding: 10px;
+    background: #6b4f3b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>سلة المشتريات</h2>
+
+<div id="cart-items"></div>
+
+<textarea id="details" placeholder="اكتبي تفاصيل الطلب..." style="width:100%; height:80px;"></textarea>
+
+<button onclick="sendOrder()">إرسال الطلب</button>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let container = document.getElementById("cart-items");
+
+/* عرض المنتجات */
+cart.forEach(item => {
+    container.innerHTML += `
+        <div class="cart-item">
+            <span>${item.name}</span>
+            <span>${item.price}₪</span>
+        </div>
+    `;
+});
+
+ // إرسال الطلب عبر واتساب
+    const whatsappPhone = "972535845120";
+    const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
+    window.open(whatsappURL, '_blank');
+}
+
+</script>
 
 </body>
 </html>
+
