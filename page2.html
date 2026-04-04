@@ -136,16 +136,16 @@
         flex-direction: column;
         justify-content: flex-start;
     }
-
-    .product img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border: 4px solid #eccdb1;
-        box-shadow: 0 4px 8px rgb(255, 255, 255);
-        border-radius: 8px;
-        display: block;
-    }
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain; /* 👈 أهم تغيير */
+    background-color: #fffaf5; /* عشان يبين الشكل ناعم */
+    border: 4px solid #eccdb1;
+    box-shadow: 0 4px 8px rgb(255, 255, 255);
+    border-radius: 8px;
+    display: block;
+}
 
     .product h3 {
         margin: 10px 0 6px;
