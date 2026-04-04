@@ -426,20 +426,80 @@
             top: 52px;
         }
     }
+.menu-wrapper {
+    position: relative;
+}
 
+.side-menu {
+    display: none;
+    position: absolute;
+    top: 42px;
+    right: 0;
+    background: #fffaf5;
+    border: 1px solid #eccdb1;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    min-width: 210px;
+    overflow: hidden;
+    z-index: 3000;
+}
+
+.side-menu a {
+    display: block;
+    padding: 12px 14px;
+    color: #6b4f3b;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid #f1dfcf;
+}
+
+.side-menu a:last-child {
+    border-bottom: none;
+}
+
+.side-menu a:hover {
+    background: #ffefe2;
+}
+
+.side-menu.show {
+    display: block;
+}
+
+/* يمنع تكبير الشاشة عند الضغط على الحقول في الآيفون */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    font-size: 16px;
+}
+
+/* تهدئة حركة الصفحة داخل السلة */
+#cart-page {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
     </style>
 </head>
 
 <body>
-    <div class="top-bar">
-        <button class="icon-btn" type="button">☰</button>
-        <div class="title">Art By Areej</div>
-        <button class="icon-btn" type="button" onclick="showCartPage()">
-            🛒
-            <span class="cart-badge" id="cartCount">0</span>
-        </button>
+   <div class="top-bar">
+    <div class="menu-wrapper">
+        <button class="icon-btn" type="button" onclick="toggleMenu()">☰</button>
+
+        <div class="side-menu" id="sideMenu">
+            <a href="index.html">الصفحة الرئيسية</a>
+            <a href="page2.html">كتالوج البراويز</a>
+            <a href="page3.html">كتالوج المنتجات الأخرى</a>
+        </div>
     </div>
 
+    <div class="title">Art By Areej</div>
+
+    <button class="icon-btn" type="button" onclick="showCartPage()">
+        🛒
+        <span class="cart-badge" id="cartCount">0</span>
+    </button>
+</div>
+    
     <div id="products-page">
         <header>
             <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
@@ -1399,6 +1459,19 @@
         const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
         window.open(whatsappURL, '_blank');
     }
+
+    function toggleMenu() {
+    document.getElementById('sideMenu').classList.toggle('show');
+}
+
+document.addEventListener('click', function (e) {
+    const menu = document.getElementById('sideMenu');
+    const wrapper = document.querySelector('.menu-wrapper');
+
+    if (menu && wrapper && !wrapper.contains(e.target)) {
+        menu.classList.remove('show');
+    }
+});        
 </script>
 </body>
 </html>
