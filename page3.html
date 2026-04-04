@@ -1,420 +1,487 @@
-
-       <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>كتالوج المنتجات</title>
+
     <style>
-    
-        /* تعيين أنماط الجسم العامة */
-        body {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            background-color: #ffffff;
-            color: #6f431e;
-            margin: 0;
-            padding: 0;
+    body {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: #ffffff;
+        color: #6f431e;
+        margin: 0;
+        padding: 0;
+        direction: rtl;
+        overflow-x: hidden;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 2000;
+        background: #fff;
+        border-bottom: 1px solid #eccdb1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .top-bar .title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #6b4f3b;
+    }
+
+    .icon-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #6b4f3b;
+        position: relative;
+    }
+
+    .cart-badge {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        background: #000;
+        color: #fff;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu-wrapper {
+        position: relative;
+    }
+
+    .side-menu {
+        display: none;
+        position: absolute;
+        top: 42px;
+        right: 0;
+        background: #fffaf5;
+        border: 1px solid #eccdb1;
+        border-radius: 12px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+        min-width: 210px;
+        overflow: hidden;
+        z-index: 3000;
+    }
+
+    .side-menu a {
+        display: block;
+        padding: 12px 14px;
+        color: #6b4f3b;
+        text-decoration: none;
+        font-size: 14px;
+        border-bottom: 1px solid #f1dfcf;
+    }
+
+    .side-menu a:last-child {
+        border-bottom: none;
+    }
+
+    .side-menu a:hover {
+        background: #ffefe2;
+    }
+
+    .side-menu.show {
+        display: block;
+    }
+
+    header {
+        background-color: #ffffff;
+        text-align: center;
+        border-bottom: 2px solid #eccdb1;
+        padding: 20px 12px;
+    }
+
+    .logo {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #eccdb1;
+    }
+
+    .welcome-message {
+        background-color: #ffdbbe;
+        padding: 12px;
+        border-radius: 8px;
+        margin: 20px auto;
+        width: 100%;
+        text-align: center;
+        font-size: 11px;
+        line-height: 1.7;
+        color: #6b4f3b;
+    }
+
+    #products-page {
+        display: block;
+    }
+
+    .catalog {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px;
+        justify-content: center;
+    }
+
+    .product {
+        background-color: #ffdbbec0;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+        padding: 10px;
+        flex: 0 1 calc(50% - 12px);
+        max-width: calc(50% - 12px);
+        text-align: center;
+        border: 1px solid #eccdb1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .product img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        background-color: #ffdbbec0;
+        border: 4px solid #eccdb1;
+        border-radius: 8px;
+        display: block;
+    }
+
+    .product h3 {
+        margin: 10px 0 6px;
+        font-size: 15px;
+        line-height: 1.5;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product p {
+        margin: 4px 0;
+        font-weight: bold;
+        color: #6b4f3b;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .product label {
+        display: block;
+        margin-top: 8px;
+        margin-bottom: 4px;
+        font-weight: bold;
+        color: #6b4f3b;
+        font-size: 13px;
+        text-align: right;
+    }
+
+    .product select {
+        width: 100%;
+        padding: 9px;
+        border-radius: 8px;
+        border: 1px solid #d8b899;
+        margin-bottom: 8px;
+        font-size: 13px;
+        font-family: inherit;
+        background: #fff;
+    }
+
+    .product button {
+        padding: 10px 12px;
+        background-color: #6b4f3b;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: auto;
+        width: 100%;
+        font-size: 14px;
+        font-family: inherit;
+    }
+
+    .product button:hover {
+        background-color: #5a472a;
+    }
+
+    #cart-page {
+        display: none;
+        padding: 0 14px 14px;
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .cart-page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 1000;
+        padding: 8px 0;
+    }
+
+    .cart-page-header h2 {
+        margin: 0;
+        color: #6b4f3b;
+        font-size: 24px;
+    }
+
+    .back-btn {
+        background: #fff;
+        border: 1px solid #d8b899;
+        color: #6b4f3b;
+        border-radius: 50px;
+        padding: 10px 16px;
+        cursor: pointer;
+        font-size: 14px;
+        font-family: inherit;
+    }
+
+    #cartItems {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .cart-item {
+        background: #fffaf5;
+        border: 1px solid #eccdb1;
+        border-radius: 12px;
+        padding: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .cart-item-info {
+        flex: 1;
+    }
+
+    .cart-item-name {
+        font-weight: bold;
+        margin-bottom: 6px;
+        color: #6b4f3b;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .cart-item-meta {
+        font-size: 13px;
+        color: #7a624f;
+        margin-bottom: 4px;
+        line-height: 1.5;
+    }
+
+    .remove-button {
+        background-color: #fff;
+        color: #c0392b;
+        border: 1px solid #e1b4af;
+        border-radius: 8px;
+        padding: 8px 10px;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+
+    .remove-button:hover {
+        background-color: #fff3f2;
+    }
+
+    .cart-summary {
+        background: #fffaf5;
+        border: 1px solid #eccdb1;
+        border-radius: 12px;
+        padding: 14px;
+        margin-bottom: 18px;
+        color: #6b4f3b;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .contact-form {
+        display: block;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 12px;
+        padding: 16px;
+        background: #fffaf5;
+        border: 1px solid #eccdb1;
+    }
+
+    .contact-form p {
+        font-size: 13px;
+        line-height: 1.7;
+        margin: 6px 0;
+    }
+
+    .contact-form label {
+        display: block;
+        margin-top: 12px;
+        color: #6c3200;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0 0;
+        border-radius: 8px;
+        border: 1px solid #d9c5b1;
+        font-family: inherit;
+        font-size: 16px;
+        background: #fff;
+    }
+
+    .contact-form textarea {
+        resize: vertical;
+        min-height: 90px;
+    }
+
+    .contact-form button {
+        padding: 12px 18px;
+        background-color: #7d6b5b;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 18px;
+        font-size: 15px;
+        font-family: inherit;
+    }
+
+    .contact-form button:hover {
+        background-color: #6b4f3b;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        color: #e74c3c;
+        margin-left: 6px;
+        font-size: 12px;
+    }
+
+    .new-price {
+        color: #27ae60;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #fffefd;
+        color: rgb(0, 0, 0);
+        margin-top: 20px;
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+        .top-bar {
+            padding: 10px 12px;
         }
 
-        /* أنماط الترويسة (Header) */
-        header {
-            background-color: #ffffff;
-            text-align: center;
-            border-bottom: 2px solid #eccdb1;
-            padding: 20px 0;
+        .top-bar .title {
+            font-size: 18px;
         }
 
-        /* أنماط الشعار (Logo) */
-        .logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #eccdb1;
+        .icon-btn {
+            font-size: 22px;
         }
 
-        /* أنماط مستطيل الترحيب */
-        .welcome-message {
-            background-color: #ffdbbe;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px auto;
-            width: 100%;
-            text-align: center;
-            font-size: 10px;
-            color: #6b4f3b;
-        }
-
-        /* أنماط شريط التنقل (Navigation) */
-        .nav {
-            display: flex;
-            justify-content: center;
-            margin: 10px 0;
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: #6b4f3b;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* أنماط الحاوية (Container) */
-        .container {
-            width: 80%;
-            margin: auto;
-            display: flex; /* استخدام flexbox لتوزيع المنتجات والسلة */
-        }
-
-        /* أنماط الكتالوج (Catalog) */
-        .catalog {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            flex: 1; /* السماح للكتالوج بأخذ المساحة المتبقية */
-        }
-
-
-        /* أنماط المنتجات (Product) */
         .product {
-            background-color: #ffdbbec0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            flex: 1 1 calc(33.333% - 40px);
-            text-align: center;
-            border: 1px solid #eccdb1;
+            flex: 0 1 calc(50% - 12px);
+            max-width: calc(50% - 12px);
+            padding: 8px;
         }
 
         .product img {
-            width: 100%;
-            height: auto;
-            border: 5px solid #eccdb1;
-            box-shadow: 0 4px 8px rgb(255, 255, 255);
+            height: 150px;
         }
 
         .product h3 {
-            margin: 10px 0 5px;
+            font-size: 13px;
+            min-height: 40px;
         }
 
         .product p {
-            margin: 5px 0;
-            font-weight: bold;
-            color: #6b4f3b;
-            font-size: 16px;
+            font-size: 12px;
         }
 
+        .product label,
+        .product select,
         .product button {
-            padding: 10px 20px;
-            background-color: #6b4f3b;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
+            font-size: 12px;
         }
-
-        .product button:hover {
-            background-color: #5a472a; /* لون مختلف عند التمرير */
-        }
-.cart {
-    position:fixed; /* تم تغييرها من fixed إلى absolute */
-    top: 5%;
-    right: 0;
-    width: 300px;
-    height: 80%;
-    background-color: #fffffd;
-    border-left: 2px solid #ffffff9e;
-    padding: 20px;
-    overflow-y: auto;
-    direction: rtl; /* توجيه النص في السلة بالكامل */
-    display: none;
-}
-
-
-
-
-        .cart h2 {
-            color: #6b4f3b; 
-            font-size: 10px; 
-            font-weight: bold; 
-        }
-
-        .cart ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: right; 
-        }
-
-        .cart ul li {
-    padding: 5px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 18px; /* حجم الخط */
-    text-align: right; /* محاذاة النص إلى اليمين */
-    direction: rtl; /* لتحديد اتجاه الكتابة من اليمين إلى اليسار */
-}
-
-
-        .remove-button {
-            background-color: #ffffff;
-            color: #ff0000;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        .remove-button:hover {
-            background-color: #c0392b;
-        }  .cart-icon {
-    position: fixed;
-    bottom: 10px; /* وضع الأيقونة في الأسفل */
-    right: 10px;
-    cursor: pointer;
-    font-size: 30px;
-    color: #ffffff;
-    z-index: 1000;
-    background-color: #000000;
-    width: 60px; /* حجم العرض للخلفية الدائرية */
-    height: 60px; /* حجم الارتفاع للخلفية الدائرية */
-    border-radius: 50%; /* جعل الخلفية دائرية */
-    display: flex;
-    align-items: center; /* توسيط الأيقونة عموديًا */
-    justify-content: center; /* توسيط الأيقونة أفقيًا */
-}
-
-        /* أنماط نموذج الطلب (Order Form) */
-        .contact-form {
-            max-width: 300px;
-            margin: auto;
-            display: none; 
-            border-radius: 8px;
-            padding: 50px;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-top: 10px;
-            color: #6c3200; 
-        }
-
-        .contact-form input, 
-        .contact-form select,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .contact-form button {
-            padding: 10px 20px;
-            background-color: #7d6b5b; 
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .contact-form button:hover {
-            background-color: #6b4f3b; 
-        }
-
-        /* أنماط التذييل (Footer) */
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #fffff6b4f3bf;
-        }
-
-        @media (max-width: 768px) {
-            .product {
-                flex: 1 1 calc(50% - 40px); 
-                max-width: calc(50% - 40px);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .product {
-                flex: 1 1 100%; 
-                max-width: 100%;
-            }
-        }
-        .cart-message {
-    background-color: #ffefc6; /* خلفية فاتحة للتمييز */
-    padding: 20px; /* إضافة مسافة داخلية */
-    border-radius: 8px; /* حواف دائرية */
-    margin: 15px 0; /* مسافة من الأعلى والأسفل */
-    text-align: center; /* محاذاة النص في المنتصف */
-    font-family: 'Arial', sans-serif; /* الخط */
-    color: #6b4f3b; /* لون النص */
-}
-
-.cart-message h1 {
-    font-size: 18px; /* حجم الخط */
-    font-weight: bold; /* سمك الخط */
-    color: #6b4f3b; /* نفس لون النص */
-    margin-bottom: 15px; /* مسافة بين العناوين */
-}
-
-.cart-message h1:first-of-type {
-    font-size: 20px; /* حجم أكبر للعناوين الأولى */
-    color: #d9534f; /* لون مميز للعنوان الأول */
-}
-/* أنماط الأسعار (Prices) */
-.old-price {
-    text-decoration: line-through;
-    color: #e74c3c; /* لون أحمر للسعر القديم */
-    margin-right: 10px;
-    font-size: 14px; /* حجم خط أصغر للسعر القديم */
-}
-.new-price {
-    color: #27ae60; /* لون أخضر للسعر الجديد */
-    font-size: 18px; /* حجم خط أكبر للسعر الجديد لجعله بارزاً */
-    font-weight: bold;
-}
-
+    }
     </style>
 </head>
 
 <body>
-    <header>
-        <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
-        <div class="welcome-message">
-            الذّكرَياتُ الجَميلَةُ، هِيَ شَيْءٌ فَوْقَ القَلْبِ وَفَوْقَ المَشاعِرِ، لِذلِكَ دَعْها تُرافِقُكَ بِهَيْئَةِ صورَةٍ في كُلِّ مَكانٍ وَزَمانٍ    
+    <div class="top-bar">
+        <div class="menu-wrapper">
+            <button class="icon-btn" type="button" onclick="toggleMenu()">☰</button>
+
+            <div class="side-menu" id="sideMenu">
+                <a href="index.html">الصفحة الرئيسية</a>
+                <a href="page2.html">كتالوج البراويز</a>
+                <a href="page3.html">كتالوج المنتجات الأخرى</a>
+            </div>
         </div>
-        <div class="nav">
-            <a href="page3.html">كتالوج المنتجات الاخرى</a>
-            <a href="page2.html">كتالوج البراويز</a>
-           <a href="index.html">الصفحة الرئيسية</a>
-        </div>
-    </header>
-   
-    <div class="cart" id="cart">
-        <h2>السلة</h2>
-        <ul id="cartItems"></ul>
-        <button onclick="toggleCart()">إغلاق السلة</button>
-        <button onclick="toggleOrderForm()">تأكيد الطلب</button>
-        <!-- نموذج الطلب داخل السلة -->
-        <div id="orderForm" class="contact-form">
 
-            <p>ملاحظة مهمة</p>
-            <p>بعد تعبئة كامل التفاصيل، اضغط على "إرسل الطلب" وسوف تُرسل الطلبية عبر الواتس اب ومن ثم إرسال الصور المطلوبة.</p>
+        <div class="title">Art By Areej</div>
 
-            <label for="name">الاسم:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="phone">رقم الهاتف:</label>
-        <input type="tel" id="phone" name="phone" required>
-        
-        
-        <label for="additionalNumber">رقم إضافي:</label>
-        <input type="tel" id="additionalNumber" name="additionalNumber">
-        
-        <label for="deliveryOption">اختر طريقة التوصيل:</label>
-        <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
-            <option value="" disabled selected>اختر طريقة التوصيل</option>
-            <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
-            <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
-        </select>
-    
-        <div id="deliveryDetails" style="display: none;">
-            <label for="deliveryArea">اختر المنطقة:</label>
-            <select id="deliveryArea" name="deliveryArea">
-                <option value="north">الشمال - 50</option>
-                <option value="triangle">المثلث - 50</option>
-                <option value="triangle2">ام الفحم,سالم,زلفة - 40</option>
-                <option value="south">الجنوب - 60</option>
-            </select>
-            
-            <label for="region">اسم المنطقة:</label>
-            <input type="text" id="region" name="region">
-        </div>
-        
-    <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
-
-    <input type="date" id="specificDate" name="specificDate">
-            
-     <label for="note">:اذا كنت ترغب باضافة ملاحظة او اضافة اغنية أو عبارة</label>
-                <textarea id="note" name="note" rows="3" placeholder="اكتب  هنا"></textarea>
-
-
-        </select>
-          
-        
-        <button type="button" onclick="sendOrder()">إرسال الطلب</button>
-    </form>
-        </div>
+        <button class="icon-btn" type="button" onclick="showCartPage()">
+            🛒
+            <span class="cart-badge" id="cartCount">0</span>
+        </button>
     </div>
 
-    
-<!-- كتالوج المنتجات -->
-<div class="container">
-    <div class="catalog">
-        <div class="product">
-            <img src="2 مجين صوره عاديه.jpg" alt="2 مچين - صورة عادية">
-            <h3> مچين2 - صورة عادية</h3>
-            <p>
-                <span class="old-price">130₪</span> <span class="new-price">100₪</span>
-            </p>
-            <label for="phoneType1">نوع الهاتف:</label>
-            <select id="phoneType1" name="phoneType2" required>
-            <option value="" disabled selected>اختر نوع الهاتف</option>
-             <option value="iPhone11">iphone 11</option>
-            <option value="iPhone11 pro">iphone 11 pro</option>
-            <option value="iPhone 11 promax">iphone 11 promax</option>
-            <option value="iPhone 12">iphone 12</option>
-            <option value="iPhone 12 pro">iphone 12 pro</option>
-            <option value="iPhone 12 promax">iphone 12 promax</option>
-            <option value="iPhone 13">iphone 13</option>
-            <option value="iPhone 13 pro">iphone 13 pro</option>
-            <option value="iPhone 13 promax">iphone 13 promax</option>
-            <option value="iPhone 14">iphone 14</option>
-            <option value="iPhone 14 pro">iphone 14 pro</option>
-            <option value="iPhone 14 promax">iphone 14 promax</option>
-            <option value="iPhone 14 plus">iphone 14 blus </option>
-            <option value="iPhone 15">iphone 15</option>
-            <option value="iPhone 15 pro">iphone 15 pro</option>
-            <option value="iPhone 15 promax">iphone 15 promax</option>
-    
-       <option value="iPhone 16">iphone 16</option>
-            <option value="iPhone 16 pro">iphone 16 pro</option>
-            <option value="iPhone 16 promax">iphone 16 promax</option>
-                
-            <option value="Samsung 21 ultra">21 ultra</option>
-            <option value="Samsung 22 ultra">22 ultra</option>
-            <option value="Samsung 23 ultra">23 ultra</option>
-    
-            <option value="Samsung A52">A52</option>
-            <option value="Samsung A53">A53</option>
-            <option value="Samsung A71">A71</option>
-            <option value="Samsung A73">A73</option>
-    
-            </select>
-    
-            <button onclick="addToCart('  2 مچين - صورة عادية-  ', 100 ,'phoneType1')">أضف إلى السلة</button>
-        </div>
+    <div id="products-page">
+        <header>
+            <img src="logo areej.jpg" alt="لوجو الموقع" class="logo">
+            <div class="welcome-message">
+                الذّكرَياتُ الجَميلَةُ، هِيَ شَيْءٌ فَوْقَ القَلْبِ وَفَوْقَ المَشاعِرِ، لِذلِكَ دَعْها تُرافِقُكَ بِهَيْئَةِ صورَةٍ في كُلِّ مَكانٍ وَزَمانٍ
+            </div>
+        </header>
 
-       
-                <div class="product">
-                    <img src="مجين كاسة محزيك.jpg" alt="مچين/كاسة/مَحزيك">
-                    <h3> مچين/كاسة/مَحزيك </h3>
-                    <p>
-                        <span class="old-price">140₪</span> <span class="new-price">100₪</span>
-                    </p>
-                    <label for="phoneType2">نوع الهاتف:</label>
-                    <select id="phoneType2" name="phoneType2" required>
+        <div class="catalog">
+            <div class="product">
+                <img src="2 مجين صوره عاديه.jpg" alt="2 مچين - صورة عادية">
+                <h3>مچين2 - صورة عادية</h3>
+                <p><span class="old-price">130₪</span> <span class="new-price">100₪</span></p>
+                <label for="phoneType1">نوع الهاتف:</label>
+                <select id="phoneType1" name="phoneType1">
                     <option value="" disabled selected>اختر نوع الهاتف</option>
-                     <option value="iPhone11">iphone 11</option>
+                    <option value="iPhone11">iphone 11</option>
                     <option value="iPhone11 pro">iphone 11 pro</option>
                     <option value="iPhone 11 promax">iphone 11 promax</option>
                     <option value="iPhone 12">iphone 12</option>
@@ -430,354 +497,447 @@
                     <option value="iPhone 15">iphone 15</option>
                     <option value="iPhone 15 pro">iphone 15 pro</option>
                     <option value="iPhone 15 promax">iphone 15 promax</option>
-            
-               <option value="iPhone 16">iphone 16</option>
-            <option value="iPhone 16 pro">iphone 16 pro</option>
-            <option value="iPhone 16 promax">iphone 16 promax</option>
-                        
+                    <option value="iPhone 16">iphone 16</option>
+                    <option value="iPhone 16 pro">iphone 16 pro</option>
+                    <option value="iPhone 16 promax">iphone 16 promax</option>
                     <option value="Samsung 21 ultra">21 ultra</option>
                     <option value="Samsung 22 ultra">22 ultra</option>
                     <option value="Samsung 23 ultra">23 ultra</option>
-            
                     <option value="Samsung A52">A52</option>
                     <option value="Samsung A53">A53</option>
                     <option value="Samsung A71">A71</option>
                     <option value="Samsung A73">A73</option>
-            
-                    </select>
-            
-                    <button onclick="addToCart('  مچين/كاسة/مَحزيك  ', 100 ,'phoneType2')">أضف إلى السلة</button>
-                </div>
+                </select>
+                <button onclick="addToCart('  2 مچين - صورة عادية-  ', 100 ,'phoneType1')">أضف إلى السلة</button>
+            </div>
 
+            <div class="product">
+                <img src="مجين كاسة محزيك.jpg" alt="مچين/كاسة/مَحزيك">
+                <h3>مچين/كاسة/مَحزيك</h3>
+                <p><span class="old-price">140₪</span> <span class="new-price">100₪</span></p>
+                <label for="phoneType2">نوع الهاتف:</label>
+                <select id="phoneType2" name="phoneType2">
+                    <option value="" disabled selected>اختر نوع الهاتف</option>
+                    <option value="iPhone11">iphone 11</option>
+                    <option value="iPhone11 pro">iphone 11 pro</option>
+                    <option value="iPhone 11 promax">iphone 11 promax</option>
+                    <option value="iPhone 12">iphone 12</option>
+                    <option value="iPhone 12 pro">iphone 12 pro</option>
+                    <option value="iPhone 12 promax">iphone 12 promax</option>
+                    <option value="iPhone 13">iphone 13</option>
+                    <option value="iPhone 13 pro">iphone 13 pro</option>
+                    <option value="iPhone 13 promax">iphone 13 promax</option>
+                    <option value="iPhone 14">iphone 14</option>
+                    <option value="iPhone 14 pro">iphone 14 pro</option>
+                    <option value="iPhone 14 promax">iphone 14 promax</option>
+                    <option value="iPhone 14 plus">iphone 14 blus </option>
+                    <option value="iPhone 15">iphone 15</option>
+                    <option value="iPhone 15 pro">iphone 15 pro</option>
+                    <option value="iPhone 15 promax">iphone 15 promax</option>
+                    <option value="iPhone 16">iphone 16</option>
+                    <option value="iPhone 16 pro">iphone 16 pro</option>
+                    <option value="iPhone 16 promax">iphone 16 promax</option>
+                    <option value="Samsung 21 ultra">21 ultra</option>
+                    <option value="Samsung 22 ultra">22 ultra</option>
+                    <option value="Samsung 23 ultra">23 ultra</option>
+                    <option value="Samsung A52">A52</option>
+                    <option value="Samsung A53">A53</option>
+                    <option value="Samsung A71">A71</option>
+                    <option value="Samsung A73">A73</option>
+                </select>
+                <button onclick="addToCart('  مچين/كاسة/مَحزيك  ', 100 ,'phoneType2')">أضف إلى السلة</button>
+            </div>
 
-        <div class="product">
-            <img src="كفر صوره عاديه.jpg" alt="كڤر/مچين تلفون - صورة عادية ٧٠₪">
-            <h3>كڤر/مچين تلفون - صورة عادية </h3>
-            <p>70₪ </p>
-            <label for="phoneType3">نوع الهاتف:</label>
-             <select id="phoneType3" name="phoneType3" required>
-         <option value="" disabled selected>اختر نوع الهاتف</option>
-         <option value="iPhone11">iphone 11</option>
-        <option value="iPhone11 pro">iphone 11 pro</option>
-        <option value="iPhone 11 promax">iphone 11 promax</option>
-        <option value="iPhone 12">iphone 12</option>
-        <option value="iPhone 12 pro">iphone 12 pro</option>
-        <option value="iPhone 12 promax">iphone 12 promax</option>
-        <option value="iPhone 13">iphone 13</option>
-        <option value="iPhone 13 pro">iphone 13 pro</option>
-        <option value="iPhone 13 promax">iphone 13 promax</option>
-        <option value="iPhone 14">iphone 14</option>
-        <option value="iPhone 14 pro">iphone 14 pro</option>
-        <option value="iPhone 14 promax">iphone 14 promax</option>
-        <option value="iPhone 14 plus">iphone 14 blus </option>
-        <option value="iPhone 15">iphone 15</option>
-        <option value="iPhone 15 pro">iphone 15 pro</option>
-        <option value="iPhone 15 promax">iphone 15 promax</option>
-                 
-   <option value="iPhone 16">iphone 16</option>
-            <option value="iPhone 16 pro">iphone 16 pro</option>
-            <option value="iPhone 16 promax">iphone 16 promax</option>
+            <div class="product">
+                <img src="كفر صوره عاديه.jpg" alt="كڤر/مچين تلفون - صورة عادية ٧٠₪">
+                <h3>كڤر/مچين تلفون - صورة عادية</h3>
+                <p>70₪</p>
+                <label for="phoneType3">نوع الهاتف:</label>
+                <select id="phoneType3" name="phoneType3">
+                    <option value="" disabled selected>اختر نوع الهاتف</option>
+                    <option value="iPhone11">iphone 11</option>
+                    <option value="iPhone11 pro">iphone 11 pro</option>
+                    <option value="iPhone 11 promax">iphone 11 promax</option>
+                    <option value="iPhone 12">iphone 12</option>
+                    <option value="iPhone 12 pro">iphone 12 pro</option>
+                    <option value="iPhone 12 promax">iphone 12 promax</option>
+                    <option value="iPhone 13">iphone 13</option>
+                    <option value="iPhone 13 pro">iphone 13 pro</option>
+                    <option value="iPhone 13 promax">iphone 13 promax</option>
+                    <option value="iPhone 14">iphone 14</option>
+                    <option value="iPhone 14 pro">iphone 14 pro</option>
+                    <option value="iPhone 14 promax">iphone 14 promax</option>
+                    <option value="iPhone 14 plus">iphone 14 blus </option>
+                    <option value="iPhone 15">iphone 15</option>
+                    <option value="iPhone 15 pro">iphone 15 pro</option>
+                    <option value="iPhone 15 promax">iphone 15 promax</option>
+                    <option value="iPhone 16">iphone 16</option>
+                    <option value="iPhone 16 pro">iphone 16 pro</option>
+                    <option value="iPhone 16 promax">iphone 16 promax</option>
+                    <option value="Samsung 21 ultra">21 ultra</option>
+                    <option value="Samsung 22 ultra">22 ultra</option>
+                    <option value="Samsung 23 ultra">23 ultra</option>
+                    <option value="Samsung A52">A52</option>
+                    <option value="Samsung A53">A53</option>
+                    <option value="Samsung A71">A71</option>
+                    <option value="Samsung A73">A73</option>
+                </select>
+                <button onclick="addToCart(' كڤر/مچين تلفون - صورة عادية -  ', 70 ,'phoneType3')">أضف إلى السلة</button>
+            </div>
 
-        <option value="Samsung 21 ultra">21 ultra</option>
-        <option value="Samsung 22 ultra">22 ultra</option>
-        <option value="Samsung 23 ultra">23 ultra</option>
+            <div class="product">
+                <img src="كفر رسم  ديجتال.jpg" alt="كڤر /مچين تلفون - رسم ديچتال ١٠٠₪">
+                <h3>كڤر /مچين تلفون - رسم ديچتال</h3>
+                <p>100₪</p>
+                <label for="phoneType4">نوع الهاتف:</label>
+                <select id="phoneType4" name="phoneType4">
+                    <option value="" disabled selected>اختر نوع الهاتف</option>
+                    <option value="iPhone11">iphone 11</option>
+                    <option value="iPhone11 pro">iphone 11 pro</option>
+                    <option value="iPhone 11 promax">iphone 11 promax</option>
+                    <option value="iPhone 12">iphone 12</option>
+                    <option value="iPhone 12 pro">iphone 12 pro</option>
+                    <option value="iPhone 12 promax">iphone 12 promax</option>
+                    <option value="iPhone 13">iphone 13</option>
+                    <option value="iPhone 13 pro">iphone 13 pro</option>
+                    <option value="iPhone 13 promax">iphone 13 promax</option>
+                    <option value="iPhone 14">iphone 14</option>
+                    <option value="iPhone 14 pro">iphone 14 pro</option>
+                    <option value="iPhone 14 promax">iphone 14 promax</option>
+                    <option value="iPhone 14 plus">iphone 14 blus </option>
+                    <option value="iPhone 15">iphone 15</option>
+                    <option value="iPhone 15 pro">iphone 15 pro</option>
+                    <option value="iPhone 15 promax">iphone 15 promax</option>
+                    <option value="iPhone 16">iphone 16</option>
+                    <option value="iPhone 16 pro">iphone 16 pro</option>
+                    <option value="iPhone 16 promax">iphone 16 promax</option>
+                    <option value="Samsung 21 ultra">21 ultra</option>
+                    <option value="Samsung 22 ultra">22 ultra</option>
+                    <option value="Samsung 23 ultra">23 ultra</option>
+                    <option value="Samsung A52">A52</option>
+                    <option value="Samsung A53">A53</option>
+                    <option value="Samsung A71">A71</option>
+                    <option value="Samsung A73">A73</option>
+                </select>
+                <button onclick="addToCart('كڤر /مچين تلفون - رسم ديچتال', 100,'phoneType4')">أضف إلى السلة</button>
+            </div>
 
-        <option value="Samsung A52">A52</option>
-        <option value="Samsung A53">A53</option>
-        <option value="Samsung A71">A71</option>
-        <option value="Samsung A73">A73</option>
+            <div class="product">
+                <img src="كاسة رسمة ديجتال رصاصي.jpg" alt="كاسة رسمة ديچتال - رصاصي ">
+                <h3>كاسة رسمة ديچتال - رصاصي</h3>
+                <p>60₪</p>
+                <button onclick="addToCart('كاسة رسمة ديچتال - رصاصي   ', 60)">أضف إلى السلة</button>
+            </div>
 
-        </select>
+            <div class="product">
+                <img src=" كاسة صوره عاديه.jpg" alt=" كاسة صورة عادية ٣٠₪ ">
+                <h3>كاسة صورة عادية</h3>
+                <p>30₪</p>
+                <button onclick="addToCart('كاسة رسمة عاديه   ', 30)">أضف إلى السلة</button>
+            </div>
 
-            <button onclick="addToCart(' كڤر/مچين تلفون - صورة عادية -  ', 70 ,'phoneType3')">أضف إلى السلة</button>
-        </div>
+            <div class="product">
+                <img src=" بازل صوره عاديه جديد.jpg" alt="بازل - puzzle -صورة عادية ٦٠₪">
+                <h3>صورة عادية- puzzle - بازل</h3>
+                <p>60₪</p>
+                <button onclick="addToCart('صورة عادية- puzzle - بازل-  ', 60)">أضف إلى السلة</button>
+            </div>
 
-        <div class="product">
-            <img src="كفر رسم  ديجتال.jpg" alt="كڤر /مچين تلفون - رسم ديچتال ١٠٠₪">
-            <h3>كڤر /مچين تلفون - رسم ديچتال </h3>
-            <p> 100₪</p>
-            <label for="phoneType4">نوع الهاتف:</label>
-            <select id="phoneType4" name="phoneType4" required>
-        <option value="" disabled selected>اختر نوع الهاتف</option>
-            <option value="iPhone11">iphone 11</option>
-        <option value="iPhone11 pro">iphone 11 pro</option>
-        <option value="iPhone 11 promax">iphone 11 promax</option>
-        <option value="iPhone 12">iphone 12</option>
-        <option value="iPhone 12 pro">iphone 12 pro</option>
-        <option value="iPhone 12 promax">iphone 12 promax</option>
-        <option value="iPhone 13">iphone 13</option>
-        <option value="iPhone 13 pro">iphone 13 pro</option>
-        <option value="iPhone 13 promax">iphone 13 promax</option>
-        <option value="iPhone 14">iphone 14</option>
-        <option value="iPhone 14 pro">iphone 14 pro</option>
-        <option value="iPhone 14 promax">iphone 14 promax</option>
-        <option value="iPhone 14 plus">iphone 14 blus </option>
-        <option value="iPhone 15">iphone 15</option>
-        <option value="iPhone 15 pro">iphone 15 pro</option>
-        <option value="iPhone 15 promax">iphone 15 promax</option>
+            <div class="product">
+                <img src=" بازل رسمه جديد.jpg" alt="رسمة ديجتال - puzzle - بازل ">
+                <h3>رسمة ديجتال - puzzle - بازل</h3>
+                <p>80₪</p>
+                <button onclick="addToCart('صورة ديجتال- puzzle - بازل-  ', 80)">أضف إلى السلة</button>
+            </div>
 
-   <option value="iPhone 16">iphone 16</option>
-            <option value="iPhone 16 pro">iphone 16 pro</option>
-            <option value="iPhone 16 promax">iphone 16 promax</option>
-                
-        <option value="Samsung 21 ultra">21 ultra</option>
-        <option value="Samsung 22 ultra">22 ultra</option>
-        <option value="Samsung 23 ultra">23 ultra</option>
-
-        <option value="Samsung A52">A52</option>
-        <option value="Samsung A53">A53</option>
-        <option value="Samsung A71">A71</option>
-        <option value="Samsung A73">A73</option>
-    </select>
-            <button onclick="addToCart('كڤر /مچين تلفون - رسم ديچتال', 100,'phoneType4')">أضف إلى السلة</button>
-        </div>
-
-        <div class="product">
-            <img src="كاسة رسمة ديجتال رصاصي.jpg" alt="كاسة رسمة ديچتال - رصاصي ">
-            <h3> كاسة رسمة ديچتال - رصاصي  </h3>
-            <p>  60₪</p>
-            <button onclick="addToCart('كاسة رسمة ديچتال - رصاصي   ', 60)">أضف إلى السلة</button>
-        </div>
-        
-        <div class="product">
-            <img src=" كاسة صوره عاديه.jpg" alt=" كاسة صورة عادية ٣٠₪ ">
-            <h3>كاسة صورة عادية </h3>
-            <p> 30₪</p>
-            </p>
-            <button onclick="addToCart('كاسة رسمة عاديه   ', 30)">أضف إلى السلة</button>
-        </div> 
-
-
-        <div class="product">
-            <img src=" بازل صوره عاديه جديد.jpg" alt="بازل - puzzle -صورة عادية ٦٠₪">
-            <h3>صورة عادية- puzzle - بازل</h3>
-            <P>60₪</P>
-            </p>
-            <button onclick="addToCart('صورة عادية- puzzle - بازل-  ', 60)">أضف إلى السلة</button>
-        </div> 
-
-        <div class="product">
-            <img src=" بازل رسمه جديد.jpg" alt="رسمة ديجتال - puzzle - بازل ">
-            <h3>رسمة ديجتال - puzzle - بازل</h3>
-           <P>80₪</P>     
-           </p>
-           <button onclick="addToCart('صورة ديجتال- puzzle - بازل-  ', 80)">أضف إلى السلة</button>
-        </div>
-
-
-        <div class="product">
-            <img src="قداحه صوره .jpg" alt=" قداحة صورة/كتابة 80">
-            <h3>قداحة صورة/كتابة </h3>
-            <p>  80₪</p>
-            <button onclick="addToCart('قداحة صورة/كتابة  ', 80)">أضف إلى السلة</button>
-        </div>
+            <div class="product">
+                <img src="قداحه صوره .jpg" alt=" قداحة صورة/كتابة 80">
+                <h3>قداحة صورة/كتابة</h3>
+                <p>80₪</p>
+                <button onclick="addToCart('قداحة صورة/كتابة  ', 80)">أضف إلى السلة</button>
+            </div>
 
             <div class="product">
                 <img src="مسبحه صوره عاديه.jpg" alt="مسبحة صورة عادية 50₪">
-                <h3>مسبحة صورة عادية  </h3>
-                <p> 50₪</p>
+                <h3>مسبحة صورة عادية</h3>
+                <p>50₪</p>
                 <button onclick="addToCart('مسبحة صورة عادية  ', 50)">أضف إلى السلة</button>
             </div>
-        
+
             <div class="product">
                 <img src="محزيك نمرة سياره .jpg" alt="محزيك نمرة سيارة، عالجهتين 50₪">
-                <h3>محزيك نمرة سيارة، عالجهتين  </h3>
-                <p> 50₪</p>
+                <h3>محزيك نمرة سيارة، عالجهتين</h3>
+                <p>50₪</p>
                 <button onclick="addToCart('محزيك نمرة سيارة، عالجهتين  ', 50)">أضف إلى السلة</button>
             </div>
 
             <div class="product">
                 <img src="محزيك عادي.jpg" alt="محزيك ، عالجهتين 30₪">
-                <h3>محزيك ، عالجهتين </h3>
-                <p> 30₪</p>
+                <h3>محزيك ، عالجهتين</h3>
+                <p>30₪</p>
                 <button onclick="addToCart('محزيك ، عالجهتين  ', 30)">أضف إلى السلة</button>
             </div>
-
-        </div>     
-       </div>
-
-   
-
-   <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: rgb(0, 0, 0);">
-    <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
-    <p>تم تصميم وتطوير الموقع بواسطة</p>
-    <P>Design.2023D</P>
-</footer>
-    <div class="cart-icon" id="cartIcon" onclick="toggleCart()">
-        🛒 <span id="cartCount" style="font-weight: bold; color: #e74c3c;">0</span> <!-- عنصر لعرض عدد المنتجات -->
+        </div>
     </div>
-    
-    <div id="cart" style="display: none;">
-        <!-- محتوى السلة -->
+
+    <div id="cart-page">
+        <div class="cart-page-header">
+            <button class="back-btn" type="button" onclick="showProductsPage()">رجوع للمنتجات</button>
+            <h2>السلة</h2>
+        </div>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-summary">
+            <div>عدد المنتجات: <span id="cartItemsCount">0</span></div>
+            <div style="margin-top:8px;">المجموع: <span id="cartTotal">0</span> ₪</div>
+        </div>
+
+        <div class="contact-form">
+            <p><strong>ملاحظة مهمة</strong></p>
+            <p>بعد تعبئة كامل التفاصيل، اضغط على "إرسال الطلب" وسوف تُرسل الطلبية عبر الواتساب.</p>
+
+            <form id="form">
+                <label for="name">الاسم:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone">رقم الهاتف:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="additionalNumber">رقم إضافي:</label>
+                <input type="tel" id="additionalNumber" name="additionalNumber">
+
+                <label for="deliveryOption">اختر طريقة التوصيل:</label>
+                <select id="deliveryOption" name="deliveryOption" onchange="toggleDeliveryDetails()" required>
+                    <option value="" disabled selected>اختر طريقة التوصيل</option>
+                    <option value="delivery">توصيل(يستغرق وقت تحضير الطلبيه وتوصيلها حتى 5 ايام)</option>
+                    <option value="استلام شخصي">استلام شخصي(للستلام الشخصي يتم تجهيز الطلبيه حتى 2 ايام تحضير)</option>
+                </select>
+
+                <div id="deliveryDetails" style="display: none;">
+                    <label for="deliveryArea">اختر المنطقة:</label>
+                    <select id="deliveryArea" name="deliveryArea">
+                        <option value="">اختر المنطقة</option>
+                        <option value="north">الشمال - 50</option>
+                        <option value="triangle">المثلث - 50</option>
+                        <option value="triangle2">ام الفحم,سالم,زلفة - 40</option>
+                        <option value="south">الجنوب - 60</option>
+                    </select>
+
+                    <label for="region">اسم المنطقة:</label>
+                    <input type="text" id="region" name="region">
+                </div>
+
+                <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
+                <input type="date" id="specificDate" name="specificDate">
+
+                <label for="note">:اذا كنت ترغب باضافة ملاحظة او اضافة اغنية أو عبارة</label>
+                <textarea id="note" name="note" rows="3" placeholder="اكتب  هنا"></textarea>
+
+                <button type="button" onclick="sendOrder()">إرسال الطلب</button>
+            </form>
+        </div>
     </div>
-    
+
+    <footer style="background-color: #fffefd; padding: 20px; text-align: center; color: rgb(0, 0, 0);">
+        <p>© 2024 جميع الحقوق محفوظة - Art By Areej </p>
+        <p>تم تصميم وتطوير الموقع بواسطة</p>
+        <p>Design.2023D</p>
+    </footer>
+
     <script>
-        let cart = [];
-    
-        // تحميل السلة من Local Storage عند تحميل الصفحة
-        window.onload = function() {
-            const savedCart = localStorage.getItem('cart');
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-                updateCart();
-            }
+    let cart = [];
+
+    window.onload = function () {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+            cart = JSON.parse(savedCart);
+        }
+        updateCart();
+    };
+
+    function getSelectedOption(optionId) {
+        if (!optionId) return null;
+        const select = document.getElementById(optionId);
+        if (!select || !select.value) return null;
+
+        const label = select.previousElementSibling ? select.previousElementSibling.textContent.trim() : 'الخيار';
+        return {
+            label: label,
+            value: select.value
         };
-    
-        function addToCart(productName, price, designNumberId) {
-    // الحصول على قيمة رقم التصميم
-    const designNumber = document.getElementById(designNumberId)?.value;
-
-   
-
-    // إضافة المنتج إلى السلة
-    cart.push({
-        name: productName,
-        price: price,
-        designNumber: designNumber  // رقم التصميم فقط هنا
-    });
-
-    alert(`${productName} أُضيف إلى السلة!`);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCart();
-
-    if (cart.length === 1) {
-        document.getElementById('cart').style.display = 'block';
     }
-}
 
+    function addToCart(productName, price, optionId) {
+        const selectedOption = getSelectedOption(optionId);
 
+        cart.push({
+            id: Date.now() + Math.random(),
+            name: productName,
+            price: Number(price),
+            option: selectedOption
+        });
 
-function updateCart() {
-    const cartItems = document.getElementById('cartItems');
-    cartItems.innerHTML = '';
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
+        alert(productName + ' أُضيف إلى السلة');
+    }
 
-    cart.forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = `${item.name} - ${item.price}₪`;
+    function updateCart() {
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartItemsCount = document.getElementById('cartItemsCount');
+        const cartTotal = document.getElementById('cartTotal');
 
-        // عرض رقم التصميم إذا كان موجودًا
-        if (item.designNumber) {
-            li.textContent += ` -  ${item.designNumber}`;
-        }
-       
+        if (cartItems) {
+            cartItems.innerHTML = '';
 
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'إزالة';
-        removeButton.onclick = () => removeFromCart(item.name);
-        
-        li.appendChild(removeButton);
-        cartItems.appendChild(li);
-    });
-
-    document.getElementById('cartCount').textContent = cart.length;
-}
-
-        function removeFromCart(productName) {
-            cart = cart.filter(item => item.name !== productName);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCart();
-    
-            // إخفاء السلة إذا أصبحت فارغة
             if (cart.length === 0) {
-                document.getElementById('cart').style.display = 'none';
+                cartItems.innerHTML = '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">السلة فارغة</div></div></div>';
+            } else {
+                cart.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+
+                    itemDiv.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-meta">السعر: ${item.price}₪</div>
+                            ${item.option ? `<div class="cart-item-meta">${item.option.label}: ${item.option.value}</div>` : ''}
+                        </div>
+                    `;
+
+                    const removeButton = document.createElement('button');
+                    removeButton.className = 'remove-button';
+                    removeButton.textContent = 'إزالة';
+                    removeButton.onclick = function () {
+                        removeFromCart(item.id);
+                    };
+
+                    itemDiv.appendChild(removeButton);
+                    cartItems.appendChild(itemDiv);
+                });
             }
         }
-        function toggleCart() {
-    const cartElement = document.getElementById('cart');
-    if (cart.length > 0) { // عرض السلة فقط إذا كانت تحتوي على منتجات
-        cartElement.style.display = (cartElement.style.display === 'none' || cartElement.style.display === '') ? 'block' : 'none';
-    }
-}
 
-    
+        const total = cart.reduce((sum, item) => sum + Number(item.price), 0);
 
-function toggleOrderForm() {
-    const orderForm = document.getElementById('orderForm');
-    orderForm.style.display = (orderForm.style.display === 'none') ? 'block' : 'none';
-}
-
-function toggleDeliveryDetails() {
-    const deliveryOption = document.getElementById('deliveryOption').value;
-    document.getElementById('deliveryDetails').style.display = (deliveryOption === 'delivery') ? 'block' : 'none';
-}
-
-function calculateTotalPrice() {
-    let total = cart.reduce((sum, item) => sum + item.price, 0);
-    const deliveryOption = document.getElementById('deliveryOption').value;
-    const deliveryArea = document.getElementById('deliveryArea').value;
-
-    if (deliveryOption === 'delivery') {
-        if (deliveryArea === 'north') total += 50;
-        else if (deliveryArea === 'south') total += 60;
-        else if (deliveryArea === 'triangle') total += 50;
-        else if (deliveryArea === 'triangle2') total += 40;
-
+        if (cartCount) cartCount.textContent = cart.length;
+        if (cartItemsCount) cartItemsCount.textContent = cart.length;
+        if (cartTotal) cartTotal.textContent = total;
     }
 
-    return total;
-}
-
-function sendOrder() {
-    // الحصول على عناصر الحقول
-    const name = document.getElementById('name');
-    const phone = document.getElementById('phone');
-    const deliveryOption = document.getElementById('deliveryOption');
-    const deliveryArea = document.getElementById('deliveryArea');
-    const region = document.getElementById('region');
-    const specificDate = document.getElementById('specificDate');
-    const phoneType = document.getElementById('phoneType');
-
-    // متغير لتخزين الحقول الناقصة
-    let missingFields = [];
-
-    // التحقق من كل حقل وإضافته إلى الرسالة إذا كان فارغًا
-    if (!name.value.trim()) missingFields.push('الاسم');
-    if (!phone.value.trim()) missingFields.push('رقم الهاتف');
-    if (!deliveryOption.value) missingFields.push('طريقة التوصيل');
-    if (deliveryOption.value === 'delivery' && !deliveryArea.value) missingFields.push('منطقة التوصيل');
-    if (!specificDate.value) missingFields.push('تاريخ الاستلام');
-    if (phoneType && !phoneType.value.trim()) missingFields.push('نوع الهاتف');
-
-    // إذا كانت هناك حقول ناقصة، عرض رسالة للمستخدم
-    if (missingFields.length > 0) {
-        alert('يرجى تعبئة الحقول التالية: ' + missingFields.join(', '));
-        return; // إيقاف الدالة إذا كانت هناك حقول ناقصة
+    function removeFromCart(itemId) {
+        cart = cart.filter(item => item.id !== itemId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCart();
     }
 
-    // تابع تنفيذ بقية الكود بعد التأكد من تعبئة جميع الحقول
-    const totalAmount = calculateTotalPrice();
-    alert('إجمالي الطلب مع التوصيل: ' + totalAmount + ' ₪');
-    
-    // باقي أكواد إرسال الطلب
-    const additionalNumber = document.getElementById('additionalNumber').value || 'لا يوجد';
-    const note = document.getElementById('note').value || 'لا يوجد ملاحظات';
+    function showCartPage() {
+        document.getElementById('products-page').style.display = 'none';
+        document.getElementById('cart-page').style.display = 'block';
+        window.scrollTo(0, 0);
+        updateCart();
+    }
 
-    let orderDetails = `الاسم: ${name.value}\nرقم الهاتف: ${phone.value}\nرقم إضافي: ${additionalNumber}\nطريقة التوصيل: ${deliveryOption.value}\nالمنطقة: ${region.value}\nتاريخ الاستلام: ${specificDate.value}\nالمنتجات:\n`;
+    function showProductsPage() {
+        document.getElementById('products-page').style.display = 'block';
+        document.getElementById('cart-page').style.display = 'none';
+        window.scrollTo(0, 0);
+    }
 
-    
-    cart.forEach(item => {
-        orderDetails += `- ${item.name} - ${item.price}₪`;
-        if (item.phoneCaseType) {
-            orderDetails += ` - ${item.phoneCaseType})`;
+    function toggleDeliveryDetails() {
+        const deliveryOption = document.getElementById('deliveryOption').value;
+        document.getElementById('deliveryDetails').style.display =
+            deliveryOption === 'delivery' ? 'block' : 'none';
+    }
+
+    function calculateTotalPrice() {
+        let total = cart.reduce((sum, item) => sum + Number(item.price), 0);
+
+        const deliveryOption = document.getElementById('deliveryOption').value;
+        const deliveryArea = document.getElementById('deliveryArea').value;
+
+        if (deliveryOption === 'delivery') {
+            if (deliveryArea === 'north') total += 50;
+            else if (deliveryArea === 'south') total += 60;
+            else if (deliveryArea === 'triangle') total += 50;
+            else if (deliveryArea === 'triangle2') total += 40;
         }
-        if (item.designNumber) {
-            orderDetails += `- ${item.designNumber})`;
+
+        return total;
+    }
+
+    function sendOrder() {
+        if (cart.length === 0) {
+            alert('السلة فارغة');
+            return;
         }
-        orderDetails += "\n";
+
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const additionalNumber = document.getElementById('additionalNumber').value.trim() || 'لا يوجد';
+        const deliveryOption = document.getElementById('deliveryOption').value;
+        const deliveryAreaValue = document.getElementById('deliveryArea').value;
+        const deliveryArea = deliveryAreaValue || 'لا يوجد';
+        const region = document.getElementById('region').value.trim() || 'لا يوجد';
+        const specificDate = document.getElementById('specificDate').value;
+        const note = document.getElementById('note').value.trim() || 'لا يوجد';
+
+        let missingFields = [];
+        if (!name) missingFields.push('الاسم');
+        if (!phone) missingFields.push('رقم الهاتف');
+        if (!deliveryOption) missingFields.push('طريقة التوصيل');
+        if (!specificDate) missingFields.push('تاريخ الاستلام');
+        if (deliveryOption === 'delivery' && !deliveryAreaValue) {
+            missingFields.push('منطقة التوصيل');
+        }
+
+        if (missingFields.length > 0) {
+            alert('يرجى تعبئة الحقول التالية: ' + missingFields.join('، '));
+            return;
+        }
+
+        const totalAmount = calculateTotalPrice();
+
+        let orderDetails = `طلب جديد\n`;
+        orderDetails += `الاسم: ${name}\n`;
+        orderDetails += `رقم الهاتف: ${phone}\n`;
+        orderDetails += `رقم إضافي: ${additionalNumber}\n`;
+        orderDetails += `طريقة التوصيل: ${deliveryOption}\n`;
+        orderDetails += `منطقة التوصيل: ${deliveryArea}\n`;
+        orderDetails += `اسم المنطقة: ${region}\n`;
+        orderDetails += `تاريخ الاستلام: ${specificDate}\n`;
+        orderDetails += `المنتجات:\n`;
+
+        cart.forEach(item => {
+            orderDetails += `- ${item.name} - ${item.price}₪`;
+            if (item.option) {
+                orderDetails += ` - ${item.option.label}: ${item.option.value}`;
+            }
+            orderDetails += `\n`;
+        });
+
+        orderDetails += `ملاحظة: ${note}\n`;
+        orderDetails += `المجموع الكلي: ${totalAmount}₪`;
+
+        const whatsappPhone = "972535845120";
+        const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
+        window.open(whatsappURL, '_blank');
+    }
+
+    function toggleMenu() {
+        document.getElementById('sideMenu').classList.toggle('show');
+    }
+
+    document.addEventListener('click', function (e) {
+        const menu = document.getElementById('sideMenu');
+        const wrapper = document.querySelector('.menu-wrapper');
+
+        if (menu && wrapper && !wrapper.contains(e.target)) {
+            menu.classList.remove('show');
+        }
     });
-
-    orderDetails += `ملاحظة: ${note}\nالمجموع الكلي: ${totalAmount}₪\n`;
-
-    // إرسال الطلب عبر واتساب
-    const whatsappPhone = "972535845120";
-    const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
-    window.open(whatsappURL, '_blank');
-}
-
     </script>
-    </body>
-    </html>  
-    
-
-
-
+</body>
+</html>
