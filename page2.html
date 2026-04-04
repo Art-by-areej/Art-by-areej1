@@ -202,11 +202,24 @@
         background-color: #5a472a;
     }
 
-    #cart-page {
-        display: none;
-        padding: 14px;
-        min-height: 100vh;
-    }
+   #cart-page {
+    display: none;
+    padding: 0 14px 14px;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.cart-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1000;
+    padding: 8px 0;
+}
 
     .cart-page-header {
         display: flex;
