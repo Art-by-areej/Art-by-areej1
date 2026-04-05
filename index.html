@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
-  <style>
+    <style>
         body {
             font-family: Georgia, 'Times New Roman', Times, serif;
             background-color: #ffffff;
@@ -441,28 +441,40 @@
             line-height: 1.8;
         }
 
+        .review-slider {
+            width: 100%;
+            margin: 0 auto;
+        }
+
         .review-slider .review {
-            display: flex;
+            display: flex !important;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
             padding: 20px;
             color: #8e6aa8;
+            min-height: 180px;
         }
 
         .review-slider .review p {
             font-size: 15px;
             color: #8e6aa8;
             line-height: 1.8;
+            margin-bottom: 12px;
         }
 
         .slick-slide {
+            height: auto !important;
+        }
+
+        .slick-track {
             display: flex !important;
-            justify-content: center;
+            align-items: stretch;
         }
 
         .slick-dots {
-            bottom: 10px;
+            bottom: -5px;
         }
 
         @keyframes floatUp {
@@ -602,7 +614,8 @@
 
     <div id="products-page">
         <div class="hero-image">
- <img src="لوجو الصفحه الرئيسيه جديد.jpeg" alt="صورة مقدمة">        </div>
+            <img src="لوجو الصفحه الرئيسيه جديد.jpeg" alt="صورة مقدمة">
+        </div>
         
         <div class="welcome">
             مَتْجَري المُتَميِّزُ يُرحِّبُ بِزُوّارِه
@@ -713,7 +726,7 @@
                 </div>
 
                 <div class="review">
-                    <p>"حبيبتي ، طلبت من عندك قبل المره رسمه لصحبيتي وعنجد كانت ككثير ككثييرر بتسطللل كل مره بطلب بتبهريني بجمال شغلك😍😍"</p>
+                    <p>حبيبتي، طلبت من عندك قبل المره رسمه لصحبيتي وعنجد كانت كثير كثير بتسطللل، كل مره بطلب بتبهريني بجمال شغلك 😍😍</p>
                     <div class="rating">
                         <span class="heart">❤️</span>
                         <span class="heart">❤️</span>
@@ -804,16 +817,22 @@
     <script>
         let cart = [];
 
-        $(document).ready(function(){
-            $('.review-slider').slick({
-                autoplay: true,
-                arrows: false,
-                dots: true,
-                infinite: true,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1
-            });
+        $(document).ready(function () {
+            if ($('.review-slider').length && typeof $.fn.slick === 'function') {
+                $('.review-slider').not('.slick-initialized').slick({
+                    rtl: true,
+                    autoplay: true,
+                    autoplaySpeed: 2500,
+                    arrows: false,
+                    dots: true,
+                    infinite: true,
+                    speed: 600,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    pauseOnHover: false,
+                    pauseOnFocus: false
+                });
+            }
         });
 
         window.onload = function () {
