@@ -758,8 +758,9 @@
                     <input type="text" id="region" name="region">
                 </div>
 
-                <label for="specificDate">تاريخ/يوم معين لأستلام الطلبيه</label>
-                <input type="date" id="specificDate" name="specificDate">
+              <select id="specificDate" name="specificDate" required>
+    <option value="" disabled selected>اختاري تاريخ الاستلام</option>
+</select>
 
                 <label for="note">:اذا كنت ترغب باضافة ملاحظة او اضافة اغنية أو عبارة</label>
                 <textarea id="note" name="note" rows="3" placeholder="اكتب  هنا"></textarea>
@@ -960,27 +961,49 @@
         document.getElementById('sideMenu').classList.toggle('show');
     }
 
-    document.addEventListener('click', function (e) {
-        const menu = document.getElementById('sideMenu');
-        const wrapper = document.querySelector('.menu-wrapper');
+  document.addEventListener("DOMContentLoaded", function () {
+    const dateSelect = document.getElementById("specificDate");
+    if (!dateSelect) return;
 
-        if (menu && wrapper && !wrapper.contains(e.target)) {
-            menu.classList.remove('show');
+    const daysArabic = [
+        "الأحد",
+        "الإثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت"
+    ];
+
+    const today = new Date();
+    let addedDays = 0;
+    let i = 0;
+
+    while (addedDays < 14) {
+        const date = new Date();
+        date.setDate(today.getDate() + i);
+
+        const day = date.getDay();
+
+        // منع الجمعة والسبت
+        if (day !== 5 && day !== 6) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, "0");
+            const dayNumber = String(date.getDate()).padStart(2, "0");
+
+            const value = `${year}-${month}-${dayNumber}`;
+            const text = `${daysArabic[day]} - ${dayNumber}/${month}/${year}`;
+
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = text;
+
+            dateSelect.appendChild(option);
+            addedDays++;
         }
-    });
-        document.addEventListener("DOMContentLoaded", function () {
-    const dateInput = document.getElementById("specificDate");
 
-    dateInput.addEventListener("input", function () {
-        const selectedDate = new Date(this.value);
-        const day = selectedDate.getDay();
-
-        // الجمعة = 5 ، السبت = 6
-        if (day === 5 || day === 6) {
-            alert("الاستلام غير متاح يوم الجمعة والسبت");
-            this.value = "";
-        }
-   });
+        i++;
+    }
 });
     </script>
 </body>
