@@ -1454,28 +1454,43 @@
         document.getElementById('sideMenu').classList.toggle('show');
     }
 
-    document.addEventListener('click', function (e) {
-        const menu = document.getElementById('sideMenu');
-        const wrapper = document.querySelector('.menu-wrapper');
+  document.addEventListener('click', function (e) {
+    const menu = document.getElementById('sideMenu');
+    const wrapper = document.querySelector('.menu-wrapper');
 
-        if (menu && wrapper && !wrapper.contains(e.target)) {
-            menu.classList.remove('show');
-        }
-    });
-        document.addEventListener("DOMContentLoaded", function () {
+    if (menu && wrapper && !wrapper.contains(e.target)) {
+        menu.classList.remove('show');
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
     const dateInput = document.getElementById("specificDate");
 
-    dateInput.addEventListener("input", function () {
-        const selectedDate = new Date(this.value);
+    if (!dateInput) return;
+
+    // يخلي التاريخ فاضي أول ما تفتح الصفحة
+    dateInput.value = "";
+    dateInput.removeAttribute("value");
+
+    dateInput.addEventListener("change", function () {
+        if (!this.value) return;
+
+        const parts = this.value.split("-");
+        const selectedDate = new Date(
+            Number(parts[0]),
+            Number(parts[1]) - 1,
+            Number(parts[2])
+        );
+
         const day = selectedDate.getDay();
 
         // الجمعة = 5 ، السبت = 6
         if (day === 5 || day === 6) {
-            alert("الاستلام غير متاح يوم الجمعة والسبت");
+            alert("الاستلام غير متاح يوم الجمعة والسبت، اختاري تاريخ آخر");
             this.value = "";
         }
-   });
+    });
 });
-    </script>
+</script>
 </body>
 </html>
