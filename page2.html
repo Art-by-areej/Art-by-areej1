@@ -1451,24 +1451,12 @@
         window.open(whatsappURL, '_blank');
     }
 
-function toggleMenu() {
-    document.getElementById('sideMenu').classList.toggle('show');
-}
-
-document.addEventListener('click', function (e) {
-    const menu = document.getElementById('sideMenu');
-    const wrapper = document.querySelector('.menu-wrapper');
-
-    if (menu && wrapper && !wrapper.contains(e.target)) {
-        menu.classList.remove('show');
-    }
-});
-
 document.addEventListener("DOMContentLoaded", function () {
     const dateInput = document.getElementById("specificDate");
 
     if (!dateInput) return;
 
+    // يخلي التاريخ فاضي أول ما تفتح الصفحة
     dateInput.value = "";
 
     dateInput.addEventListener("change", function () {
@@ -1483,11 +1471,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const day = selectedDate.getDay();
 
+        // الجمعة = 5 ، السبت = 6
         if (day === 5 || day === 6) {
             alert("لا يوجد استلام أيام الجمعة والسبت، اختاري تاريخ آخر");
             this.value = "";
         }
     });
-});
+});;
+            
 </body>
 </html>
