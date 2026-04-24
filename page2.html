@@ -1464,30 +1464,33 @@ document.addEventListener('click', function (e) {
     }
 });   
          
+function isFridayOrSaturday(dateValue) {
+    if (!dateValue) return false;
+
+    const parts = dateValue.split("-");
+    const year = Number(parts[0]);
+    const month = Number(parts[1]) - 1;
+    const dayNumber = Number(parts[2]);
+
+    const date = new Date(year, month, dayNumber);
+    const day = date.getDay();
+
+    return day === 5 || day === 6;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const dateInput = document.getElementById("specificDate");
 
-    if (dateInput) {
-        function isFridayOrSaturday(value) {
-            const parts = value.split("-");
-            const selectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
-            const day = selectedDate.getDay();
-            return day === 5 || day === 6;
-        }
+    if (!dateInput) return;
 
-        // إذا كان التاريخ مختار تلقائيًا جمعة/سبت، امسحيه بدون تنبيه
-        if (dateInput.value && isFridayOrSaturday(dateInput.value)) {
-            dateInput.value = "";
-        }
-
-        // لما الزبونة تختار بنفسها
-        dateInput.addEventListener("change", function () {
-            if (this.value && isFridayOrSaturday(this.value)) {
-                alert("لا يوجد استلام أيام الجمعة والسبت");
+    dateInput.addEventListener("change", function () {
+        if (isFridayOrSaturday(this.value)) {
+            setTimeout(() => {
+                alert("لا يوجد استلام أيام الجمعة والسبت، اختاري يوم آخر");
                 this.value = "";
-            }
-        });
-    }
+            }, 200);
+        }
+    });
 });
 </script>
 </body>
