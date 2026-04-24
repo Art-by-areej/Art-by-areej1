@@ -1465,22 +1465,29 @@ document.addEventListener('click', function (e) {
 });   
          
 document.addEventListener("DOMContentLoaded", function () {
-  const dateInput = document.querySelector('input[type="date"]');
+    const dateInput = document.getElementById("specificDate");
 
-  if (dateInput) {
-    dateInput.addEventListener("input", function () {
+    if (dateInput) {
+        function isFridayOrSaturday(value) {
+            const parts = value.split("-");
+            const selectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
+            const day = selectedDate.getDay();
+            return day === 5 || day === 6;
+        }
 
-      const parts = this.value.split("-");
-      const selectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
-      const day = selectedDate.getDay();
+        // إذا كان التاريخ مختار تلقائيًا جمعة/سبت، امسحيه بدون تنبيه
+        if (dateInput.value && isFridayOrSaturday(dateInput.value)) {
+            dateInput.value = "";
+        }
 
-      if (day === 5 || day === 6) {
-        alert("لا يوجد استلام أيام الجمعة والسبت");
-        this.value = "";
-      }
-
-    });
-  }
+        // لما الزبونة تختار بنفسها
+        dateInput.addEventListener("change", function () {
+            if (this.value && isFridayOrSaturday(this.value)) {
+                alert("لا يوجد استلام أيام الجمعة والسبت");
+                this.value = "";
+            }
+        });
+    }
 });
 </script>
 </body>
