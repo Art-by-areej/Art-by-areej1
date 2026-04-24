@@ -1007,19 +1007,49 @@
             const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(orderDetails)}`;
             window.open(whatsappURL, '_blank');
         }
-        document.addEventListener("DOMContentLoaded", function () {
-    const dateInput = document.getElementById("specificDate");
+    document.addEventListener("DOMContentLoaded", function () {
+    const dateSelect = document.getElementById("specificDate");
+    if (!dateSelect) return;
 
-    dateInput.addEventListener("input", function () {
-        const selectedDate = new Date(this.value);
-        const day = selectedDate.getDay();
+    const daysArabic = [
+        "الأحد",
+        "الإثنين",
+        "الثلاثاء",
+        "الأربعاء",
+        "الخميس",
+        "الجمعة",
+        "السبت"
+    ];
 
-        // الجمعة = 5 ، السبت = 6
-        if (day === 5 || day === 6) {
-            alert("الاستلام غير متاح يوم الجمعة والسبت");
-            this.value = "";
+    const today = new Date();
+    let addedDays = 0;
+    let i = 0;
+
+    while (addedDays < 14) {
+        const date = new Date();
+        date.setDate(today.getDate() + i);
+
+        const day = date.getDay();
+
+        // منع الجمعة والسبت
+        if (day !== 5 && day !== 6) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, "0");
+            const dayNumber = String(date.getDate()).padStart(2, "0");
+
+            const value = `${year}-${month}-${dayNumber}`;
+            const text = `${daysArabic[day]} - ${dayNumber}/${month}/${year}`;
+
+            const option = document.createElement("option");
+            option.value = value;
+            option.textContent = text;
+
+            dateSelect.appendChild(option);
+            addedDays++;
         }
-   });
+
+        i++;
+    }
 });
     </script>
 </body>
