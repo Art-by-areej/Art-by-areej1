@@ -1252,9 +1252,9 @@
                     <input type="text" id="region" name="region">
                 </div>
 
-                <label for="specificDate">تاريخ/يوم معين لاستلام الطلبية:</label>
-                <input type="date" id="specificDate" name="specificDate">
-
+   <label for="specificDate">تاريخ/يوم معين لاستلام الطلبية:</label>
+<input type="date" id="specificDate" name="specificDate">
+                
                 <label for="note">ملاحظة / إضافة أغنية / عبارة:</label>
                 <textarea id="note" name="note" rows="3" placeholder="اكتب هنا"></textarea>
 
@@ -1454,23 +1454,37 @@
         document.getElementById('sideMenu').classList.toggle('show');
     }
 
-  document.addEventListener('click', function (e) {
-    const menu = document.getElementById('sideMenu');
-    const wrapper = document.querySelector('.menu-wrapper');
-
-    if (menu && wrapper && !wrapper.contains(e.target)) {
-        menu.classList.remove('show');
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const dateInput = document.getElementById("specificDate");
-
     if (!dateInput) return;
 
-    // يخلي التاريخ فاضي أول ما تفتح الصفحة
     dateInput.value = "";
     dateInput.removeAttribute("value");
+
+    function formatDate(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+    }
+
+    function isClosedDay(date) {
+        const day = date.getDay();
+        return day === 5 || day === 6; // الجمعة والسبت
+    }
+
+    function nextAvailableDate() {
+        let date = new Date();
+
+        while (isClosedDay(date)) {
+            date.setDate(date.getDate() + 1);
+        }
+
+        return date;
+    }
+
+    // إذا اليوم جمعة/سبت، أول تاريخ مسموح يصير الأحد
+    dateInput.min = formatDate(nextAvailableDate());
 
     dateInput.addEventListener("change", function () {
         if (!this.value) return;
@@ -1482,15 +1496,12 @@ document.addEventListener("DOMContentLoaded", function () {
             Number(parts[2])
         );
 
-        const day = selectedDate.getDay();
-
-        // الجمعة = 5 ، السبت = 6
-        if (day === 5 || day === 6) {
+        if (isClosedDay(selectedDate)) {
             alert("الاستلام غير متاح يوم الجمعة والسبت، اختاري تاريخ آخر");
             this.value = "";
         }
     });
 });
-</script>
+        </script>
 </body>
 </html>
