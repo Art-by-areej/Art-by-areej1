@@ -1465,18 +1465,24 @@ document.addEventListener('click', function (e) {
 });   
          
 document.addEventListener("DOMContentLoaded", function () {
-    const dateInput = document.getElementById("specificDate");
+  const dateInput = document.querySelector('input[type="date"]');
 
+  if (dateInput) {
     dateInput.addEventListener("input", function () {
-        const selectedDate = new Date(this.value);
-        const day = selectedDate.getDay();
 
-        // الجمعة = 5 ، السبت = 6
-        if (day === 5 || day === 6) {
-            alert("الاستلام غير متاح يوم الجمعة والسبت");
-            this.value = "";
-        }
-   });
+      const parts = this.value.split("-");
+      const selectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
+      const day = selectedDate.getDay();
+
+      // الجمعة (5) و السبت (6)
+      if (day === 5 || day === 6) {
+        alert("لا يوجد استلام أيام الجمعة والسبت");
+        this.value = "";
+      }
+
+    });
+  }
+
 });
 </script>
 </body>
