@@ -1474,7 +1474,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const selectedDate = new Date(parts[0], parts[1] - 1, parts[2]);
       const day = selectedDate.getDay();
 
-      // الجمعة (5) و السبت (6)
       if (day === 5 || day === 6) {
         alert("لا يوجد استلام أيام الجمعة والسبت");
         this.value = "";
@@ -1482,7 +1481,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
   }
-
 });
 </script>
 </body>
